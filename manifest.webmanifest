@@ -1,7 +1,7 @@
 {
   "name": "Disney World trip plan",
   "short_name": "Disney Trip",
-  "description": "Day-by-day plan for Animal Kingdom and Magic Kingdom, Nov 21-25, 2026. Fan-made, not affiliated with Disney.",
+  "description": "Day-by-day plan for Animal Kingdom and Magic Kingdom, Nov 21-25, 2026. Created by Avinash. Fan-made, not affiliated with Disney.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

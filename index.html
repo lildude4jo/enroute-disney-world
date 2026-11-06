@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Disney World trip plan</title>
+<!-- Created by Avinash -->
 <meta name="theme-color" content="#17202B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="author" content="Avinash">
 <meta name="apple-mobile-web-app-title" content="Disney Trip">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
@@ -180,10 +182,62 @@ pre.sql{white-space:pre-wrap;word-break:break-word;font:12px/1.4 ui-monospace,Me
 .whylist li{margin:8px 0;font-size:15px}
 .b-moved{background:var(--chgbg);color:var(--chg)}
 
+
+/* signature, reminders, filters */
+.catlist .badge{display:inline-block;margin:2px 6px 2px 0}
+.sig{margin:28px 0 6px;text-align:center;font-size:13px;color:var(--muted);letter-spacing:.02em}
+.remind{background:var(--chgbg);color:var(--chg);border-radius:14px;padding:12px 14px;margin:0 0 16px}
+.remind b{display:block;margin-bottom:6px}
+.rline{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;color:var(--ink)}
+.rline .btn{padding:6px 12px;border-color:var(--chg);color:var(--chg)}
+.rem{padding:10px 0;border-top:1px solid var(--line)}
+.rem:first-child{border-top:0}
+.remlab{display:flex;gap:12px;align-items:flex-start}
+.remlab input{-webkit-appearance:none;appearance:none;flex:none;width:26px;height:26px;margin:1px 0 0;border:2px solid var(--muted);border-radius:8px;background:var(--card);display:grid;place-content:center}
+.remlab input:checked{background:var(--c);border-color:var(--c)}
+.remlab input:checked::after{content:"";width:6px;height:12px;border:solid var(--onc);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.rem.done .ttl{text-decoration:line-through;color:var(--muted)}
+.rem small{display:block;color:var(--muted);font-size:13px}
+.rbtns{display:flex;gap:18px;margin:4px 0 0 38px}
+.linkbtn{border:0;background:transparent;color:var(--c);font-weight:700;padding:6px 0;text-decoration:underline}
+.linkbtn:last-child{color:var(--rem)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.chipbtn{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px}
+.chipbtn[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.morebox{margin:14px 0 6px;background:var(--card);border-radius:14px;padding:12px 14px}
+textarea.inp{resize:vertical;min-height:110px}
+
+
+/* check-ins, meals and shopping */
+.ckrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.pchip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:700;font-size:14px;min-height:36px;color:var(--ink)}
+.pchip[aria-pressed=true]{background:var(--c);border-color:var(--c);color:var(--onc)}
+.also{display:block;width:100%;font-size:13px;color:var(--muted);font-weight:500}
+.who{font-size:14px;color:var(--muted);margin:-6px 0 14px}
+.who .linkbtn{padding:0 0 0 4px}
+.meal{padding:12px 0;border-top:1px solid var(--line)}
+.meal:first-of-type{border-top:0}
+.meal .mt{display:block;font-weight:800;color:var(--c);font-size:14px}
+.meal b{display:block;font-weight:800}
+.meal p{margin:2px 0 0;font-size:15px;color:var(--muted)}
+.shoprow{padding:9px 0;border-top:1px solid var(--line)}
+.shoprow:first-child{border-top:0}
+.shoprow small{display:block;color:var(--muted);font-size:13px}
+.stepper{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0}
+.stepper b{min-width:20px;text-align:center}
+.stepper .btn{padding:4px 14px;font-size:18px}
+.chipbtn.pn{display:inline-flex;gap:8px;align-items:center}
+.xbtn{border:0;background:transparent;font-weight:800;color:var(--rem);padding:0 2px;font-size:14px}
+
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}
+.seg3 .btn{padding:11px 6px;font-size:15px}
+.seg3 .btn[aria-pressed=true]{background:var(--c);border-color:var(--c);color:var(--onc)}
+h3.land{font-size:15px;color:var(--muted);margin:14px 0 2px;font-weight:700}
+
 /* bottom tabs */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(5,1fr);
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(6,1fr);
   background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-.tab{border:0;background:transparent;padding:16px 2px;font-size:14px;font-weight:700;color:var(--muted);border-top:3px solid transparent}
+.tab{border:0;background:transparent;padding:16px 1px;font-size:13px;font-weight:700;color:var(--muted);border-top:3px solid transparent}
 .tab[aria-current=page]{color:var(--ink);border-top-color:var(--c)}
 
 .toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%);
@@ -208,7 +262,8 @@ pre.sql{white-space:pre-wrap;word-break:break-word;font:12px/1.4 ui-monospace,Me
 <nav class="tabs" id="tabs" aria-label="Sections">
   <button class="tab" data-tab="plan" type="button">Plan</button>
   <button class="tab" data-tab="map" type="button">Map</button>
-  <button class="tab" data-tab="waits" type="button">Waits</button>
+  <button class="tab" data-tab="rides" type="button">Rides</button>
+  <button class="tab" data-tab="meals" type="button">Meals</button>
   <button class="tab" data-tab="group" type="button">Group</button>
   <button class="tab" data-tab="notes" type="button">Notes</button>
 </nav>
@@ -231,7 +286,7 @@ const PARKS={
 /* ---------- data ---------- */
 // it(text, kind, flag, note, wait-match [name, words|words], place [name, words|words, optional [lat,lng]])
 // A ride's wait-match doubles as its map place. Use the 6th argument for stops with no wait time.
-const it=(t,k="",f="",n="",w=null,g=null)=>({t,k,f,n,w,g});
+const it=(t,k="",f="",n="",w=null,g=null,ck=1)=>({t,k,f,n,w,g,ck});
 
 const DAYS=[
 {
@@ -244,45 +299,51 @@ const DAYS=[
     "Tree of Life Awakenings doesn’t run every night. Check the app for Nov 21 showtimes."
   ],
   why:[
-    "One sweep: Pandora, then Africa, then Asia, then back through the middle. Your old order went Pandora, Africa, Discovery Island, then Africa again.",
-    "Mickey and Minnie moved to the walk back from Pandora. Adventurers Outpost is on Discovery Island, which you pass through anyway.",
-    "The Safari and Gorilla Falls are side by side, so they now run back to back.",
+    "One sweep: Pandora, then Africa, then Discovery Island, then Asia, then back to the middle for dusk. You never cross between Africa and Discovery Island twice.",
+    "The Safari and Gorilla Falls are side by side, so they run back to back.",
     "Lunch at Harambe Market keeps you in Africa for the 2:00 Lion King show.",
-    "Bluey’s Wild World left the day. Its train leaves from Harambe, the far end of the park from Nemo and the Tree of Life. It’s still under extras."
+    "Adventurers Outpost (Mickey and Minnie) is on Discovery Island near the bridge to Asia, so it now comes on the walk from Africa to Asia instead of its own trip.",
+    "Nemo moved from 3:30 to 4:30. Shows run through the afternoon, and 4:30 lets Mickey and the Maharajah trail fit in without rushing. Confirm Nov 21’s times in the app.",
+    "Bluey’s Wild World left the day. Its train leaves from Harambe, the far end of the park from Nemo and the Tree of Life. It’s on the Rides tab."
   ],
   blocks:[
     {s:"06:45",e:"08:00",h:"Drive and park",items:[
       it("Leave the villa at 6:45 AM","","changed","Was 7:15 AM. Moved 30 minutes earlier to match the 8:00 AM opening."),
+      it("Eat your packed breakfast in the car on the drive","meal","added","Packed in Davenport the night before."),
       it("Be at the gates by 7:45 AM","","changed","Was 8:15 AM for an 8:30 opening.")
     ]},
     {s:"08:00",e:"09:30",h:"Pandora at rope drop",items:[
       it("Ride Na’vi River Journey first","ride","","",["Na’vi River Journey","navi river journey"])
     ]},
-    {s:"09:30",e:"10:15",h:"Mickey and Minnie on the way back",items:[
-      it("Meet Mickey and Minnie at Adventurers Outpost","meet","moved","Was after the Safari. It’s on Discovery Island, between Pandora and Africa. Your notes say safari outfits, but holiday outfits are reported from Nov 13.",["Mickey and Minnie at Adventurers Outpost","adventurers outpost"])
-    ]},
-    {s:"10:15",e:"12:30",h:"Africa, side by side",items:[
-      it("Ride Kilimanjaro Safaris","ride","call","Its waits are usually lowest at opening and the animals are most active early. If you’d rather do it first, go Africa, then Pandora, then Mickey, and the sweep still works.",["Kilimanjaro Safaris","kilimanjaro safaris"]),
+    {s:"09:30",e:"12:30",h:"Africa, side by side",items:[
+      it("Ride Kilimanjaro Safaris","ride","call","Its waits are usually lowest at opening and the animals are most active early. You could ride it first and Pandora second, and the sweep still works.",["Kilimanjaro Safaris","kilimanjaro safaris"]),
       it("Walk the Gorilla Falls Exploration Trail","walk","moved","Was after Mickey. It’s the walkway next to the Safari, so it now follows it directly.",null,["Gorilla Falls Exploration Trail","gorilla falls"])
     ]},
     {s:"12:30",e:"13:30",h:"Packed lunch",items:[
-      it("Eat at the shaded seating pavilion near Harambe Market","meal","","",null,["Harambe Market","harambe market"])
+      it("Eat at the shaded seating pavilion near Harambe Market","meal","","The Harambe Fruit Market tables next door are a second option.",null,["Harambe Market","harambe market"])
     ]},
-    {s:"13:30",e:"16:30",h:"Indoor shows and shaded walking",items:[
-      it("2:00 PM Festival of the Lion King (air-conditioned)","show","verify","Shows run hourly, 10 AM–4 PM, on nearby dates. Confirm Nov 21 in the app. It’s in Africa, so you don’t move after lunch.",null,["Festival of the Lion King","festival of the lion king"]),
-      it("Walk the Maharajah Jungle Trek (tigers)","walk","","This is the first move out of Africa. You cross Discovery Island to Asia.",["Maharajah Jungle Trek","maharajah jungle trek"]),
-      it("3:30 PM Finding Nemo: The Big Blue... and Beyond!","show","verify","The theater is on the former DinoLand side of the park, so allow about 10 minutes from Asia. The time exists on nearby dates. Confirm Nov 21 in the app.",null,["Finding Nemo show","finding nemo"])
+    {s:"13:30",e:"14:45",h:"Lion King, without leaving Africa",items:[
+      it("2:00 PM Festival of the Lion King (air-conditioned)","show","verify","Shows run hourly, 10 AM–4 PM, on nearby dates. Confirm Nov 21 in the app. It’s in Africa, so you don’t move after lunch.",null,["Festival of the Lion King","festival of the lion king"])
     ]},
-    {s:"16:30",e:"17:15",h:"The gap TriceraTop Spin left",items:[
-      it("Ride TriceraTop Spin in Storybook Circus","ride","removed","Closed in January 2025 and demolished. It was in DinoLand U.S.A., not Storybook Circus."),
-      it("Early packed dinner or snack near the Tree of Life","meal","added","Your plan had no dinner on this day, and the park closes at 7:00 PM. Discovery Island is in the middle of the park, so it’s close to what comes next.",null,["Tree of Life","tree of life|its tough to be a bug"])
+    {s:"14:45",e:"15:30",h:"Mickey and Minnie on the way east",items:[
+      it("Meet Mickey and Minnie at Adventurers Outpost","meet","moved","Was after the Safari. It’s on Discovery Island near the bridge to Asia, so you pass it on the way. Midday waits can pass 45 minutes. If the line is long, skip it or come back at the end of the day. Outfits may be holiday-themed from Nov 13, so confirm.",["Mickey and Minnie at Adventurers Outpost","adventurers outpost"])
     ]},
-    {s:"17:15",e:"18:00",h:"Pandora after dark",items:[
-      it("Walk Pandora as it lights up","walk","added","Sunset is around 5:30 PM. It’s a short walk from the Tree of Life.",null,["Pandora","flight of passage|navi river journey"]),
+    {s:"15:30",e:"16:15",h:"Asia",items:[
+      it("Walk the Maharajah Jungle Trek (tigers)","walk","","Asia is just across the bridge from the Outpost.",["Maharajah Jungle Trek","maharajah jungle trek"])
+    ]},
+    {s:"16:15",e:"17:15",h:"Nemo, and the gap TriceraTop Spin left",items:[
+      it("4:30 PM Finding Nemo: The Big Blue... and Beyond!","show","moved","Was 3:30 PM. Shows have run until 4:30 PM on nearby dates, so confirm Nov 21. The theater is on the former DinoLand side, so allow about 10 minutes from Asia.",null,["Finding Nemo show","finding nemo"]),
+      it("Ride TriceraTop Spin in Storybook Circus","ride","removed","Closed in January 2025 and demolished. It was in DinoLand U.S.A., not Storybook Circus.")
+    ]},
+    {s:"17:15",e:"17:45",h:"Early dinner",items:[
+      it("Packed dinner near the Tree of Life","meal","added","Your plan had no dinner on this day, and the park closes at 7:00 PM. Try the pavilions at Flame Tree Barbecue or the seating across from Adventurers Outpost. Both are on Discovery Island, close to what comes next.",null,["Tree of Life","tree of life|its tough to be a bug"])
+    ]},
+    {s:"17:45",e:"18:30",h:"Pandora after dark",items:[
+      it("Walk Pandora as it lights up","walk","added","Sunset is around 5:30 PM. It’s a short walk from the Tree of Life.",null,["Pandora","flight of passage|navi river journey"],0),
       it("Ride Na’vi River Journey again if the line is short","ride","added","",["Na’vi River Journey","navi river journey"])
     ]},
-    {s:"18:00",e:"19:00",h:"Tree of Life finale",items:[
-      it("Watch Tree of Life Awakenings: Holiday Edition from in front of the Tree of Life","show","verify","Runs about every 10 minutes from dusk to close, so you can walk over from Pandora and catch one.",null,["Tree of Life","tree of life|its tough to be a bug"])
+    {s:"18:30",e:"19:00",h:"Tree of Life finale",items:[
+      it("Watch Tree of Life Awakenings: Holiday Edition from in front of the Tree of Life","show","verify","Runs about every 10 minutes from dusk to close, so you can walk over from Pandora and catch one.",null,["Tree of Life Awakenings","tree of life awakenings|tree of life|its tough to be a bug"])
     ]}
   ],
   skips:[
@@ -292,28 +353,28 @@ const DAYS=[
 },
 {
   id:"mon",pk:"mk",cls:"t-mk1",date:"2026-11-23",dw:"Mon",dn:"23",short:"Magic Kingdom",
-  park:"Magic Kingdom",sub:"Fantasyland, Tomorrowland, then the railroad home",
+  park:"Magic Kingdom",sub:"Fantasyland, Tomorrowland, then dress-up",
   hours:"9:00 AM – 10:00 PM",hoursNote:"Early Entry is for Disney-hotel guests only, so you queue with everyone else.",
   heads:[
     "Not a Christmas party night. The park stays open to everyone until 10:00 PM, as you noted.",
-    "One crowd calendar lists Nov 23 as a day to avoid. It’s the Monday of Thanksgiving week, so rope drop matters."
+    "One crowd calendar lists Nov 23 as a day to avoid. It’s the Monday of Thanksgiving week, so rope drop matters.",
+    "The dress-up at about 3:00 PM needs a Bibbidi Bobbidi Boutique reservation. If you can’t get one, skip that block and use the time for rides."
   ],
   why:[
     "The morning stays in Fantasyland, which is only a few hundred meters across, so back-to-back rides there cost very little walking.",
-    "After lunch you stay in Tomorrowland and Storybook Circus while the 2:00 parade passes through the hub. Crossing the hub then is the slowest walk in the park.",
-    "The railroad is your ride home from Storybook Circus to Main Street. It saves the walk and counts as a ride.",
-    "The Barnstormer and Dumbo are now one Storybook Circus visit in the evening, when lines are often shorter, instead of two separate trips.",
-    "Mickey at Town Square Theater moved to mid-afternoon, right after the railroad drops you on Main Street.",
+    "After lunch you stay in Tomorrowland while the 2:00 parade passes through the hub, then cross once, at about 2:45, to the boutique behind the castle.",
+    "Princess Fairytale Hall and Mickey moved to after the dress-up, so she meets them in costume. The boutique and the princess hall are both in Fantasyland by the castle.",
+    "The Barnstormer and Dumbo are one Storybook Circus visit in the evening, when lines are often shorter.",
     "Buzz Lightyear moved here from Nov 25 so it sits next to the PeopleMover."
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
-      it("Leave Champions Gate at 7:15 AM for the parking-lot ferry or monorail","")
+      it("Leave Champions Gate at 7:15 AM for the parking-lot ferry or monorail",""),
+      it("Eat your packed breakfast in the car, or on a Town Square bench once you’re in","meal","added","Main Street is reported to open about an hour before the park does.")
     ]},
     {s:"08:30",e:"12:15",h:"Fantasyland, west to east",items:[
       it("Be at the gate by 8:30 AM. The park opens at 9:00 AM","","added"),
       it("Ride Peter Pan’s Flight first","ride","","It’s on the west side of Fantasyland, so you start at one end and work across.",["Peter Pan’s Flight","peter pans flight"]),
-      it("Line up at Princess Fairytale Hall","meet","moved","Was 11:00 AM. It’s a short walk from Peter Pan’s Flight. Your notes say Cinderella and Tiana meet together, with rotating Visiting Princesses next door. Confirm who is there.",["Princess Fairytale Hall","princess fairytale hall"]),
       it("Ride The Many Adventures of Winnie the Pooh","ride","","",["Winnie the Pooh","many adventures of winnie the pooh"]),
       it("Ride Under the Sea ~ Journey of The Little Mermaid","ride","","It’s toward the back of Fantasyland.",["Under the Sea","journey of the little mermaid"]),
       it("Ride it’s a small world","ride","","",["it’s a small world","its a small world"]),
@@ -327,20 +388,24 @@ const DAYS=[
       it("Ride Buzz Lightyear’s Space Ranger Spin","ride","moved","Was on Nov 25. It’s in Tomorrowland, next to the PeopleMover. Leave the vehicle joystick untouched so it doesn’t spin. It was refurbished in 2025–26, so confirm it’s running.",["Buzz Lightyear’s Space Ranger Spin","buzz lightyears space ranger spin"]),
       it("Ride the Tomorrowland Transit Authority PeopleMover","ride","","",["PeopleMover","peoplemover"])
     ]},
-    {s:"14:45",e:"16:30",h:"Railroad to Main Street, then Mickey",items:[
-      it("Ride the Walt Disney World Railroad from Storybook Circus to Main Street","ride","verify","Shuttle only: Storybook Circus to Main Street, about 5 minutes. Frontierland station is closed for construction. This is your walk back to the entrance end of the park.",["Walt Disney World Railroad","walt disney world railroad"]),
-      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. It’s a few steps from the railroad station.",["Mickey at Town Square Theater","town square theater"])
+    {s:"14:45",e:"16:15",h:"Character dress-up",items:[
+      it("Cross the hub back to Fantasyland once the parade clears, at about 2:45 PM","tip","added","This is your one crossing of the afternoon."),
+      it("Bibbidi Bobbidi Boutique makeover, booked for about 3:00 PM","exp","added","Behind Cinderella Castle, near the Carrousel. For ages 3–12, with a reservation in My Disney Experience. Packages run from about $60 (knight outfit) to $230 or more (gown). Allow 30–60 minutes and check in no earlier than 5 minutes before. Prefer to save the money? Bring a costume from home and skip this block.",null,["Bibbidi Bobbidi Boutique","bibbidi bobbidi boutique"])
     ]},
-    {s:"16:30",e:"17:30",h:"Packed dinner",items:[
+    {s:"16:15",e:"17:45",h:"Meet the characters in costume",items:[
+      it("Line up at Princess Fairytale Hall","meet","moved","Was 9:30 AM. It’s a short walk from the boutique, so she arrives dressed up. Your notes say Cinderella and Tiana meet together, with rotating Visiting Princesses next door. Confirm who is there.",["Princess Fairytale Hall","princess fairytale hall"]),
+      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. It’s on Main Street, an easy walk from the castle.",["Mickey at Town Square Theater","town square theater"])
+    ]},
+    {s:"17:45",e:"18:30",h:"Packed dinner",items:[
       it("Eat on the open castle hub grass","meal","","",null,["Castle hub","cinderella castle",[28.41877,-81.58119]])
     ]},
-    {s:"17:30",e:"19:30",h:"Storybook Circus after dark",items:[
-      it("Take the railroad from Main Street back to Storybook Circus","ride","moved","It’s the quick way back, and it’s a second ride.",["Walt Disney World Railroad","walt disney world railroad"]),
+    {s:"18:30",e:"19:40",h:"Storybook Circus after dark",items:[
+      it("Take the railroad from Main Street to Storybook Circus","ride","verify","Shuttle only: Main Street to Storybook Circus, about 5 minutes. Frontierland station is closed for construction. It’s the quick way there, and it’s a ride.",["Walt Disney World Railroad","walt disney world railroad"]),
       it("Ride Dumbo the Flying Elephant while it’s lit up","ride","","",["Dumbo the Flying Elephant","dumbo"]),
-      it("Ride The Barnstormer","ride","moved","Was in the morning. It’s in Storybook Circus, next to Dumbo. Goofy’s junior coaster, about 60 seconds, with a 35-inch minimum, so check her height.",["The Barnstormer","barnstormer"])
+      it("Ride The Barnstormer","ride","moved","Was in the morning. It’s in Storybook Circus, next to Dumbo. Goofy’s junior coaster, about 60 seconds, with a 35-inch minimum, so check her height. If lines run long, drop it so you reach the hub in time.",["The Barnstormer","barnstormer"])
     ]},
-    {s:"19:30",e:"22:00",h:"Fireworks",items:[
-      it("Claim a central hub spot by 7:30 PM for the 8:00 PM Happily Ever After fireworks","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app. It’s a short walk from Storybook Circus.",null,["Castle hub","cinderella castle",[28.41877,-81.58119]]),
+    {s:"19:40",e:"22:00",h:"Fireworks",items:[
+      it("Claim a central hub spot for the 8:00 PM Happily Ever After fireworks","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app. It’s a short walk from Storybook Circus.",null,["Castle hub","cinderella castle",[28.41877,-81.58119]]),
       it("Use the last hour for repeat rides if lines are short","tip","added","Waits often drop after the fireworks. The park is open until 10:00 PM.")
     ]}
   ],
@@ -370,7 +435,8 @@ const DAYS=[
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
-      it("Leave Champions Gate at 7:15 AM","")
+      it("Leave Champions Gate at 7:15 AM",""),
+      it("Eat your packed breakfast in the car, or on a Town Square bench once you’re in","meal","added","Main Street is reported to open about an hour before the park does.")
     ]},
     {s:"08:30",e:"10:45",h:"The back of Fantasyland",items:[
       it("Go straight to Seven Dwarfs Mine Train when the park opens at 9:00 AM","ride","call","Thanksgiving-week lines can pass 60 minutes fast. Lightning Lane Multi Pass is the alternative. It has a 38-inch minimum height.",["Seven Dwarfs Mine Train","seven dwarfs mine train"]),
@@ -381,7 +447,7 @@ const DAYS=[
     ]},
     {s:"12:15",e:"13:30",h:"Cross the park, then lunch",items:[
       it("Walk west to Liberty Square before the 2:00 PM parade closes the hub","tip","added","This is your one big walk of the day. Do it now, not after 2:00."),
-      it("Use a bench or open seating along Liberty Square","meal","","",null,["Liberty Square","liberty tree tavern|columbia harbour house"])
+      it("Eat in the outdoor seating by Columbia Harbour House, or at the picnic tables behind Ye Olde Christmas Shoppe","meal","","Both are in Liberty Square. Packed in Davenport.",null,["Liberty Square","liberty tree tavern|columbia harbour house"])
     ]},
     {s:"13:30",e:"14:45",h:"Parade",items:[
       it("Watch the 2:00 PM Festival of Fantasy Parade from the Frontierland walkway","show","call","2:00 PM matches nearby dates. Frontierland is a construction zone, so check your viewing spot. It’s the longest stretch with no lines, so skipping it is the easiest way to add ride time.")
@@ -393,6 +459,7 @@ const DAYS=[
     ]},
     {s:"16:15",e:"18:00",h:"Last hour on the west side",items:[
       it("Ride Peter Pan’s Flight again","ride","moved","Replaces the Fantasyland re-rides. It’s the Fantasyland ride closest to Adventureland.",["Peter Pan’s Flight","peter pans flight"]),
+      it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse, at about 5:00 PM","meal","added","Day guests have to be out by 6:00 PM, so dinner is in the park today. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"]),
       it("Re-ride Jungle Cruise if the line is short","ride","","Be out by 6:00 PM.",["Jungle Cruise","jungle cruise"])
     ]}
   ],
@@ -406,27 +473,94 @@ const DAYS=[
 }
 ];
 
-// Rides and shows that are not in your itinerary. q = words to match the live wait feed.
-const ALT={
-ak:{items:[
-  {n:"Wildlife Express Train and Bluey’s Wild World",q:"blueys wild world|wildlife express train",h:"Any height",d:"Play-based and gentle, and the train ride is part of the trip. It’s the only way to reach it. It opened with an app virtual queue, so check the rules on the day."},
-  {n:"Kali River Rapids",q:"kali river rapids",h:"38 in",d:"A raft ride that soaks you. In November you’d want a dry change of clothes. It has closed for winter refurbishments in past years, so check its status."},
-  {n:"Pandora: Flight of Passage",q:"flight of passage",h:"44 in",d:"An intense flight simulator, so it’s not in your plan. Listed so you can see its wait."},
-  {n:"Discovery Island Trails",q:"",h:"Any height",d:"A free walk around the Tree of Life with animal habitats and no wait. Good for the gap before dark."},
-  {n:"Feathered Friends in Flight!",q:"",h:"Any height",d:"A bird show in Asia. It shows up on nearby dates’ schedules, so confirm Nov 21 in the app."},
-  {n:"Street acts: Viva Gaia Street Band, Tam Tam Drummers",q:"",h:"Any height",d:"Short, free and good for a break. Both appear on nearby dates’ schedules."}
- ],closed:"Not available: DinoLand U.S.A. closed Feb 1, 2026. Expedition Everest is on your skip list."},
-mk:{items:[
-  {n:"Prince Charming Regal Carrousel",q:"prince charming regal carrousel",h:"Any height",d:"A classic carousel in Fantasyland."},
-  {n:"The Magic Carpets of Aladdin",q:"magic carpets of aladdin",h:"Any height",d:"A gentle spinner where you control how high your carpet goes."},
-  {n:"Pirates of the Caribbean",q:"pirates of the caribbean",h:"Any height",d:"A classic boat ride with a short drop early on and dark scenes. It can be a lot for a child who dislikes the dark."},
-  {n:"A Pirate’s Adventure ~ Treasures of the Seven Seas",q:"pirates adventure",h:"Any height",d:"A walk-through adventure in Adventureland."},
-  {n:"Astro Orbiter",q:"astro orbiter",h:"Any height",d:"An elevated spinner like Dumbo, but higher and faster. It closes for a short refurbishment in January 2027, so it should be open on your dates."},
-  {n:"Tomorrowland Speedway",q:"tomorrowland speedway",h:"32 in",d:"Go-karts. She can ride with an adult at 32 inches. Driving alone needs 54 inches. It’s loud and fuel-powered."},
-  {n:"Monsters, Inc. Laugh Floor",q:"laugh floor",h:"Any height",d:"An indoor comedy show in a cool, dark room. Good for a rest."},
-  {n:"Country Bear Musical Jamboree",q:"country bear",h:"Any height",d:"An indoor show in Frontierland, close to the construction. Check that it’s open."}
- ],closed:"Not available on your dates: Tiana’s Bayou Adventure (closed Nov 2 – Dec 17) and Walt Disney’s Carousel of Progress (closed until late spring 2027). The Liberty Square Riverboat and Tom Sawyer Island closed for good in July 2025."}
+// Every ride, show, walk-through and character meet at each park, checked Nov 5, 2026.
+// n name, l land, t type (ride, show, walk, meet, exp, meal), h height, q words to match the live wait feed,
+// s = on your skip list (reason), c = closed on your dates (reason), d note.
+// Character lineups rotate. Confirm in My Disney Experience on the day.
+const CATALOG={
+mk:[
+ {l:"Main Street, U.S.A.",n:"Walt Disney World Railroad",t:"ride",h:"Any height",q:"walt disney world railroad",d:"Shuttle only between Main Street and Storybook Circus. The Frontierland station is closed for construction."},
+ {l:"Main Street, U.S.A.",n:"Mickey Mouse at Town Square Theater",t:"meet",q:"town square theater",d:"Mickey in his magician outfit."},
+ {l:"Main Street, U.S.A.",n:"Snow White, Mulan or Elena on the Town Square Theater porch",t:"meet",d:"Which princess is out rotates by day."},
+ {l:"Main Street, U.S.A.",n:"Crystal Palace character meal",t:"meal",d:"Winnie the Pooh and friends at the table. Needs a dining reservation and replaces a packed meal."},
+ {l:"Adventureland",n:"Jungle Cruise",t:"ride",h:"Any height",q:"jungle cruise",d:"The “Jingle Cruise” holiday overlay runs Nov 3 – Jan 4."},
+ {l:"Adventureland",n:"Pirates of the Caribbean",t:"ride",h:"Any height",q:"pirates of the caribbean",d:"Dark boat ride with a short drop early on. It can be a lot for a child who dislikes the dark."},
+ {l:"Adventureland",n:"The Magic Carpets of Aladdin",t:"ride",h:"Any height",q:"magic carpets of aladdin",d:"Gentle spinner where you control how high your carpet goes."},
+ {l:"Adventureland",n:"Walt Disney’s Enchanted Tiki Room",t:"show",h:"Any height",q:"enchanted tiki room",d:"Indoor bird show, about 15 minutes."},
+ {l:"Adventureland",n:"A Pirate’s Adventure ~ Treasures of the Seven Seas",t:"walk",h:"Any height",q:"pirates adventure",d:"Walk-through adventure."},
+ {l:"Adventureland",n:"Swiss Family Treehouse",t:"walk",h:"Any height",q:"swiss family treehouse",d:"Stairs and rope bridges. Park the stroller first."},
+ {l:"Adventureland",n:"Aladdin and Jasmine at Agrabah Bazaar",t:"meet",q:"agrabah bazaar",d:"Near the Magic Carpets."},
+ {l:"Frontierland",n:"Big Thunder Mountain Railroad",t:"ride",h:"38–40 in",q:"big thunder mountain",s:"Bumpy family coaster.",d:"Reopened in 2026 after its refurbishment. Sources list the minimum as 38 or 40 inches, so check the sign."},
+ {l:"Frontierland",n:"Country Bear Musical Jamboree",t:"show",h:"Any height",q:"country bear",d:"Indoor show near the construction. Check that it’s open."},
+ {l:"Frontierland",n:"The Country Bears (Big Al, Romeo McGrowl, Shaker, Wendell)",t:"meet",d:"They roam Frontierland, with no fixed line."},
+ {l:"Frontierland",n:"Tiana’s Bayou Adventure",t:"ride",h:"40 in",q:"tianas bayou adventure",c:"Closed Nov 2 – Dec 17.",d:"Log flume. You get wet."},
+ {l:"Liberty Square",n:"Haunted Mansion",t:"ride",h:"Any height",q:"haunted mansion",s:"Spooky themes.",d:""},
+ {l:"Liberty Square",n:"The Hall of Presidents",t:"show",h:"Any height",q:"hall of presidents",d:"Indoor show, air-conditioned."},
+ {l:"Liberty Square",n:"Liberty Square Riverboat and Tom Sawyer Island",t:"ride",c:"Closed for good in July 2025.",d:""},
+ {l:"Fantasyland",n:"Peter Pan’s Flight",t:"ride",h:"Any height",q:"peter pans flight",d:"Waits get long by mid-morning."},
+ {l:"Fantasyland",n:"The Many Adventures of Winnie the Pooh",t:"ride",h:"Any height",q:"many adventures of winnie the pooh",d:""},
+ {l:"Fantasyland",n:"Under the Sea ~ Journey of The Little Mermaid",t:"ride",h:"Any height",q:"journey of the little mermaid",d:""},
+ {l:"Fantasyland",n:"it’s a small world",t:"ride",h:"Any height",q:"its a small world",d:"High capacity and gentle."},
+ {l:"Fantasyland",n:"Seven Dwarfs Mine Train",t:"ride",h:"38 in",q:"seven dwarfs mine train",d:"Family coaster. Lines run long all day."},
+ {l:"Fantasyland",n:"Prince Charming Regal Carrousel",t:"ride",h:"Any height",q:"prince charming regal carrousel",d:"Classic carousel."},
+ {l:"Fantasyland",n:"Mickey’s PhilharMagic",t:"show",h:"Any height",q:"philharmagic",d:"Indoor 3D show."},
+ {l:"Fantasyland",n:"Mad Tea Party",t:"ride",h:"Any height",q:"mad tea party",s:"Unavoidable fast spinning.",d:""},
+ {l:"Fantasyland",n:"Enchanted Tales with Belle",t:"meet",h:"Any height",q:"enchanted tales with belle",d:"A story-driven meet with Belle."},
+ {l:"Fantasyland",n:"Princess Fairytale Hall (Cinderella, Tiana, Rapunzel, visiting princess)",t:"meet",q:"princess fairytale hall",d:"Two lines. Which princesses are out varies."},
+ {l:"Fantasyland",n:"Ariel at Ariel’s Grotto",t:"meet",q:"ariels grotto",d:"Ariel as a mermaid, near Under the Sea."},
+ {l:"Fantasyland",n:"Mirabel at Fairytale Garden",t:"meet",d:"Near Cinderella Castle, beside Cosmic Ray’s."},
+ {l:"Fantasyland",n:"Anastasia and Drizella at Cinderella Fountain",t:"meet",d:"Near the fountain by the castle."},
+ {l:"Fantasyland",n:"Peter Pan at the Never Land map",t:"meet",d:"Next to Peter Pan’s Flight."},
+ {l:"Fantasyland",n:"Winnie the Pooh and Tigger at the Thotful Spot",t:"meet",d:"Outside The Many Adventures of Winnie the Pooh."},
+ {l:"Fantasyland",n:"Bibbidi Bobbidi Boutique",t:"exp",h:"Ages 3–12",q:"bibbidi bobbidi boutique",d:"Princess and knight makeovers, behind Cinderella Castle. Reservation needed."},
+ {l:"Fantasyland",n:"Cinderella’s Royal Table character meal",t:"meal",d:"Inside the castle. Needs a dining reservation and replaces a packed meal."},
+ {l:"Storybook Circus",n:"Dumbo the Flying Elephant",t:"ride",h:"Any height",q:"dumbo",d:"Two carousels, so it moves faster than it looks."},
+ {l:"Storybook Circus",n:"The Barnstormer",t:"ride",h:"35 in",q:"barnstormer",d:"Goofy’s junior coaster, about 60 seconds."},
+ {l:"Storybook Circus",n:"Pete’s Silly Sideshow (Minnie, Daisy, Donald, Goofy)",t:"meet",q:"petes silly sideshow",d:"Circus-themed outfits. Reopened after its refurbishment."},
+ {l:"Tomorrowland",n:"Buzz Lightyear’s Space Ranger Spin",t:"ride",h:"Any height",q:"buzz lightyears space ranger spin",d:"Leave the joystick alone so it doesn’t spin."},
+ {l:"Tomorrowland",n:"Tomorrowland Transit Authority PeopleMover",t:"ride",h:"Any height",q:"peoplemover",d:"Slow, shaded and good for a rest."},
+ {l:"Tomorrowland",n:"Astro Orbiter",t:"ride",h:"Any height",q:"astro orbiter",d:"Elevated spinner like Dumbo, but higher. It closes for a short refurbishment in January 2027."},
+ {l:"Tomorrowland",n:"Tomorrowland Speedway",t:"ride",h:"32 in",q:"tomorrowland speedway",d:"Go-karts. Under 54 inches she rides with an adult. Loud and fuel-powered."},
+ {l:"Tomorrowland",n:"Monsters, Inc. Laugh Floor",t:"show",h:"Any height",q:"laugh floor",d:"Indoor comedy show in a cool, dark room."},
+ {l:"Tomorrowland",n:"Space Mountain",t:"ride",h:"44 in",q:"space mountain",s:"Pitch dark, rough.",d:""},
+ {l:"Tomorrowland",n:"TRON Lightcycle / Run",t:"ride",h:"48 in",q:"tron lightcycle",s:"Intense launch speed.",d:""},
+ {l:"Tomorrowland",n:"Stitch near the Buzz Lightyear exit",t:"meet",d:"Appears at set times. Check the app."},
+ {l:"Tomorrowland",n:"Walt Disney’s Carousel of Progress",t:"show",c:"Closed until late spring 2027.",d:""}
+],
+ak:[
+ {l:"The Oasis",n:"Donald and Daisy",t:"meet",d:"Moved to the Oasis near the entrance after DinoLand closed."},
+ {l:"The Oasis",n:"Chip ’n’ Dale",t:"meet",d:"In the Oasis Palm Courtyard, outside the park entrance."},
+ {l:"The Oasis",n:"Rafiki, Timon and Pocahontas",t:"meet",d:"Storybook meets by the entrance. Appearances rotate."},
+ {l:"The Oasis",n:"The Oasis Exhibits",t:"walk",h:"Any height",d:"Free animal viewing as you walk in."},
+ {l:"Discovery Island",n:"Mickey and Minnie at Adventurers Outpost",t:"meet",q:"adventurers outpost",d:"Near the bridge to Asia. The only place they meet together in the four parks."},
+ {l:"Discovery Island",n:"Moana at Character Landing",t:"meet",q:"character landing",d:""},
+ {l:"Discovery Island",n:"Winged Encounters ~ The Kingdom Takes Flight",t:"show",h:"Any height",q:"winged encounters",d:"Macaws flying near the Tree of Life. Morning showtimes on nearby dates."},
+ {l:"Discovery Island",n:"Discovery Island Trails",t:"walk",h:"Any height",d:"Free walk around the Tree of Life with animal habitats."},
+ {l:"Discovery Island",n:"Tree of Life Awakenings: Holiday Edition",t:"show",h:"Any height",q:"tree of life awakenings",d:"Projection show from dusk to close. It doesn’t run every night."},
+ {l:"Discovery Island",n:"Wilderness Explorers",t:"exp",h:"Any height",d:"Free badge activities around the park for kids."},
+ {l:"Discovery Island",n:"Russell and Dug, Kevin, Judy Hopps and Nick Wilde",t:"meet",d:"Intermittent and roaming. Ask a cast member or check the app."},
+ {l:"Pandora – The World of Avatar",n:"Avatar Flight of Passage",t:"ride",h:"44 in",q:"flight of passage",d:"Intense flight simulator. Not in your plan. Its wait is often the longest in the park."},
+ {l:"Pandora – The World of Avatar",n:"Na’vi River Journey",t:"ride",h:"Any height",q:"navi river journey",d:"Calm boat ride through a glowing rainforest."},
+ {l:"Africa",n:"Kilimanjaro Safaris",t:"ride",h:"Any height",q:"kilimanjaro safaris",d:"Each trip is different. It runs until sundown."},
+ {l:"Africa",n:"Gorilla Falls Exploration Trail",t:"walk",h:"Any height",q:"gorilla falls",d:"Walkway next to the Safari."},
+ {l:"Africa",n:"Festival of the Lion King",t:"show",h:"Any height",q:"festival of the lion king",d:"Air-conditioned theater show, about 30 minutes."},
+ {l:"Africa",n:"Goofy at Harambe Station",t:"meet",d:"In safari gear. Earlier in 2026 he was near the train station, and some lists put him in Asia with Pluto. Confirm in the app."},
+ {l:"Africa",n:"Tam Tam Drummers of Harambe",t:"show",h:"Any height",d:"Street act, short and free."},
+ {l:"Africa",n:"Tusker House character meal",t:"meal",d:"Mickey, Donald, Daisy and Goofy in safari outfits. Needs a dining reservation and replaces a packed meal."},
+ {l:"Asia",n:"Maharajah Jungle Trek",t:"walk",h:"Any height",q:"maharajah jungle trek",d:"Tigers, bats and an aviary."},
+ {l:"Asia",n:"Feathered Friends in Flight!",t:"show",h:"Any height",q:"feathered friends",d:"Bird show. It shows up on nearby dates’ schedules."},
+ {l:"Asia",n:"Kali River Rapids",t:"ride",h:"38 in",q:"kali river rapids",d:"Raft ride that soaks you. In November you’d want a change of clothes. It has closed for winter refurbishments before."},
+ {l:"Asia",n:"Expedition Everest",t:"ride",h:"44 in",q:"expedition everest",s:"High speed, backward motion.",d:""},
+ {l:"Asia",n:"Goofy and Pluto in Asia",t:"meet",d:"Some 2026 lists put them just inside Asia, on the right. Confirm in the app."},
+ {l:"Asia",n:"Viva Gaia Street Band",t:"show",h:"Any height",d:"Street act, short and free."},
+ {l:"Conservation Station",n:"Wildlife Express Train",t:"ride",h:"Any height",q:"wildlife express train",d:"Leaves from Harambe Station and takes you to Bluey’s Wild World."},
+ {l:"Conservation Station",n:"Bluey’s Wild World",t:"exp",h:"Any height",q:"blueys wild world",d:"Play-based, for young children. It opened May 26, 2026 with an app virtual queue, so check whether it still needs one."},
+ {l:"Conservation Station",n:"Bluey and Bingo",t:"meet",d:"Part of Bluey’s Wild World."},
+ {l:"Back of the park (former DinoLand)",n:"Finding Nemo: The Big Blue... and Beyond!",t:"show",h:"Any height",q:"finding nemo",d:"Indoor stage show at the Theater in the Wild. Shows ran from 11 AM to 4:30 PM on nearby dates."},
+ {l:"Closed for good",n:"DinoLand U.S.A. (DINOSAUR, TriceraTop Spin and more)",t:"ride",c:"Closed Feb 1, 2026.",d:""}
+]
 };
+
 
 const RULES=[
   ["Bag and cooler size","Suitcases, bags, coolers and backpacks must be no larger than 24 × 15 × 18 inches (long × wide × high)."],
@@ -445,8 +579,9 @@ const CHANGED=[
   ["TriceraTop Spin is gone","It closed in January 2025 and was demolished. It was in DinoLand U.S.A., not Storybook Circus. The 4:30–5:30 PM block now has two options."],
   ["DINOSAUR is closed for good","DinoLand U.S.A. shut on Feb 1, 2026, so it’s off your skip list. Tropical Americas is due in 2027."],
   ["Mickey and Minnie at Adventurers Outpost","Holiday outfits are reported from Nov 13, not safari ones."],
-  ["Nov 21 now runs as one sweep","Pandora, then Mickey on Discovery Island, then Africa (Safari and Gorilla Falls back to back), Asia, and back through the middle. Before, you crossed between Africa and Discovery Island twice. Bluey’s Wild World is now an extra."],
-  ["Nov 23 stays in one area at a time","Fantasyland all morning (Princess Fairytale Hall and PhilharMagic moved in), Tomorrowland over lunch and the parade (Buzz moved in from Nov 25), then the railroad to Main Street for Mickey. The Barnstormer and Dumbo are now one Storybook Circus visit in the evening."],
+  ["Nov 21 now runs as one sweep","Pandora, then Africa (Safari and Gorilla Falls back to back), Lion King, then east: Mickey and Minnie, Maharajah and Nemo, then dusk at the Tree of Life. Adventurers Outpost is near the bridge to Asia, so Mickey moved onto that walk. Nemo moved from 3:30 to 4:30 to make it fit. Bluey’s Wild World is now an extra."],
+  ["Nov 23 stays in one area at a time","Fantasyland all morning (PhilharMagic moved in), Tomorrowland over lunch and the parade (Buzz moved in from Nov 25), then one hub crossing to the new dress-up block. The Barnstormer and Dumbo are one Storybook Circus visit in the evening."],
+  ["Character dress-up added on Nov 23","Bibbidi Bobbidi Boutique at about 3:00 PM, inside your 1:30–4:30 window. Princess Fairytale Hall and Mickey moved to right after, so she meets them in costume."],
   ["Nov 25 now goes east to west","Seven Dwarfs and Belle, then Pete’s Sideshow, then one walk across the park before the parade, then Adventureland. The final hour is Peter Pan’s Flight and Jungle Cruise on the west side instead of Fantasyland re-rides."]
 ];
 const CONFIRMED=[
@@ -462,6 +597,7 @@ const CHALLENGES=[
   ["No midday break or nap on any day","Leaving at 7:15 AM, then fireworks on Nov 23, with nothing scheduled back at the villa. How old is she? A 1–3 PM pool or villa break would change how the evenings go."],
   ["Nov 21 has no dinner","The park closes at 7:00 PM and you’d eat at the villa around 8:30. Option B in the plan covers an early dinner or snack."],
   ["Standby only in Thanksgiving week","Waiting in line is the point of the plan, but Lightning Lane Multi Pass is the only way to get more rides into the same hours. Check prices in the app for Seven Dwarfs, Peter Pan’s Flight and Na’vi River Journey."],
+  ["The dress-up costs ride time","The makeover plus the two meets afterward is about three hours with no rides. It’s the trade for the dress-up photos. Booking fills up early, so confirm the reservation before you plan around it."],
   ["The parade is your biggest block without lines","About 45 minutes each on Nov 23 and Nov 25. Waits elsewhere often drop while it runs, so skipping it adds ride time."],
   ["Walking times are estimates","The Map tab measures straight lines between stops. Real paths run longer, and a stroller is slower than you’d walk alone."],
   ["Height limits","The Barnstormer and Seven Dwarfs have minimums of 35 and 38 inches. Measure her before you queue."],
@@ -522,14 +658,59 @@ grant execute on function public.share_location(text,text,double precision,doubl
 grant execute on function public.get_locations(text) to anon;
 grant execute on function public.stop_sharing(text,text) to anon;`;
 
+const SETUP_SQL_2=`create table if not exists public.group_data(
+  code text not null check (length(code) >= 20),
+  kind text not null check (kind in ('ride','person','rem','shop','shopx')),
+  key text not null check (length(key) between 1 and 160),
+  val text not null check (length(val) <= 4000),
+  updated_at timestamptz not null default now(),
+  primary key (code, kind, key)
+);
+alter table public.group_data enable row level security;
+revoke all on public.group_data from anon, authenticated;
+
+create or replace function public.gd_put(p_code text, p_kind text, p_key text, p_val text)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if length(p_code) < 20 then raise exception 'bad code'; end if;
+  delete from public.group_data where updated_at < now() - interval '30 days';
+  if (select count(*) from public.group_data where code = p_code) >= 3000
+     and not exists (select 1 from public.group_data where code = p_code and kind = p_kind and key = p_key) then
+    raise exception 'too many rows';
+  end if;
+  insert into public.group_data(code, kind, key, val, updated_at)
+  values (p_code, p_kind, p_key, p_val, now())
+  on conflict (code, kind, key) do update set val = excluded.val, updated_at = now();
+end $$;
+
+create or replace function public.gd_del(p_code text, p_kind text, p_key text)
+returns void language sql security definer set search_path = public as $$
+  delete from public.group_data where code = p_code and kind = p_kind and key = p_key and length(p_code) >= 20;
+$$;
+
+create or replace function public.gd_list(p_code text)
+returns table(kind text, key text, val text, updated_at timestamptz)
+language sql security definer set search_path = public stable as $$
+  select kind, key, val, updated_at from public.group_data where code = p_code and length(p_code) >= 20;
+$$;
+
+revoke all on function public.gd_put(text,text,text,text) from public;
+revoke all on function public.gd_del(text,text,text) from public;
+revoke all on function public.gd_list(text) from public;
+grant execute on function public.gd_put(text,text,text,text) to anon;
+grant execute on function public.gd_del(text,text,text) to anon;
+grant execute on function public.gd_list(text) to anon;`;
+const SETUP_SQL_ALL=SETUP_SQL+"\n\n"+SETUP_SQL_2;
+
 /* ---------- helpers ---------- */
 const $=s=>document.querySelector(s);
 const store={
   get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
-const ICON={ride:"🎢",show:"🎭",meet:"⭐",meal:"🥪",walk:"🚶",tip:"💡"};
+const ICON={ride:"🎢",show:"🎭",meet:"⭐",meal:"🥪",walk:"🚶",tip:"💡",exp:"👑"};
 const BADGE={moved:"Moved",changed:"Changed",verify:"Verify",added:"Added",removed:"Removed",call:"Your call"};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s).toLowerCase().replace(/[’'`]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();
 const clock=ts=>new Date(ts||Date.now()).toLocaleTimeString([],{hour:"numeric",minute:"2-digit",timeZone:"America/New_York"});
 
@@ -547,7 +728,7 @@ function range(s,e){
 const dayNum=d=>{const [y,m,dd]=d.split("-").map(Number);return Date.UTC(y,m-1,dd)/864e5};
 
 let done=store.get("done2",{});
-const state={whyOpen:false,tab:store.get("tab","plan")==="rules"?"notes":store.get("tab","plan"),day:0,wp:null,altOpen:false};
+const state={whyOpen:false,pplOpen:false,mv:"plan",cf:"all",editRem:null,tab:({rules:"notes",waits:"rides"})[store.get("tab","plan")]||store.get("tab","plan"),day:0,wp:null};
 
 function pickDay(){
   const today=nowET().date;
@@ -598,7 +779,7 @@ async function refreshWaits(){
     catch(e){werr[k]=e&&e.name==="AbortError"?"The wait-time service timed out.":"Couldn’t reach the wait-time service. You may be offline, or the service may block browsers."}
   }));
   store.set("waits",waits);wBusy=false;paint();
-  if(state.tab==="waits")$("#view").innerHTML=waitsHTML();
+  if(state.tab==="rides")$("#view").innerHTML=ridesHTML();
 }
 const fresh=k=>waits[k]&&Date.now()-waits[k].ts<15*60e3;
 function entryFor(k,q){
@@ -609,7 +790,7 @@ function entryFor(k,q){
 function chip(e){
   if(!e)return null;
   if(e.s==="OPERATING"){
-    if(e.w==null)return {t:"Open",c:"w-off"};
+    if(e.w==null)return null;
     return {t:e.w+" min",c:e.w<=20?"w-low":e.w<=45?"w-mid":"w-high"};
   }
   return {t:({CLOSED:"Closed",DOWN:"Down",REFURBISHMENT:"Refurb"})[e.s]||String(e.s),c:"w-high"};
@@ -740,7 +921,7 @@ function drawMap(){
   });
   rows.forEach(r=>{
     L.circleMarker([r.lat,r.lng],{radius:8,color:"#fff",weight:2,fillColor:"#17202B",fillOpacity:1})
-      .bindTooltip(who(r.member)+(r.member===G.me?" (you)":""),{permanent:true,direction:"top",offset:[0,-8]}).addTo(mapLayer);
+      .bindTooltip(esc(who(r.member))+(r.member===G.me?" (you)":""),{permanent:true,direction:"top",offset:[0,-8]}).addTo(mapLayer);
   });
   if(lastPos&&!rows.some(r=>r.member===G.me)){
     L.circleMarker([lastPos.lat,lastPos.lng],{radius:8,color:"#fff",weight:2,fillColor:"#2563EB",fillOpacity:1})
@@ -770,7 +951,7 @@ function setStat(t){gStat=t;const e=$("#gstat");if(e)e.textContent=t}
 async function send(){
   if(!lastPos||!G.code||!G.me)return;
   lastSent=Date.now();
-  try{await rpc("share_location",{p_code:G.code,p_member:G.me,p_lat:lastPos.lat,p_lng:lastPos.lng,p_acc:lastPos.acc});setStat("Sharing. Last sent "+clock()+".")}
+  try{await rpc("share_location",{p_code:G.code,p_member:G.me,p_lat:lastPos.lat,p_lng:lastPos.lng,p_acc:lastPos.acc});setStat("Sharing. Last sent "+clock()+".");if(state.tab==="group"||state.tab==="map")refreshMembers()}
   catch(e){setStat("Couldn’t send your location. Will retry.")}
 }
 function onPos(p){
@@ -820,7 +1001,7 @@ function renderMembers(){
     const mine=r.member===G.me,stale=Date.now()-new Date(r.updated_at)>5*60e3;
     let where="";
     if(!mine&&lastPos){const d=dist(lastPos,r);where=fmtDist(d)+" "+DIRS[Math.round(bearing(lastPos,r)/45)%8]+". "}
-    return '<div class="mem'+(stale?" stale":"")+'"><b>'+who(r.member)+(mine?" (you)":"")+'</b>'
+    return '<div class="mem'+(stale?" stale":"")+'"><b>'+esc(who(r.member))+(mine?" (you)":"")+'</b>'
       +'<div class="meta">'+where+(stale?"Last seen ":"Updated ")+ago(r.updated_at)+'</div>'
       +'<a href="'+mapLink(r)+'" target="_blank" rel="noopener">Open in Maps</a></div>';
   }).join("");
@@ -835,22 +1016,24 @@ function itemHTML(day,bi,ii,x){
   const badge=x.f?'<span class="badge b-'+x.f+'">'+BADGE[x.f]+'</span>':"";
   const ico=x.k?'<span class="ico" aria-hidden="true">'+ICON[x.k]+'</span>':"";
   const note=x.n?'<p class="note">'+x.n+'</p>':"";
-  const body='<span class="tx"><span class="ttl">'+ico+x.t+'</span>'+badge+(x.f==="removed"?"":wtSpan(day.pk,x.w&&x.w[1]))+note+'</span>';
-  if(x.f==="removed")return '<li class="it rm"><span class="x" aria-hidden="true">✕</span>'+body+'</li>';
-  return '<li class="it"><label><input type="checkbox" data-k="'+k+'"'+(done[k]?" checked":"")+'>'+body+'</label></li>';
+  const tx=extra=>'<span class="tx"><span class="ttl">'+ico+x.t+'</span>'+badge+(x.f==="removed"?"":wtSpan(day.pk,x.w&&x.w[1]))+note+(extra||"")+'</span>';
+  if(x.f==="removed")return '<li class="it rm"><span class="x" aria-hidden="true">✕</span>'+tx()+'</li>';
+  const rk=rkOf(day.pk,x);
+  if(rk)return '<li class="it ckit">'+tx(ckHTML(rk))+'</li>';
+  return '<li class="it"><label><input type="checkbox" data-k="'+k+'"'+(done[k]?" checked":"")+'>'+tx()+'</label></li>';
 }
-function altHTML(day){
-  const A=ALT[day.pk];
-  return '<details class="more" data-s="altOpen"'+(state.altOpen?" open":"")+'><summary>More at '+PARKS[day.pk].label+': alternates and extras</summary>'
-    +'<ul class="altlist">'+A.items.map(a=>'<li><div class="alt-t">'+a.n+wtSpan(day.pk,a.q)+'<span class="badge b-h">'+a.h+'</span></div><p class="note">'+a.d+'</p></li>').join("")+'</ul>'
-    +'<p class="note" style="padding-bottom:12px">'+A.closed+'</p></details>';
+function moreHTML(day){
+  const lab=PARKS[day.pk].label;
+  return '<div class="morebox"><b>Want more to do?</b><p class="note">Every ride, show and character meet at '+lab+' is on the Rides tab, with live waits.</p>'
+    +'<div class="btns"><button type="button" class="btn" data-act="gorides">See all at '+lab+'</button></div></div>';
 }
 function planHTML(){
   const day=DAYS[state.day],t=nowET(),live=day.date===t.date;
-  let h='<h1>'+day.park+'</h1><p class="sub">'+day.sub+'</p>'
+  let h=dueBanner()+'<h1>'+day.park+'</h1><p class="sub">'+day.sub+'</p>'
     +'<p class="hours">Open '+day.hours+'<small>'+day.hoursNote+'</small></p>'
     +'<ul class="heads">'+day.heads.map(x=>'<li>'+x+'</li>').join("")+'</ul>'
     +'<p class="walk" id="walkline"></p>'
+    +'<p class="who">Checking in for <b>'+ppl.map(esc).join(", ")+'</b>. <button type="button" class="linkbtn" data-act="gpeople">Change</button></p>'
     +(day.why?'<details class="more" data-s="whyOpen"'+(state.whyOpen?" open":"")+'><summary>Why this order</summary><ul class="whylist">'+day.why.map(x=>'<li>'+x+'</li>').join("")+'</ul></details>':"")
     +'<ol class="tl">';
   day.blocks.forEach((b,bi)=>{
@@ -860,34 +1043,58 @@ function planHTML(){
       +'<div class="when">'+range(b.s,b.e)+(now?'<span class="nowpill">Now</span>':"")+'</div>'
       +'<h2>'+b.h+'</h2><ul class="items">'+b.items.map((x,ii)=>itemHTML(day,bi,ii,x)).join("")+'</ul></li>';
   });
-  h+='</ol>'+altHTML(day)+'<div class="skip"><h2>Skip today</h2><ul>'
+  h+='</ol>'+moreHTML(day)+'<div class="skip"><h2>Skip today</h2><ul>'
     +day.skips.map(s=>'<li'+(s[2]?' class="gone"':"")+'><b>'+s[0]+'</b>. '+s[1]+'</li>').join("")+'</ul></div>';
   return h;
 }
-function wrow(name,sub,c){return '<li class="wrow"><span><b>'+name+'</b>'+(sub?'<small>'+sub+'</small>':"")+'</span><span class="wt on '+c.c+'">'+c.t+'</span></li>'}
-function waitsHTML(){
-  const k=state.wp||DAYS[state.day].pk,P=PARKS[k],w=waits[k];
-  let h='<section class="sec"><h1>Wait times</h1><p>Posted standby waits, from ThemeParks.wiki. They’re estimates and they move fast.</p>'
-    +'<div class="seg">'+Object.keys(PARKS).map(x=>'<button type="button" class="btn" data-act="wpark" data-p="'+x+'" aria-pressed="'+(x===k)+'">'+PARKS[x].label+'</button>').join("")+'</div>'
-    +'<div class="btns"><button type="button" class="btn" data-act="wrefresh">Refresh</button></div>';
-  if(werr[k])h+='<p class="err">'+werr[k]+(w?" Showing the last numbers from "+clock(w.ts)+".":"")+'</p>';
-  if(!w){return h+(werr[k]?"":'<p class="note">Loading waits...</p>')+'</section>'}
-  const old=Date.now()-w.ts>15*60e3;
-  h+='<p class="stat">'+(old?"These numbers are old. Last updated ":"Updated ")+clock(w.ts)+', Orlando time.</p></section>';
-  const used=new Set(),line=(name,sub,q)=>{
-    const e=entryFor(k,q);if(e)used.add(e);
-    return wrow(name,sub,chip(e)||{t:"No data",c:"w-off"});
-  };
-  const plan=[],seen=new Set();
+function planParts(k){
+  const P=[];
   DAYS.filter(d=>d.pk===k).forEach(d=>d.blocks.forEach(b=>b.items.forEach(x=>{
-    if(x.w&&x.f!=="removed"&&!seen.has(x.w[0])){seen.add(x.w[0]);plan.push(line(x.w[0],"",x.w[1]))}
+    if(x.f==="removed")return;
+    [x.w,x.g].forEach(sp=>{if(sp){P.push(norm(sp[0]));String(sp[1]).split("|").forEach(p=>P.push(p))}});
   })));
-  if(plan.length)h+='<section class="sec"><h2>On your plan</h2><ul class="rows" style="list-style:none;padding:0;margin:0">'+plan.join("")+'</ul></section>';
-  const extra=ALT[k].items.filter(a=>a.q).map(a=>line(a.n,a.h,a.q));
-  if(extra.length)h+='<section class="sec"><h2>Extras you could add</h2><ul class="rows" style="list-style:none;padding:0;margin:0">'+extra.join("")+'</ul></section>';
-  const rest=w.list.filter(e=>e.t==="ATTRACTION"&&!used.has(e)).sort((a,b)=>(b.w??-1)-(a.w??-1));
-  if(rest.length)h+='<details class="more"><summary>Everything else at '+P.label+' ('+rest.length+')</summary><ul style="list-style:none;padding:0;margin:0">'
-    +rest.map(e=>wrow(e.n,"",chip(e))).join("")+'</ul></details>';
+  return P;
+}
+function inPlan(P,e){
+  if(e.q)return e.q.split("|").some(a=>P.some(b=>a===b||b.includes(a)||a.includes(b)));
+  const n=norm(e.n);return P.some(b=>b===n);
+}
+const TYPE_LABEL={ride:"Ride",show:"Show",walk:"Walk",meet:"Meet",exp:"Experience",meal:"Character meal"};
+const FILTERS={all:["All",null],ride:["Rides",["ride"]],meet:["Meets",["meet","exp","meal"]],show:["Shows and walks",["show","walk"]]};
+function catRow(k,P,e){
+  const c=e.c?null:chip(entryFor(k,e.q));
+  const plan=!e.c&&!e.s&&inPlan(P,e);
+  const badges=(e.h?'<span class="badge b-h">'+e.h+'</span>':"")
+    +(plan?'<span class="badge b-added">On your plan</span>':"")
+    +(e.s?'<span class="badge b-removed">On your skip list</span>':"")
+    +(e.c?'<span class="badge b-removed">Closed</span>':"");
+  const note=(e.c||e.s||"")+(e.c||e.s?" ":"")+(e.d||"");
+  return '<li class="wrow"><span><b>'+e.n+'</b>'+badges+'<small>'+TYPE_LABEL[e.t]+(note?". "+note.trim():"")+'</small>'+(e.c||e.t==="meal"?"":ckHTML(e.id))+'</span>'
+    +(c?'<span class="wt on '+c.c+'">'+c.t+'</span>':"")+'</li>';
+}
+function ridesHTML(){
+  const k=state.wp||DAYS[state.day].pk,P=PARKS[k],w=waits[k],cf=state.cf||"all",want=FILTERS[cf][1];
+  let h='<section class="sec"><h1>Rides and meets</h1>'+gdNotice()+'<p>Everything at the park, with live standby waits from ThemeParks.wiki. Tap a name under a ride when that person has done it. Waits are estimates and they move fast. Character lineups rotate, so confirm in My Disney Experience.</p>'
+    +'<div class="seg">'+Object.keys(PARKS).map(x=>'<button type="button" class="btn" data-act="wpark" data-p="'+x+'" aria-pressed="'+(x===k)+'">'+PARKS[x].label+'</button>').join("")+'</div>'
+    +'<div class="chips">'+Object.keys(FILTERS).map(f=>'<button type="button" class="chipbtn" data-act="cfilter" data-f="'+f+'" aria-pressed="'+(f===cf)+'">'+FILTERS[f][0]+'</button>').join("")+'</div>'
+    +'<div class="btns"><button type="button" class="btn" data-act="wrefresh">Refresh waits</button></div>';
+  if(werr[k])h+='<p class="err">'+werr[k]+(w?" Showing the last numbers from "+clock(w.ts)+".":"")+'</p>';
+  else if(!w)h+='<p class="note">Loading waits...</p>';
+  if(w){const old=Date.now()-w.ts>15*60e3;h+='<p class="stat">'+(old?"These numbers are old. Last updated ":"Waits updated ")+clock(w.ts)+', Orlando time.</p>'}
+  const sum=checkinSummary();if(sum)h+='<p class="stat">Check-ins so far: '+sum+'.</p>';
+  h+='</section>'+peopleHTML();
+  const PP=planParts(k),list=CATALOG[k].filter(e=>!want||want.includes(e.t));
+  const open=list.filter(e=>!e.c),closed=list.filter(e=>e.c),lands=[];
+  open.forEach(e=>{let g=lands.find(x=>x.l===e.l);if(!g){g={l:e.l,items:[]};lands.push(g)}g.items.push(e)});
+  lands.forEach(g=>{h+='<section class="sec"><h2>'+g.l+'</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+g.items.map(e=>catRow(k,PP,e)).join("")+'</ul></section>'});
+  if(closed.length)h+='<section class="sec"><h2>Not available on your dates</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+closed.map(e=>catRow(k,PP,e)).join("")+'</ul></section>';
+  if(!list.length)h+='<p class="note">Nothing in this filter.</p>';
+  if(w&&cf==="all"){
+    const used=new Set();CATALOG[k].forEach(e=>{const m=entryFor(k,e.q);if(m)used.add(m)});
+    const rest=w.list.filter(e=>e.t==="ATTRACTION"&&!used.has(e)).sort((a,b)=>(b.w??-1)-(a.w??-1));
+    if(rest.length)h+='<details class="more"><summary>Also in the live feed ('+rest.length+')</summary><ul style="list-style:none;padding:0;margin:0">'
+      +rest.map(e=>{const c=chip(e);return '<li class="wrow"><span><b>'+esc(e.n)+'</b></span>'+(c?'<span class="wt on '+c.c+'">'+c.t+'</span>':"")+'</li>'}).join("")+'</ul></details>';
+  }
   return h;
 }
 function groupHTML(){
@@ -896,7 +1103,7 @@ function groupHTML(){
   if(!u||!k){
     h+='<h2>Connect your free Supabase project</h2><p>One person does this once, then sends everyone an invite link. Run the setup SQL in your Supabase project first, then paste the project URL and publishable key here.</p>'
       +'<div class="btns"><button type="button" class="btn" data-act="gsql">Copy setup SQL</button></div>'
-      +'<details class="more"><summary>Show the SQL</summary><pre class="sql">'+SETUP_SQL.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</pre></details>'
+      +'<details class="more"><summary>Show the SQL</summary><pre class="sql">'+SETUP_SQL_ALL.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</pre></details>'
       +'<label class="lbl" for="gu">Project URL</label><input class="inp" id="gu" inputmode="url" autocapitalize="off" autocomplete="off" placeholder="https://abcdxyz.supabase.co">'
       +'<label class="lbl" for="gk">Publishable key</label><input class="inp" id="gk" autocapitalize="off" autocomplete="off" placeholder="sb_publishable_... or the anon key">'
       +'<div class="btns"><button type="button" class="btn pri" data-act="gsave">Save</button></div>'
@@ -908,10 +1115,12 @@ function groupHTML(){
     h+='<label class="lbl" for="gn">Your name</label><input class="inp" id="gn" maxlength="24" autocomplete="given-name" placeholder="Mom">'
       +'<div class="btns"><button type="button" class="btn pri" data-act="gname">Join group</button></div>';
   }else{
-    h+='<p><b>'+who(G.me)+'</b>, you’re in the group.</p>'
+    h+='<p><b>'+esc(who(G.me))+'</b>, you’re in the group.</p>'
       +'<div class="btns"><button type="button" class="btn '+(watch!=null?"warn":"pri")+'" data-act="gshare">'+(watch!=null?"Stop sharing":"Share my location")+'</button>'
       +'<button type="button" class="btn" data-act="ginvite">Invite friends</button></div>'
       +'<p class="stat" id="gstat">'+(gStat||(watch!=null?"Sharing.":"Not sharing."))+'</p>'
+      +'<p class="stat">Shared notes, ride check-ins and shopping: '+(GD.avail===true?"working.":GD.avail===false?"off. Copy the setup SQL below and run it in Supabase.":"checking...")+'</p>'
+      +(GD.avail===false?'<div class="btns"><button type="button" class="btn" data-act="gsql">Copy setup SQL</button></div>':"")
       +'<h2 style="margin-top:20px">Everyone</h2><div id="mem"></div>'
       +(lastPos?"":'<div class="btns"><button type="button" class="btn" data-act="gdist">Show distances from me</button></div>')
       +'<p class="note">Updates every 15 seconds while this tab is open.</p>'
@@ -919,6 +1128,308 @@ function groupHTML(){
   }
   h+='</section><p class="fine">Sharing works only while this app is open on your screen. iPhone and Android pause web apps when you lock the phone or switch apps, so the last-seen time is the truth. Anyone with the invite link can see everyone’s location, so don’t post it. Locations are deleted after 12 hours, and when you stop sharing.</p>';
   return h;
+}
+
+/* ---------- shared data: notes, ride check-ins and shopping ---------- */
+// Everything below saves on this phone first. When you're in a group, it also syncs through Supabase.
+const slug=s=>norm(s).replace(/ /g,"-");
+Object.keys(CATALOG).forEach(k=>CATALOG[k].forEach(e=>{e.id=slug(e.n)}));
+
+const GD={rows:store.get("gd",{}),pend:{},dirty:store.get("gddirty",[]),avail:null,busy:false};   // rows: "kind|key" -> text
+const gk=(kind,key)=>kind+"|"+key;
+const grouped=()=>!!(G.code&&gU()&&gK());
+const gdSave=()=>{store.set("gd",GD.rows);store.set("gddirty",GD.dirty)};
+function gdGet(kind,key){return GD.rows[gk(kind,key)]}
+function gdAll(kind){const p=kind+"|";return Object.keys(GD.rows).filter(a=>a.startsWith(p)).map(a=>({key:a.slice(p.length),val:GD.rows[a]}))}
+function gdCall(op){
+  return op.o==="put"?rpc("gd_put",{p_code:G.code,p_kind:op.kind,p_key:op.key,p_val:op.val}):rpc("gd_del",{p_code:G.code,p_kind:op.kind,p_key:op.key});
+}
+function gdQueue(op){GD.dirty=GD.dirty.filter(d=>!(d.kind===op.kind&&d.key===op.key));GD.dirty.push(op);gdSave()}
+function gdSend(op){
+  if(!grouped()||GD.avail===false)return;
+  gdCall(op).then(()=>{GD.dirty=GD.dirty.filter(d=>!(d.kind===op.kind&&d.key===op.key));gdSave()})
+    .catch(e=>{if(/ 404/.test(String(e&&e.message)))GD.avail=false;gdQueue(op)});
+}
+function gdSet(kind,key,val){const a=gk(kind,key);GD.rows[a]=val;GD.pend[a]=Date.now();gdSave();gdSend({o:"put",kind,key,val})}
+function gdDel(kind,key){const a=gk(kind,key);delete GD.rows[a];GD.pend[a]=Date.now();gdSave();gdSend({o:"del",kind,key})}
+
+function softRender(){
+  const ae=document.activeElement;
+  if(ae&&(ae.tagName==="TEXTAREA"||(ae.tagName==="INPUT"&&ae.type!=="checkbox")))return;
+  if(!["plan","rides","meals","notes"].includes(state.tab))return;
+  if(state.tab==="notes"&&state.editRem)return;
+  const y=window.scrollY;render();window.scrollTo(0,y);
+}
+async function gdSync(){
+  if(!grouped()||GD.busy)return;
+  GD.busy=true;const was=GD.avail;let changed=false;
+  try{
+    if(G.gdFor!==G.code){   // first time in this group: share what's already on this phone
+      for(const a of Object.keys(GD.rows)){const i=a.indexOf("|");await rpc("gd_put",{p_code:G.code,p_kind:a.slice(0,i),p_key:a.slice(i+1),p_val:GD.rows[a]})}
+      G.gdFor=G.code;gSave();
+    }
+    for(const op of GD.dirty.slice()){await gdCall(op);GD.dirty=GD.dirty.filter(d=>!(d.kind===op.kind&&d.key===op.key))}
+    const list=(await rpc("gd_list",{p_code:G.code}))||[];
+    const next={};list.forEach(r=>{next[gk(r.kind,r.key)]=r.val});
+    const now=Date.now();
+    Object.keys(GD.pend).forEach(a=>{   // keep very recent local edits until the server catches up
+      if(now-GD.pend[a]<5000){if(a in GD.rows)next[a]=GD.rows[a];else delete next[a]}else delete GD.pend[a];
+    });
+    changed=JSON.stringify(next)!==JSON.stringify(GD.rows);
+    GD.rows=next;GD.avail=true;gdSave();
+  }catch(e){
+    if(/ 404/.test(String(e&&e.message)))GD.avail=false;   // the setup SQL hasn't been run yet
+  }finally{GD.busy=false}
+  if(changed||was!==GD.avail)softRender();
+}
+function gdNotice(){
+  if(grouped()&&GD.avail===false)return '<div class="err">Sharing is off until you run the updated setup SQL. <button type="button" class="linkbtn" data-act="gsql">Copy setup SQL</button> Paste it into the SQL Editor in Supabase and run it. It’s safe to run again.</div>';
+  return "";
+}
+
+/* ---------- people on this phone ---------- */
+let ppl=store.get("people",null);
+if(!ppl||!ppl.length){ppl=[G.me?who(G.me):"Me"];store.set("people",ppl)}
+const pKey=n=>slug(n)||"x";
+const ownerId=()=>G.me||"local";
+const myName=()=>G.me?who(G.me):(ppl[0]||"Me");
+function personName(pk){let v={};try{v=JSON.parse(gdGet("person",pk)||"{}")}catch(e){}return v.n||pk}
+function syncPeople(){
+  if(G.me&&ppl.length===1&&ppl[0]==="Me"){ppl=[who(G.me)];store.set("people",ppl)}
+  ppl.forEach(n=>{
+    const k=pKey(n);let v={};try{v=JSON.parse(gdGet("person",k)||"{}")}catch(e){}
+    if(v.o!==ownerId()||v.n!==n)gdSet("person",k,JSON.stringify({n,o:ownerId()}));
+  });
+}
+function addPerson(raw){
+  const n=String(raw||"").replace(/\s+/g," ").trim().slice(0,20);
+  if(!n)return "Type a name first";
+  const k=pKey(n);
+  if(ppl.some(x=>pKey(x)===k))return n+" is already on this phone";
+  let v={};try{v=JSON.parse(gdGet("person",k)||"{}")}catch(e){}
+  if(v.o&&v.o!=="local"&&v.o!==ownerId())return "Someone else in the group already uses “"+n+"”. Add an initial, like “"+n+" S.”";
+  ppl.push(n);store.set("people",ppl);syncPeople();return "";
+}
+function removePerson(n){
+  if(ppl.length<2)return "Keep at least one name on this phone";
+  ppl=ppl.filter(x=>x!==n);store.set("people",ppl);gdDel("person",pKey(n));return "";
+}
+function peopleHTML(){
+  return '<details class="more" data-s="pplOpen"'+(state.pplOpen?" open":"")+'><summary>Checking in for: '+ppl.map(esc).join(", ")+'</summary>'
+    +'<p class="note" style="margin:0 0 8px">Tap a name under a ride when that person has done it. Add everyone who’s with you on this phone, such as your partner and your child. The rest of the group sees these names.</p>'
+    +'<div class="chips">'+ppl.map(n=>'<span class="chipbtn pn">'+esc(n)+'<button type="button" class="xbtn" aria-label="Remove '+esc(n)+'" data-act="prem" data-n="'+esc(n)+'">✕</button></span>').join("")+'</div>'
+    +'<input class="inp" id="pn" maxlength="20" autocomplete="off" placeholder="Add a name">'
+    +'<div class="btns" style="margin-bottom:12px"><button type="button" class="btn" data-act="padd">Add name</button></div></details>';
+}
+
+/* ---------- per-person ride check-ins ---------- */
+const CK_KINDS=["ride","show","meet","walk","exp"];
+function catFor(k,spec){
+  if(!spec)return null;
+  const parts=String(spec[1]).split("|");
+  return CATALOG[k].find(e=>e.q&&e.q.split("|").some(a=>parts.includes(a)))||null;
+}
+function rkOf(k,x){
+  if(x.ck===0||!CK_KINDS.includes(x.k))return null;
+  const spec=x.w||x.g;if(!spec)return null;
+  const e=catFor(k,spec);
+  if(e)return e.c?null:e.id;
+  return x.w?slug(k+" "+spec[0]):null;
+}
+function ckHTML(rk){
+  const mine=new Set(ppl.map(pKey));
+  const chips=ppl.map(n=>{
+    const on=gdGet("ride",rk+"~"+pKey(n))!==undefined;
+    return '<button type="button" class="pchip" aria-pressed="'+on+'" data-act="ck" data-rk="'+rk+'" data-p="'+esc(pKey(n))+'">'+(on?"✓ ":"")+esc(n)+'</button>';
+  }).join("");
+  const others=gdAll("ride").filter(r=>r.key.startsWith(rk+"~")&&!mine.has(r.key.slice(rk.length+1))).map(r=>esc(personName(r.key.slice(rk.length+1))));
+  return '<span class="ckrow" role="group" aria-label="Done by">'+chips+(others.length?'<span class="also">Also done: '+others.join(", ")+'</span>':"")+'</span>';
+}
+function checkinSummary(){
+  const c={};
+  gdAll("ride").forEach(r=>{const pk=r.key.split("~")[1];if(pk)c[pk]=(c[pk]||0)+1});
+  return Object.keys(c).sort().map(pk=>esc(personName(pk))+" "+c[pk]).join(", ");
+}
+
+/* ---------- group notes and reminders ---------- */
+let memo=store.get("memo","");
+function remList(){
+  return gdAll("rem").map(r=>{let v={};try{v=JSON.parse(r.val)||{}}catch(e){}return {id:r.key,t:String(v.t||""),due:v.due||"",done:!!v.done,by:v.by||""}});
+}
+function remPut(r){gdSet("rem",r.id,JSON.stringify({t:r.t,due:r.due,done:r.done,by:r.by||myName()}))}
+const isDue=r=>!r.done&&r.due&&new Date(r.due)<=new Date();
+function dueLabel(r){return r.due?new Date(r.due).toLocaleString([],{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):""}
+(function migrateOldReminders(){   // reminders saved on this phone by the previous version
+  const old=store.get("rem",[]);
+  if(old&&old.length){old.forEach(r=>{if(gdGet("rem",r.id)===undefined)GD.rows[gk("rem",r.id)]=JSON.stringify({t:r.t,due:r.due||"",done:!!r.done,by:""})});gdSave();store.set("rem",[])}
+})();
+function dueBanner(){
+  const d=remList().filter(isDue);
+  if(!d.length)return "";
+  return '<div class="remind"><b>Reminder'+(d.length>1?"s":"")+'</b>'+d.map(r=>'<div class="rline"><span>'+esc(r.t)+'</span><button type="button" class="btn" data-act="rdone" data-id="'+r.id+'">Done</button></div>').join("")+'</div>';
+}
+function remindersHTML(){
+  const list=remList().sort((a,b)=>(a.done-b.done)||((a.due||"9")>(b.due||"9")?1:-1));
+  const rows=list.map(r=>{
+    if(state.editRem===r.id)return '<li class="rem"><label class="lbl" for="re_t">Note or reminder</label><input class="inp" id="re_t" maxlength="200" value="'+esc(r.t)+'">'
+      +'<label class="lbl" for="re_d">When (optional)</label><input class="inp" id="re_d" type="datetime-local" value="'+esc(r.due||"")+'">'
+      +'<div class="btns"><button type="button" class="btn pri" data-act="rsave" data-id="'+r.id+'">Save</button><button type="button" class="btn" data-act="rcancel">Cancel</button></div></li>';
+    return '<li class="rem'+(r.done?" done":"")+'"><label class="remlab"><input type="checkbox" data-r="'+r.id+'"'+(r.done?" checked":"")+'><span class="tx"><span class="ttl">'+esc(r.t)+'</span>'
+      +(isDue(r)?'<span class="badge b-removed">Due</span>':"")+'<small>'+(r.due?dueLabel(r)+". ":"")+(r.by?"Added by "+esc(r.by):"")+'</small></span></label>'
+      +'<div class="rbtns"><button type="button" class="linkbtn" data-act="redit" data-id="'+r.id+'">Edit</button><button type="button" class="linkbtn" data-act="rdel" data-id="'+r.id+'">Delete</button></div></li>';
+  }).join("");
+  const how=grouped()?(GD.avail===false?"Sharing is off until the updated setup SQL is run (see the note above).":"Shared with your whole group. Anyone can add, edit, check off or delete, and changes show up within about 15 seconds."):"Saved on this phone only. Join your group on the Group tab to share them.";
+  return '<section class="sec"><h2>Group notes and reminders</h2>'+gdNotice()+'<p>'+how+' Reminders with a time show at the top of the Plan tab once they’re due, while the app is open. They don’t buzz your phone when it’s closed.</p>'
+    +'<label class="lbl" for="rt">New note or reminder</label><input class="inp" id="rt" maxlength="200" placeholder="Book the boutique, buy ponchos...">'
+    +'<label class="lbl" for="rd">When (optional)</label><input class="inp" id="rd" type="datetime-local">'
+    +'<div class="btns"><button type="button" class="btn pri" data-act="radd">Add</button></div>'
+    +(rows?'<ul class="catlist" style="list-style:none;padding:0;margin:8px 0 0">'+rows+'</ul>':'<p class="note">Nothing here yet.</p>')+'</section>'
+    +'<section class="sec"><h2>Private notes</h2><p>Only on this phone. Saves as you type.</p>'
+    +'<textarea class="inp" id="memo" rows="5" placeholder="Locker number, where we parked...">'+esc(memo)+'</textarea></section>';
+}
+
+/* ---------- meals and shopping ---------- */
+const MEALS=[
+ {id:"sat",h:"Sat Nov 21, Animal Kingdom",rows:[
+  {t:"6:45 AM",m:"Breakfast",w:"In the car on the drive from Davenport",f:"Overnight oats in a jar or a yogurt cup, a hard-boiled egg, a banana and a granola bar.",p:1},
+  {t:"10:30 AM",m:"Snack",w:"A shaded bench by the trail between the Safari and Gorilla Falls",f:"Apple slices or grapes and pretzels. Refill water bottles at any quick-service counter.",p:1},
+  {t:"12:30 PM",m:"Lunch",w:"Harambe Market seating, or the Harambe Fruit Market tables next door",f:"Turkey and cheese wraps, carrot sticks, a clementine and crackers.",p:1},
+  {t:"5:15 PM",m:"Dinner",w:"Flame Tree Barbecue’s pavilions, or the seating across from Adventurers Outpost",f:"Pasta salad with Italian dressing, cucumber and cherry tomatoes. Add a fruit pouch and a cookie.",p:1}
+ ]},
+ {id:"mon",h:"Mon Nov 23, Magic Kingdom",rows:[
+  {t:"7:15 AM",m:"Breakfast",w:"In the car, or on a Town Square bench once you’re in",f:"Overnight oats or yogurt, a hard-boiled egg, a banana and a granola bar.",p:1},
+  {t:"10:30 AM",m:"Snack",w:"A bench in Fantasyland, between rides",f:"Applesauce pouch and a cheese stick, kept cold.",p:1},
+  {t:"12:15 PM",m:"Lunch",w:"Tomorrowland Terrace tables, or the Hub Lawn",f:"Sandwiches (nut-free if you prefer), grapes, bell pepper strips and a granola bar.",p:1},
+  {t:"2:30 PM",m:"Snack before the dress-up",w:"Tomorrowland, before you cross the hub",f:"Fruit and crackers. Skip anything sticky or messy before the makeover.",p:1},
+  {t:"5:45 PM",m:"Dinner",w:"The Hub Lawn by the castle. Liberty Square’s outdoor seating is the fallback.",f:"Wraps with hummus, veggie sticks and a piece of fruit. Eat early, since the next stop is Storybook Circus.",p:1}
+ ]},
+ {id:"wed",h:"Wed Nov 25, Magic Kingdom",rows:[
+  {t:"7:15 AM",m:"Breakfast",w:"In the car, or on a Town Square bench once you’re in",f:"Yogurt or overnight oats, a hard-boiled egg and a banana.",p:1},
+  {t:"10:15 AM",m:"Snack",w:"Tables near Pete’s Silly Sideshow in Storybook Circus",f:"Clementine and a granola bar.",p:1},
+  {t:"12:30 PM",m:"Lunch",w:"Liberty Square, in the outdoor seating by Columbia Harbour House or the picnic tables behind Ye Olde Christmas Shoppe",f:"Sandwiches or wraps, cucumber slices, grapes and crackers.",p:1},
+  {t:"3:30 PM",m:"Snack",w:"Tables by the Magic Carpets in Adventureland",f:"Pretzels and an apple.",p:1},
+  {t:"5:00 PM",m:"Dinner",w:"The same Adventureland tables, by the Magic Carpets and the Swiss Family Treehouse",f:"Pasta salad or wraps with veggie sticks and fruit. Day guests have to be out by 6:00 PM, so eat in the park.",p:1}
+ ]}
+];
+const PACK_TIPS=[
+ "Everything is packed in Davenport and carried in. Use a soft bag that fits within 24 × 15 × 18 inches. Staff can’t heat or refrigerate your food.",
+ "Pack each meal in its own bag, so you only open one at a time and the rest stay cold.",
+ "Reusable gel packs only. No loose ice, no dry ice, no glass.",
+ "Freeze water bottles or juice boxes overnight. They work as ice packs and thaw into cold drinks.",
+ "Breakfast is cold and grab-and-go: overnight oats in jars, hard-boiled eggs, bananas and yogurt. Make them the night before.",
+ "Wraps, sandwiches and pasta salad with an oil dressing hold up for hours. Skip mayonnaise-based salads, and eat berries on the first day.",
+ "Cut and wash fruit the night before. Pack wipes and a bag for trash.",
+ "Animal Kingdom doesn’t allow plastic straws, so bring paper ones.",
+ "Every quick-service counter gives free ice water, so fill bottles there."
+];
+// Where to sit and eat your own food. Pulled together from park guides on Nov 5, 2026. Layouts and construction change, so check the signs.
+const SEATING={
+ ak:[
+  {l:"Africa",n:"Harambe Market seating",t:"Shaded, open air",d:"All outdoor, with shaded courtyards, benches and chairs. The counters often close by late afternoon, so it suits lunch better than dinner."},
+  {l:"Africa",n:"Harambe Fruit Market tables",t:"Open air",d:"Plenty of tables and chairs next to Harambe Market."},
+  {l:"Africa",n:"Seating near Tusker House and Dawa Bar",t:"Open air",d:"A third option in Harambe if the others are full."},
+  {l:"Africa",n:"Seating outside the Harambe shops",t:"Open air",d:"The shop seating area across the midway from Kusafiri Coffee Shop."},
+  {l:"Discovery Island",n:"Flame Tree Barbecue pavilions",t:"Shaded, open air",d:"Large open-air pavilions along the waterway, with views of Expedition Everest. The tables at the bottom stay quiet. It’s a restaurant’s seating, so if the pavilions are busy, buy a drink to be safe."},
+  {l:"Discovery Island",n:"Seating across from Adventurers Outpost",t:"Open air",d:"By a snack stand on the path toward Asia."},
+  {l:"Discovery Island",n:"Discovery Island Trails benches",t:"Shaded",d:"Quiet, shaded benches along the trails around the Tree of Life."},
+  {l:"Asia",n:"Yak & Yeti Local Food Cafes seating",t:"Covered, open air",d:"A lot of covered outdoor seating. It’s the counter’s seating, so buy a drink if you want a table."},
+  {l:"Asia",n:"Maharajah Jungle Trek benches",t:"Shaded",d:"Shaded pull-offs and benches along the trail."},
+  {l:"Back of the park",n:"Picnic tables near the DinoLand entrance",t:"Open air",d:"Reported near the Discovery Island entrance to DinoLand. DinoLand is closed now, so this area may be walled off."}
+ ],
+ mk:[
+  {l:"Main Street, U.S.A.",n:"Town Square and Main Street benches",t:"Open air",d:"Good for breakfast. Main Street is reported to open about an hour before the park does."},
+  {l:"The hub",n:"The Hub Lawn",t:"Artificial grass, no shade",d:"Two patches beside Tomorrowland Terrace and Crystal Palace, with the castle view. It gets busy before the fireworks."},
+  {l:"Tomorrowland",n:"Tomorrowland Terrace tables",t:"Covered",d:"Lots of covered tables near the hub. When the counter is serving, buy a drink or use the lawn instead. Sections can be roped off in the evening for fireworks dessert parties."},
+  {l:"Tomorrowland",n:"Cosmic Ray’s covered patio",t:"Covered",d:"On the side nearest the Tomorrowland Speedway. It’s restaurant seating, so buy a drink."},
+  {l:"Tomorrowland",n:"The Lunching Pad seating",t:"Open air",d:"A snack stand with outdoor tables."},
+  {l:"Storybook Circus",n:"Tables near Pete’s Silly Sideshow",t:"Open air",d:"Quieter, with picnic tables, a spot by the water and restrooms close by."},
+  {l:"Fantasyland",n:"Storybook Treats seating",t:"Open air",d:"A small outdoor area. There are also plenty of benches and spots around Fantasyland."},
+  {l:"Fantasyland",n:"Gaston’s Tavern seating",t:"Indoor and outdoor",d:"Seating inside and out. It’s restaurant seating, so buy a drink."},
+  {l:"Adventureland",n:"Tables by the Magic Carpets and Swiss Family Treehouse",t:"Open air",d:"Tables and bench walls. Your Nov 25 dinner spot."},
+  {l:"Adventureland",n:"Tortuga Tavern seating",t:"Covered",d:"Covered seating, but it runs seasonally. Use it only when it isn’t serving."},
+  {l:"Liberty Square",n:"Outdoor seating by Columbia Harbour House and Liberty Square Market",t:"Open air",d:"Open to guests, though there aren’t many tables."},
+  {l:"Liberty Square",n:"Picnic tables behind Ye Olde Christmas Shoppe and the Portrait Gallery",t:"Open air",d:"A quiet spot out of the way. Disney has pointed guests to these before."},
+  {l:"Liberty Square",n:"Sleepy Hollow seating",t:"Open air",d:"A walk-up window with outdoor seats and a view of Cinderella Castle."},
+  {l:"Frontierland",n:"Pecos Bill seating",t:"Covered and indoor",d:"Lots of seating, including air conditioning, but Frontierland is under construction. Check that it’s open."}
+ ]
+};
+// a = amount per adult over the three park days, k = per child, fix = a fixed amount
+const SHOP=[
+ {id:"bananas",s:"Fruit",n:"Bananas",a:3,k:3,d:"Buy a mix of ripe and green."},
+ {id:"apples",s:"Fruit",n:"Apples",a:3,k:3},
+ {id:"grapes",s:"Fruit",n:"Grapes",u:"lb",a:.5,k:.5,d:"Wash and bag them the night before."},
+ {id:"clementines",s:"Fruit",n:"Clementines or oranges",a:3,k:3,d:"Easy to peel in line."},
+ {id:"berries",s:"Fruit",n:"Strawberries or blueberries",u:"pints",a:.4,k:.4,d:"Eat these on Nov 21. They don’t keep."},
+ {id:"carrots",s:"Vegetables",n:"Baby carrots",u:"bags",a:.34,k:.34},
+ {id:"cucumbers",s:"Vegetables",n:"Cucumbers",a:.5,k:.5},
+ {id:"tomatoes",s:"Vegetables",n:"Cherry tomatoes",u:"pints",a:.34,k:.34},
+ {id:"peppers",s:"Vegetables",n:"Bell peppers",a:.5,k:.25},
+ {id:"turkey",s:"Protein and dairy",n:"Sliced deli turkey",u:"lb",a:.5,k:.25},
+ {id:"cheesesticks",s:"Protein and dairy",n:"Cheese sticks",a:3,k:3},
+ {id:"hummus",s:"Protein and dairy",n:"Hummus",u:"tubs",a:.34,k:.34},
+ {id:"eggs",s:"Protein and dairy",n:"Eggs",a:3,k:2,d:"Hard-boil them the night before."},
+ {id:"yogurt",s:"Protein and dairy",n:"Yogurt cups",a:3,k:3},
+ {id:"milk",s:"Protein and dairy",n:"Milk",fix:"1 half-gallon",d:"For overnight oats."},
+ {id:"tortillas",s:"Bread and grains",n:"Tortillas for wraps",a:4,k:3},
+ {id:"bread",s:"Bread and grains",n:"Sandwich bread",fix:"1 loaf"},
+ {id:"crackers",s:"Bread and grains",n:"Crackers",fix:"2 boxes"},
+ {id:"oatmeal",s:"Bread and grains",n:"Rolled oats",fix:"1 container",d:"For overnight oats in jars."},
+ {id:"jars",s:"Supplies",n:"Small jars or lidded cups for overnight oats",fix:"1 per person per day"},
+ {id:"pasta",s:"Bread and grains",n:"Pasta and Italian dressing, for pasta-salad dinners",fix:"1 box and 1 bottle"},
+  {id:"granola",s:"Snacks and drinks",n:"Granola bars",a:3,k:3},
+ {id:"pretzels",s:"Snacks and drinks",n:"Pretzels or popcorn",u:"bags",a:.34,k:.34},
+ {id:"pouches",s:"Snacks and drinks",n:"Applesauce or fruit pouches",a:0,k:4},
+ {id:"cookies",s:"Snacks and drinks",n:"Cookies or a small treat",fix:"1 box"},
+ {id:"juice",s:"Snacks and drinks",n:"Juice boxes",a:0,k:4,d:"Freeze some overnight to use as ice packs."},
+ {id:"water",s:"Snacks and drinks",n:"Water bottles",fix:"1 case, plus reusable bottles"},
+ {id:"gel",s:"Supplies",n:"Reusable gel ice packs",fix:"3"},
+ {id:"bag",s:"Supplies",n:"Soft insulated bag that fits 24 × 15 × 18 inches",fix:"1 per family"},
+ {id:"zip",s:"Supplies",n:"Sandwich and zip bags",fix:"1 box"},
+ {id:"wipes",s:"Supplies",n:"Napkins and wipes",fix:"1 pack of each"},
+ {id:"straws",s:"Supplies",n:"Paper straws, for Animal Kingdom",fix:"1 pack"}
+];
+let hc=store.get("hc",{a:2,k:1});
+function qtyText(x){
+  if(x.fix)return x.fix;
+  const q=Math.max(1,Math.ceil(x.a*hc.a+x.k*hc.k-1e-9));
+  return "about "+q+(x.u?" "+x.u:"");
+}
+function mealPlanHTML(){
+  return MEALS.map(d=>'<section class="sec"><h2>'+d.h+'</h2>'+d.rows.map(r=>'<div class="meal"><span class="mt">'+r.t+'</span><b>'+r.m+(r.p?'<span class="badge b-h">Packed</span>':"")+'</b><p>'+r.w+'. '+r.f+'</p></div>').join("")+'</section>').join("")
+    +'<section class="sec"><h2>Packing tips</h2><ul class="whylist" style="padding-left:18px">'+PACK_TIPS.map(t=>'<li>'+t+'</li>').join("")+'</ul>'
+    +'<p class="note">Assumes your villa has a kitchen and fridge. Check for allergies before you shop.</p></section>';
+}
+function shopHTML(){
+  const bought=id=>gdGet("shop",id)!==undefined;
+  const custom=gdAll("shopx").map(r=>{let v={};try{v=JSON.parse(r.val)||{}}catch(e){}return {id:r.key,t:String(v.t||""),done:!!v.done,by:v.by||""}});
+  const total=SHOP.length+custom.length,got=SHOP.filter(x=>bought(x.id)).length+custom.filter(x=>x.done).length;
+  const secs=[];SHOP.forEach(x=>{let g=secs.find(y=>y.s===x.s);if(!g){g={s:x.s,items:[]};secs.push(g)}g.items.push(x)});
+  const by=id=>{let b=gdGet("shop",id);if(b===undefined||b==="1")return "";return "Bought by "+esc(b)};
+  let h='<section class="sec"><h2>Shopping list</h2>'+gdNotice()+'<p>'+(grouped()?(GD.avail===false?"Sharing is off until the updated setup SQL is run.":"Shared with your group. When someone checks an item, everyone sees it as bought."):"Saved on this phone only. Join your group to share it.")+' Amounts cover the three park days.</p>'
+    +'<div class="stepper"><span>Adults</span><button type="button" class="btn" data-act="hc" data-w="a" data-d="-1" aria-label="Fewer adults">−</button><b>'+hc.a+'</b><button type="button" class="btn" data-act="hc" data-w="a" data-d="1" aria-label="More adults">+</button>'
+    +'<span style="margin-left:14px">Children</span><button type="button" class="btn" data-act="hc" data-w="k" data-d="-1" aria-label="Fewer children">−</button><b>'+hc.k+'</b><button type="button" class="btn" data-act="hc" data-w="k" data-d="1" aria-label="More children">+</button></div>'
+    +'<p class="stat">'+got+' of '+total+' bought.</p></section>';
+  secs.forEach(g=>{h+='<section class="sec"><h2>'+g.s+'</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+g.items.map(x=>
+    '<li class="shoprow"><label class="remlab"><input type="checkbox" data-sh="'+x.id+'"'+(bought(x.id)?" checked":"")+'><span class="tx"><span class="ttl">'+x.n+'</span><small>'+[qtyText(x)].concat(x.d?[x.d.replace(/\.$/,"")]:[],by(x.id)?[by(x.id)]:[]).join(". ")+'.</small></span></label></li>').join("")+'</ul></section>'});
+  h+='<section class="sec"><h2>Added by the group</h2>'
+    +(custom.length?'<ul class="catlist" style="list-style:none;padding:0;margin:0">'+custom.map(x=>'<li class="shoprow"><label class="remlab"><input type="checkbox" data-sx="'+x.id+'"'+(x.done?" checked":"")+'><span class="tx"><span class="ttl">'+esc(x.t)+'</span><small>'+(x.by?(x.done?"Bought by ":"Added by ")+esc(x.by):"")+'</small></span></label><div class="rbtns"><button type="button" class="linkbtn" data-act="sxdel" data-id="'+x.id+'">Delete</button></div></li>').join("")+'</ul>':'<p class="note">Nothing added yet.</p>')
+    +'<label class="lbl" for="sxt">Add an item</label><input class="inp" id="sxt" maxlength="80" placeholder="Sunscreen, ponchos, batteries...">'
+    +'<div class="btns"><button type="button" class="btn pri" data-act="sxadd">Add to list</button></div></section>';
+  return h;
+}
+function seatHTML(){
+  const one=(k,title)=>{
+    const lands=[];SEATING[k].forEach(e=>{let g=lands.find(x=>x.l===e.l);if(!g){g={l:e.l,items:[]};lands.push(g)}g.items.push(e)});
+    return '<section class="sec"><h2>'+title+'</h2>'+lands.map(g=>'<h3 class="land">'+g.l+'</h3>'+g.items.map(e=>'<div class="meal"><b>'+e.n+'<span class="badge b-h">'+e.t+'</span></b><p>'+e.d+'</p></div>').join("")).join("")+'</section>';
+  };
+  return '<section class="sec"><h2>Where to sit and eat your own food</h2><p>Outside food is allowed in the parks. Guides advise against taking a table inside a quick-service dining room with your own food, so the outdoor areas below are the safer picks. Where a spot is restaurant seating, buy a drink to be safe. Layouts and construction change, so follow the signs.</p></section>'
+    +one("ak","Animal Kingdom, Nov 21")+one("mk","Magic Kingdom, Nov 23 and 25");
+}
+function mealsHTML(){
+  const v=state.mv||"plan",seg=(id,l)=>'<button type="button" class="btn" data-act="mview" data-v="'+id+'" aria-pressed="'+(v===id)+'">'+l+'</button>';
+  return '<section class="sec"><h1>Meals and groceries</h1><p>Breakfast, lunch and dinner are all packed in Davenport and carried in, so the plan below is about where to eat.</p>'
+    +'<div class="seg3">'+seg("plan","Meal plan")+seg("seat","Seating")+seg("shop","Shopping")+'</div></section>'
+    +(v==="plan"?mealPlanHTML():v==="seat"?seatHTML():shopHTML());
 }
 function rulesHTML(){
   return '<section class="sec"><h2>Park rules</h2><p>From your notes. Check Disney’s site before you pack.</p>'
@@ -930,7 +1441,8 @@ function rulesHTML(){
 }
 function notesHTML(){
   const rowsH=a=>'<ul class="rows">'+a.map(r=>'<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>').join("")+'</ul>';
-  return '<section class="sec"><h1>Notes</h1><p>Facts checked on Nov 5, 2026. Disney changes things, so use the last list on the morning of each day.</p></section>'
+  return '<section class="sec"><h1>Notes</h1><p>Your reminders and notes come first, and you can edit them. The lists further down are fixed. Facts checked on Nov 5, 2026. Disney changes things, so use the check list on the morning of each day.</p></section>'
+    +remindersHTML()
     +'<section class="sec"><h2>Changed from your plan</h2>'+rowsH(CHANGED)+'</section>'
     +'<section class="sec"><h2>Checked and correct</h2><ul class="rows">'+CONFIRMED.map(x=>'<li><span>'+x+'</span></li>').join("")+'</ul></section>'
     +'<section class="sec"><h2>Worth reconsidering</h2><p>These are judgment calls, so the plan keeps them as you wrote them.</p>'+rowsH(CHALLENGES)+'</section>'
@@ -947,14 +1459,15 @@ function render(){
   document.querySelectorAll(".tab").forEach(b=>{if(b.dataset.tab===state.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   $("#days").style.display=state.tab==="plan"||state.tab==="map"?"":"none";
   if(state.tab!=="map"&&mapObj){mapObj.remove();mapObj=null;mapLayer=null}
-  const view={plan:planHTML,map:mapHTML,waits:waitsHTML,group:groupHTML,notes:notesHTML}[state.tab]||planHTML;
+  const view={plan:planHTML,map:mapHTML,rides:ridesHTML,meals:mealsHTML,group:groupHTML,notes:notesHTML}[state.tab]||planHTML;
   $("#view").innerHTML=view();
+  $("#view").insertAdjacentHTML("beforeend",'<p class="sig">Created by Avinash</p>');
   $("#count").textContent=countdown();
   paint();
   if(state.tab==="plan")paintWalk();
   if(state.tab==="map"){initMap();if(G.code&&gU()&&gK())refreshMembers()}
   if(state.tab==="group"){renderMembers();refreshMembers()}
-  if(state.tab==="waits"&&(!waits[state.wp||day.pk]||Date.now()-(waits[state.wp||day.pk].ts)>60e3))refreshWaits();
+  if(state.tab==="rides"&&(!waits[state.wp||day.pk]||Date.now()-(waits[state.wp||day.pk].ts)>60e3))refreshWaits();
 }
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2200)}
 async function shareLink(title,text,url){
@@ -971,23 +1484,53 @@ document.addEventListener("click",e=>{
     const act=a.dataset.act;
     if(act==="wpark"){state.wp=a.dataset.p;render()}
     else if(act==="wrefresh"){toast("Refreshing");refreshWaits()}
+    else if(act==="cfilter"){state.cf=a.dataset.f;render()}
+    else if(act==="gorides"){state.wp=DAYS[state.day].pk;state.cf="all";state.tab="rides";store.set("tab","rides");render();window.scrollTo(0,0)}
+    else if(act==="radd"){
+      const t=($("#rt").value||"").trim();if(!t)return toast("Type something first");
+      remPut({id:rand(8),t:t.slice(0,200),due:$("#rd").value||"",done:false});render();toast("Added");
+    }
+    else if(act==="redit"){state.editRem=a.dataset.id;render()}
+    else if(act==="rcancel"){state.editRem=null;render()}
+    else if(act==="rsave"){
+      const r=remList().find(x=>x.id===a.dataset.id),t=($("#re_t").value||"").trim();
+      if(!r)return;if(!t)return toast("It can’t be empty");
+      r.t=t.slice(0,200);r.due=$("#re_d").value||"";state.editRem=null;remPut(r);render();
+    }
+    else if(act==="rdel"){gdDel("rem",a.dataset.id);render()}
+    else if(act==="rdone"){const r=remList().find(x=>x.id===a.dataset.id);if(r){r.done=true;remPut(r);render()}}
+    else if(act==="ck"){
+      const key=a.dataset.rk+"~"+a.dataset.p,y=window.scrollY;
+      if(gdGet("ride",key)!==undefined)gdDel("ride",key);else gdSet("ride",key,"1");
+      render();window.scrollTo(0,y);
+    }
+    else if(act==="padd"){const err=addPerson($("#pn").value);if(err)return toast(err);state.pplOpen=true;render();toast("Added")}
+    else if(act==="prem"){const err=removePerson(a.dataset.n);if(err)return toast(err);state.pplOpen=true;render()}
+    else if(act==="gpeople"){state.pplOpen=true;state.wp=DAYS[state.day].pk;state.cf="all";state.tab="rides";store.set("tab","rides");render();window.scrollTo(0,0)}
+    else if(act==="mview"){state.mv=a.dataset.v;render()}
+    else if(act==="hc"){const w=a.dataset.w,v=hc[w]+(+a.dataset.d);hc[w]=Math.max(w==="a"?1:0,Math.min(12,v));store.set("hc",hc);render()}
+    else if(act==="sxadd"){
+      const t=($("#sxt").value||"").trim();if(!t)return toast("Type an item first");
+      gdSet("shopx",rand(8),JSON.stringify({t:t.slice(0,80),done:false,by:myName()}));render();
+    }
+    else if(act==="sxdel"){gdDel("shopx",a.dataset.id);render()}
     else if(act==="mfit"){const {stops}=dayStops(DAYS[state.day]);if(mapObj&&stops.length)mapObj.fitBounds(L.latLngBounds(stops.map(s=>[s.lat,s.lng])),{padding:[30,30],maxZoom:17});else toast("No stop positions yet")}
     else if(act==="mlocate"){
       if(!navigator.geolocation)return toast("This browser can’t read location");
       navigator.geolocation.getCurrentPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude,acc:Math.round(p.coords.accuracy)};drawMap();if(mapObj)mapObj.setView([lastPos.lat,lastPos.lng],Math.max(mapObj.getZoom(),17))},()=>toast("Location is blocked"),{enableHighAccuracy:true,timeout:15000});
     }
-    else if(act==="gsql"){navigator.clipboard.writeText(SETUP_SQL).then(()=>toast("SQL copied"),()=>toast("Couldn’t copy. Open “Show the SQL” and copy it by hand."))}
+    else if(act==="gsql"){navigator.clipboard.writeText(SETUP_SQL_ALL).then(()=>toast("SQL copied"),()=>toast("Couldn’t copy. Open “Show the SQL” and copy it by hand."))}
     else if(act==="gsave"){
       const u=($("#gu").value||"").trim().replace(/\/$/,""),k=($("#gk").value||"").trim();
       if(!okUrl(u))return toast("The URL should look like https://abcd.supabase.co");
       if(k.length<20||/service_role/i.test(k))return toast("Paste the publishable key, not a secret key");
       G.u=u;G.k=k;gSave();render();
     }
-    else if(act==="gstart"){G.code=rand(24);gSave();render()}
+    else if(act==="gstart"){G.code=rand(24);gSave();render();gdSync()}
     else if(act==="gname"){
       const n=($("#gn").value||"").replace(/~/g," ").trim().slice(0,24);
       if(!n)return toast("Enter your name");
-      G.me=n+"~"+rand(3);gSave();render();
+      G.me=n+"~"+rand(3);gSave();syncPeople();gdSync();render();
     }
     else if(act==="gshare"){if(watch==null)startShare();else stopShare();render()}
     else if(act==="gdist"){
@@ -1006,7 +1549,12 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-tab]");
   if(t){state.tab=t.dataset.tab;store.set("tab",state.tab);render();window.scrollTo(0,0);return}
 });
+document.addEventListener("input",e=>{if(e.target.id==="memo"){memo=e.target.value;store.set("memo",memo)}});
 document.addEventListener("change",e=>{
+  const d=e.target.dataset||{};
+  if(d.r){const r=remList().find(x=>x.id===d.r);if(r){r.done=e.target.checked;remPut(r);render()}return}
+  if(d.sh){const y=window.scrollY;if(e.target.checked)gdSet("shop",d.sh,myName());else gdDel("shop",d.sh);render();window.scrollTo(0,y);return}
+  if(d.sx){const r=gdGet("shopx",d.sx);let v={};try{v=JSON.parse(r||"{}")}catch(x){}v.done=e.target.checked;v.by=myName();gdSet("shopx",d.sx,JSON.stringify(v));render();return}
   const k=e.target.dataset&&e.target.dataset.k;
   if(!k)return;
   if(e.target.checked)done[k]=1;else delete done[k];
@@ -1036,6 +1584,7 @@ const nowEl=$("#now");
 if(nowEl&&state.tab==="plan")nowEl.scrollIntoView({block:"center"});
 refreshWaits();
 refreshGeo();
+if(grouped()){syncPeople();gdSync()}
 if(G.share&&G.code&&G.me&&gU()&&gK())startShare();
 setInterval(()=>{
   if(document.hidden)return;
@@ -1044,9 +1593,10 @@ setInterval(()=>{
     if(!open){const y=window.scrollY;render();window.scrollTo(0,y)}
   }
 },60000);
-setInterval(()=>{if(!document.hidden&&(state.tab==="waits"||state.tab==="plan"))refreshWaits()},120000);
+setInterval(()=>{if(!document.hidden&&(state.tab==="rides"||state.tab==="plan"))refreshWaits()},120000);
 setInterval(()=>{if(!document.hidden&&(state.tab==="group"||(state.tab==="map"&&G.code&&gU()&&gK())))refreshMembers()},15000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden){const k=DAYS[state.day].pk;if(!waits[k]||Date.now()-waits[k].ts>60e3)refreshWaits()}});
+setInterval(()=>{if(!document.hidden)gdSync()},15000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){gdSync();const k=DAYS[state.day].pk;if(!waits[k]||Date.now()-waits[k].ts>60e3)refreshWaits()}});
 if("serviceWorker" in navigator&&location.protocol.indexOf("http")===0)navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 </script>
