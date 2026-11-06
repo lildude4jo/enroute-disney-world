@@ -234,6 +234,9 @@ textarea.inp{resize:vertical;min-height:110px}
 .seg3 .btn[aria-pressed=true]{background:var(--c);border-color:var(--c);color:var(--onc)}
 h3.land{font-size:15px;color:var(--muted);margin:14px 0 2px;font-weight:700}
 
+.snum{display:inline-grid;place-content:center;min-width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--onc);font:800 12px/1 ui-rounded,system-ui,sans-serif;margin-right:6px;vertical-align:1px}
+.approx{color:var(--muted);font-weight:700}
+
 /* bottom tabs */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(6,1fr);
   background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
@@ -361,29 +364,31 @@ const DAYS=[
     "The dress-up at about 3:00 PM needs a Bibbidi Bobbidi Boutique reservation. If you can’t get one, skip that block and use the time for rides."
   ],
   why:[
-    "The morning stays in Fantasyland, which is only a few hundred meters across, so back-to-back rides there cost very little walking.",
-    "After lunch you stay in Tomorrowland while the 2:00 parade passes through the hub, then cross once, at about 2:45, to the boutique behind the castle.",
-    "Princess Fairytale Hall and Mickey moved to after the dress-up, so she meets them in costume. The boutique and the princess hall are both in Fantasyland by the castle.",
-    "The Barnstormer and Dumbo are one Storybook Circus visit in the evening, when lines are often shorter.",
-    "Buzz Lightyear moved here from Nov 25 so it sits next to the PeopleMover."
+    "Fantasyland runs west to east. Peter Pan’s Flight and it’s a small world are neighbors on the west edge, and Under the Sea is at the east end. Doubling back inside Fantasyland was the biggest waste in the old order.",
+    "Storybook Circus (the Barnstormer and Dumbo) is the next stop east, then Tomorrowland, so you never double back. Lunch is at the Storybook Circus tables.",
+    "You stay on the east side while the 2:00 parade passes through the hub, then cross once, at about 2:45, to the boutique behind the castle.",
+    "After the dress-up everything is near the castle and hub: the princess hall and the Carrousel next to the boutique, then the Magic Carpets and dinner in Adventureland, Mickey on Main Street, and the hub for the fireworks. Ending at Mickey, then the hub, is the shortest finish.",
+    "Dumbo lit up at night is now an optional repeat after the fireworks. Buzz Lightyear moved here from Nov 25 so it sits next to the PeopleMover."
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
       it("Leave Champions Gate at 7:15 AM for the parking-lot ferry or monorail",""),
       it("Eat your packed breakfast in the car, or on a Town Square bench once you’re in","meal","added","Main Street is reported to open about an hour before the park does.")
     ]},
-    {s:"08:30",e:"12:15",h:"Fantasyland, west to east",items:[
+    {s:"08:30",e:"12:00",h:"Fantasyland, west to east",items:[
       it("Be at the gate by 8:30 AM. The park opens at 9:00 AM","","added"),
-      it("Ride Peter Pan’s Flight first","ride","","It’s on the west side of Fantasyland, so you start at one end and work across.",["Peter Pan’s Flight","peter pans flight"]),
+      it("Ride Peter Pan’s Flight first","ride","","It’s on the west edge of Fantasyland, so you start at one end and work across.",["Peter Pan’s Flight","peter pans flight"]),
+      it("Ride it’s a small world","ride","moved","Was fourth. It’s right next to Peter Pan’s Flight, so it now comes second.",["it’s a small world","its a small world"]),
+      it("Watch Mickey’s PhilharMagic (indoor 3D show)","show","moved","Was after lunch. It’s in the west half of Fantasyland, so it fits here.",["Mickey’s PhilharMagic","philharmagic"]),
       it("Ride The Many Adventures of Winnie the Pooh","ride","","",["Winnie the Pooh","many adventures of winnie the pooh"]),
-      it("Ride Under the Sea ~ Journey of The Little Mermaid","ride","","It’s toward the back of Fantasyland.",["Under the Sea","journey of the little mermaid"]),
-      it("Ride it’s a small world","ride","","",["it’s a small world","its a small world"]),
-      it("Watch Mickey’s PhilharMagic (indoor 3D show)","show","moved","Was after lunch. It’s in Fantasyland, so it fits here.",["Mickey’s PhilharMagic","philharmagic"])
+      it("Ride Under the Sea ~ Journey of The Little Mermaid","ride","","It’s at the east end of Fantasyland, the last stop before Storybook Circus.",["Under the Sea","journey of the little mermaid"])
     ]},
-    {s:"12:15",e:"13:15",h:"Packed lunch in Tomorrowland",items:[
-      it("Eat at Tomorrowland Terrace (covered, open-air seating)","meal","","Walk over through Storybook Circus before the parade closes the hub.",null,["Tomorrowland Terrace","tomorrowland terrace"])
+    {s:"12:00",e:"13:30",h:"Storybook Circus and lunch",items:[
+      it("Ride The Barnstormer","ride","moved","Was in the morning. It’s in Storybook Circus, next to Dumbo. Goofy’s junior coaster, about 60 seconds, with a 35-inch minimum, so check her height.",["The Barnstormer","barnstormer"]),
+      it("Ride Dumbo the Flying Elephant","ride","moved","Was in the evening. Doing it now saves a round trip to Storybook Circus. You can ride again lit up after the fireworks.",["Dumbo the Flying Elephant","dumbo"]),
+      it("Eat your packed lunch at the tables near Pete’s Silly Sideshow","meal","moved","Quieter than the hub, with restrooms close by. Packed in Davenport.",null,["Storybook Circus tables","petes silly sideshow"])
     ]},
-    {s:"13:15",e:"14:45",h:"Tomorrowland while the parade passes",items:[
+    {s:"13:30",e:"14:45",h:"Tomorrowland while the parade passes",items:[
       it("Stay on this side of the park while the 2:00 PM parade passes through the hub","tip","added","Crossing the hub is slow or blocked from about 2:00 PM until the parade clears."),
       it("Ride Buzz Lightyear’s Space Ranger Spin","ride","moved","Was on Nov 25. It’s in Tomorrowland, next to the PeopleMover. Leave the vehicle joystick untouched so it doesn’t spin. It was refurbished in 2025–26, so confirm it’s running.",["Buzz Lightyear’s Space Ranger Spin","buzz lightyears space ranger spin"]),
       it("Ride the Tomorrowland Transit Authority PeopleMover","ride","","",["PeopleMover","peoplemover"])
@@ -392,21 +397,20 @@ const DAYS=[
       it("Cross the hub back to Fantasyland once the parade clears, at about 2:45 PM","tip","added","This is your one crossing of the afternoon."),
       it("Bibbidi Bobbidi Boutique makeover, booked for about 3:00 PM","exp","added","Behind Cinderella Castle, near the Carrousel. For ages 3–12, with a reservation in My Disney Experience. Packages run from about $60 (knight outfit) to $230 or more (gown). Allow 30–60 minutes and check in no earlier than 5 minutes before. Prefer to save the money? Bring a costume from home and skip this block.",null,["Bibbidi Bobbidi Boutique","bibbidi bobbidi boutique"])
     ]},
-    {s:"16:15",e:"17:45",h:"Meet the characters in costume",items:[
+    {s:"16:15",e:"17:30",h:"Meet the characters in costume",items:[
       it("Line up at Princess Fairytale Hall","meet","moved","Was 9:30 AM. It’s a short walk from the boutique, so she arrives dressed up. Your notes say Cinderella and Tiana meet together, with rotating Visiting Princesses next door. Confirm who is there.",["Princess Fairytale Hall","princess fairytale hall"]),
-      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. It’s on Main Street, an easy walk from the castle.",["Mickey at Town Square Theater","town square theater"])
+      it("Ride the Prince Charming Regal Carrousel in costume","ride","added","Not in your original plan. It’s a few steps from the boutique, so it costs no extra walking.",["Prince Charming Regal Carrousel","prince charming regal carrousel"])
     ]},
-    {s:"17:45",e:"18:30",h:"Packed dinner",items:[
-      it("Eat on the open castle hub grass","meal","","",null,["Castle hub","cinderella castle",[28.41877,-81.58119]])
+    {s:"17:30",e:"18:45",h:"Adventureland and dinner",items:[
+      it("Ride The Magic Carpets of Aladdin","ride","added","Not in your original plan. It’s right by the dinner tables, so it costs no extra walking.",["The Magic Carpets of Aladdin","magic carpets of aladdin"]),
+      it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse","meal","moved","Was on the hub grass. These tables are quieter than the hub before the fireworks. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"])
     ]},
-    {s:"18:30",e:"19:40",h:"Storybook Circus after dark",items:[
-      it("Take the railroad from Main Street to Storybook Circus","ride","verify","Shuttle only: Main Street to Storybook Circus, about 5 minutes. Frontierland station is closed for construction. It’s the quick way there, and it’s a ride.",["Walt Disney World Railroad","walt disney world railroad"]),
-      it("Ride Dumbo the Flying Elephant while it’s lit up","ride","","",["Dumbo the Flying Elephant","dumbo"]),
-      it("Ride The Barnstormer","ride","moved","Was in the morning. It’s in Storybook Circus, next to Dumbo. Goofy’s junior coaster, about 60 seconds, with a 35-inch minimum, so check her height. If lines run long, drop it so you reach the hub in time.",["The Barnstormer","barnstormer"])
+    {s:"18:45",e:"19:40",h:"Mickey on Main Street",items:[
+      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. Ending on Main Street puts you a short walk from the hub for the fireworks.",["Mickey at Town Square Theater","town square theater"])
     ]},
     {s:"19:40",e:"22:00",h:"Fireworks",items:[
-      it("Claim a central hub spot for the 8:00 PM Happily Ever After fireworks","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app. It’s a short walk from Storybook Circus.",null,["Castle hub","cinderella castle",[28.41877,-81.58119]]),
-      it("Use the last hour for repeat rides if lines are short","tip","added","Waits often drop after the fireworks. The park is open until 10:00 PM.")
+      it("Claim a central hub spot for the 8:00 PM Happily Ever After fireworks","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app. It’s a short walk from Main Street.",null,["Hub: Happily Ever After","cinderella castle",[28.41877,-81.58119]]),
+      it("Use the last hour for repeat rides if lines are short","tip","added","Waits often drop after the fireworks. The park is open until 10:00 PM. Dumbo lit up at night is a good repeat."),
     ]}
   ],
   skips:[
@@ -427,11 +431,12 @@ const DAYS=[
     "It’s the Wednesday before Thanksgiving. Don’t count on Seven Dwarfs staying under 60 minutes, even at opening."
   ],
   why:[
-    "East to west in one pass: Seven Dwarfs and Belle at the back of Fantasyland, Pete’s Silly Sideshow in Storybook Circus, then a single walk across the park before the parade.",
-    "Buzz Lightyear moved to Nov 23, where it sits next to the PeopleMover. Under the Sea and Pooh were already on Nov 23.",
-    "The afternoon stays in Liberty Square and Adventureland. Your old plan finished with Fantasyland re-rides, which meant walking back east against party-ticket crowds at 4:00 PM.",
-    "The last hour is now on the west side: Peter Pan’s Flight is the Fantasyland ride closest to Adventureland, and Jungle Cruise is right there.",
-    "The parade is the longest stretch with no lines, and waits elsewhere often drop while it runs. Skipping it is the easiest way to add ride time. Your call."
+    "East to west in one pass. Seven Dwarfs and Belle are neighbors at the back of Fantasyland, and Pete’s Silly Sideshow is the last stop on the east side.",
+    "The railroad is your ride west, from Storybook Circus to Main Street. It saves the long walk back toward the castle and counts as a ride.",
+    "You cross the park once, before the 2:00 parade. After that the afternoon stays in Liberty Square and Adventureland.",
+    "You enter Adventureland from the Frontierland side, so you work through it in one direction: Swiss Family Treehouse, Jungle Cruise, Tiki Room, then the Magic Carpets and dinner at the tables beside them.",
+    "Peter Pan’s Flight is the last ride. It’s the Fantasyland ride closest to Adventureland, and it’s on the way to the exit. Your old plan finished with Fantasyland re-rides, which meant walking back east against party-ticket crowds.",
+    "Buzz Lightyear moved to Nov 23, where it sits next to the PeopleMover. The parade is the longest stretch with no lines. Skipping it is the easiest way to add ride time. Your call."
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
@@ -442,25 +447,28 @@ const DAYS=[
       it("Go straight to Seven Dwarfs Mine Train when the park opens at 9:00 AM","ride","call","Thanksgiving-week lines can pass 60 minutes fast. Lightning Lane Multi Pass is the alternative. It has a 38-inch minimum height.",["Seven Dwarfs Mine Train","seven dwarfs mine train"]),
       it("Enchanted Tales with Belle","meet","moved","Was after Pete’s Sideshow. It’s in the same area as Seven Dwarfs, so it comes right after.",["Enchanted Tales with Belle","enchanted tales with belle"])
     ]},
-    {s:"10:45",e:"12:15",h:"Storybook Circus",items:[
-      it("Visit Pete’s Silly Sideshow (Minnie, Daisy, Donald and Goofy in circus outfits)","meet","verify","Reopened June 27 after its refurbishment, per one tracker. Confirm the lineup. It’s the last stop on the east side.",["Pete’s Silly Sideshow","petes silly sideshow"])
+    {s:"10:45",e:"12:15",h:"Storybook Circus, then the train west",items:[
+      it("Visit Pete’s Silly Sideshow (Minnie, Daisy, Donald and Goofy in circus outfits)","meet","verify","Reopened June 27 after its refurbishment, per one tracker. Confirm the lineup. It’s the last stop on the east side.",["Pete’s Silly Sideshow","petes silly sideshow"]),
+      it("Ride the Walt Disney World Railroad from Storybook Circus to Main Street","ride","moved","Was a separate ride on Nov 23. Here it’s your transport west, about 5 minutes. Shuttle only, and the Frontierland station is closed for construction.",["Walt Disney World Railroad","walt disney world railroad"])
     ]},
-    {s:"12:15",e:"13:30",h:"Cross the park, then lunch",items:[
-      it("Walk west to Liberty Square before the 2:00 PM parade closes the hub","tip","added","This is your one big walk of the day. Do it now, not after 2:00."),
+    {s:"12:15",e:"13:30",h:"Walk to Liberty Square for lunch",items:[
+      it("Walk from Main Street to Liberty Square before the 2:00 PM parade closes the hub","tip","added","This is your one big walk of the day. Do it now, not after 2:00."),
       it("Eat in the outdoor seating by Columbia Harbour House, or at the picnic tables behind Ye Olde Christmas Shoppe","meal","","Both are in Liberty Square. Packed in Davenport.",null,["Liberty Square","liberty tree tavern|columbia harbour house"])
     ]},
     {s:"13:30",e:"14:45",h:"Parade",items:[
-      it("Watch the 2:00 PM Festival of Fantasy Parade from the Frontierland walkway","show","call","2:00 PM matches nearby dates. Frontierland is a construction zone, so check your viewing spot. It’s the longest stretch with no lines, so skipping it is the easiest way to add ride time.")
+      it("Watch the 2:00 PM Festival of Fantasy Parade from the Frontierland walkway","show","call","2:00 PM matches nearby dates. Frontierland is a construction zone, so check your viewing spot. It’s the longest stretch with no lines, so skipping it is the easiest way to add ride time.",null,["Festival of Fantasy Parade","festival of fantasy parade"],0)
     ]},
-    {s:"14:45",e:"16:15",h:"Adventureland",items:[
+    {s:"14:45",e:"16:15",h:"Adventureland, west to east",items:[
+      it("Explore the Swiss Family Treehouse","walk","moved","Was after Jungle Cruise. It’s on the west side, where you enter Adventureland.",["Swiss Family Treehouse","swiss family treehouse"]),
       it("Ride Jungle Cruise with the “Jingle Cruise” holiday overlay","ride","","The holiday version runs Nov 3 – Jan 4.",["Jungle Cruise","jungle cruise"]),
-      it("Watch Walt Disney’s Enchanted Tiki Room","show","","",["Enchanted Tiki Room","enchanted tiki room"]),
-      it("Explore the Swiss Family Treehouse","walk","","",["Swiss Family Treehouse","swiss family treehouse"])
+      it("Watch Walt Disney’s Enchanted Tiki Room","show","","",["Enchanted Tiki Room","enchanted tiki room"])
     ]},
-    {s:"16:15",e:"18:00",h:"Last hour on the west side",items:[
-      it("Ride Peter Pan’s Flight again","ride","moved","Replaces the Fantasyland re-rides. It’s the Fantasyland ride closest to Adventureland.",["Peter Pan’s Flight","peter pans flight"]),
-      it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse, at about 5:00 PM","meal","added","Day guests have to be out by 6:00 PM, so dinner is in the park today. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"]),
-      it("Re-ride Jungle Cruise if the line is short","ride","","Be out by 6:00 PM.",["Jungle Cruise","jungle cruise"])
+    {s:"16:15",e:"17:00",h:"Dinner and the carpets",items:[
+      it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse, at about 4:30 PM","meal","added","Day guests have to be out by 6:00 PM, so dinner is in the park today. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"]),
+      it("Ride The Magic Carpets of Aladdin if the line is short","ride","added","Not in your original plan. It’s right by the dinner tables.",["The Magic Carpets of Aladdin","magic carpets of aladdin"])
+    ]},
+    {s:"17:00",e:"18:00",h:"Last ride on the way out",items:[
+      it("Ride Peter Pan’s Flight again","ride","moved","Replaces the Fantasyland re-rides. It’s the Fantasyland ride closest to Adventureland and on the way to the exit. Be out by 6:00 PM.",["Peter Pan’s Flight","peter pans flight"])
     ]}
   ],
   skips:[
@@ -580,9 +588,9 @@ const CHANGED=[
   ["DINOSAUR is closed for good","DinoLand U.S.A. shut on Feb 1, 2026, so it’s off your skip list. Tropical Americas is due in 2027."],
   ["Mickey and Minnie at Adventurers Outpost","Holiday outfits are reported from Nov 13, not safari ones."],
   ["Nov 21 now runs as one sweep","Pandora, then Africa (Safari and Gorilla Falls back to back), Lion King, then east: Mickey and Minnie, Maharajah and Nemo, then dusk at the Tree of Life. Adventurers Outpost is near the bridge to Asia, so Mickey moved onto that walk. Nemo moved from 3:30 to 4:30 to make it fit. Bluey’s Wild World is now an extra."],
-  ["Nov 23 stays in one area at a time","Fantasyland all morning (PhilharMagic moved in), Tomorrowland over lunch and the parade (Buzz moved in from Nov 25), then one hub crossing to the new dress-up block. The Barnstormer and Dumbo are one Storybook Circus visit in the evening."],
+  ["Nov 23 now runs without backtracking","Fantasyland west to east (small world moved next to Peter Pan’s Flight), then Storybook Circus (Barnstormer and Dumbo moved in), Tomorrowland (Buzz moved in from Nov 25), the dress-up, then the Carrousel, Magic Carpets, Mickey and the hub. Measured straight-line walking dropped by about 640 meters."],
   ["Character dress-up added on Nov 23","Bibbidi Bobbidi Boutique at about 3:00 PM, inside your 1:30–4:30 window. Princess Fairytale Hall and Mickey moved to right after, so she meets them in costume."],
-  ["Nov 25 now goes east to west","Seven Dwarfs and Belle, then Pete’s Sideshow, then one walk across the park before the parade, then Adventureland. The final hour is Peter Pan’s Flight and Jungle Cruise on the west side instead of Fantasyland re-rides."]
+  ["Nov 25 now goes east to west","Seven Dwarfs and Belle, then Pete’s Sideshow, then the railroad west, one walk to Liberty Square before the parade, then Adventureland entered from the Frontierland side. Dinner by the Magic Carpets, then Peter Pan’s Flight on the way out."],
 ];
 const CONFIRMED=[
   "Nov 23: Magic Kingdom is 9:00 AM – 10:00 PM and not a party night.",
@@ -806,71 +814,85 @@ function wtSpan(k,q){return q?'<span class="wt" data-p="'+k+'" data-q="'+q+'"></
 
 
 /* ---------- places and map ---------- */
-const geo=store.get("geo",{});   // {ak:{ts,list:[{x,lat,lng}]}, mk:{...}}  positions from ThemeParks.wiki
-const gerr={};
-function flat(a,out=[]){(a||[]).forEach(e=>{out.push(e);if(e.children)flat(e.children,out)});return out}
-async function loadGeo(k){
-  const g=geo[k];
-  if(g&&Date.now()-g.ts<24*3600e3)return;
-  try{
-    const j=await getJSON(API+"/entity/"+PARKS[k].id+"/children");
-    const list=flat(j.children).map(e=>{
-      const l=e.location||{},lat=l.latitude!=null?l.latitude:l.lat,lng=l.longitude!=null?l.longitude:l.lng;
-      return {x:norm(e.name||""),lat,lng};
-    }).filter(e=>e.x&&typeof e.lat==="number"&&typeof e.lng==="number");
-    if(list.length){geo[k]={ts:Date.now(),list};delete gerr[k];store.set("geo",geo)}
-    else gerr[k]="The data service sent no positions."
-  }catch(e){gerr[k]="Couldn’t load stop positions. You may be offline."}
-}
-function refreshGeo(){
-  return Promise.all(Object.keys(PARKS).map(loadGeo)).then(()=>{
-    if(state.tab==="plan")paintWalk();
-    if(state.tab==="map"){paintLegs();drawMap()}
-  });
-}
-function placeFor(k,spec){
-  if(!spec)return null;
-  const list=geo[k]&&geo[k].list;
-  if(list){for(const part of String(spec[1]).split("|")){const e=list.find(x=>x.x.includes(part));if(e)return {name:spec[0],lat:e.lat,lng:e.lng}}}
-  return spec[2]?{name:spec[0],lat:spec[2][0],lng:spec[2][1]}:null;
-}
+// Fixed positions for every stop in the plan, so the map always matches the itinerary.
+// Third value 1 = estimated from the park layout (within roughly 50 m). The others come from a park GPS list and ride listings.
+const dms=(d,m,s)=>d+m/60+s/3600;
+const X=(a,b)=>[dms(...a),-dms(...b),0];
+const PLACES={
+  // Animal Kingdom
+  "Na’vi River Journey":[28.35810,-81.59320,1],
+  "Kilimanjaro Safaris":[28.36083,-81.59361,0],
+  "Gorilla Falls Exploration Trail":X([28,21,36.59],[81,35,31.48]),
+  "Festival of the Lion King":[28.35905,-81.59235,1],
+  "Mickey and Minnie at Adventurers Outpost":[28.35800,-81.59010,1],
+  "Maharajah Jungle Trek":X([28,21,34.46],[81,35,19.04]),
+  "Finding Nemo show":X([28,21,26.70],[81,35,15.21]),
+  "Pandora":[28.35820,-81.59260,1],
+  "Tree of Life Awakenings":X([28,21,27.84],[81,35,25.65]),
+  // Magic Kingdom
+  "Peter Pan’s Flight":X([28,25,13.13],[81,34,55.11]),
+  "it’s a small world":X([28,25,13.59],[81,34,55.63]),
+  "Mickey’s PhilharMagic":[28.42055,-81.58160,1],
+  "Winnie the Pooh":X([28,25,12.41],[81,34,48.87]),
+  "Under the Sea":X([28,25,16.77],[81,34,46.78]),
+  "The Barnstormer":[28.42070,-81.57860,1],
+  "Dumbo the Flying Elephant":X([28,25,13.16],[81,34,43.85]),
+  "Buzz Lightyear’s Space Ranger Spin":[28.41900,-81.57960,1],
+  "PeopleMover":[28.41885,-81.57990,1],
+  "Bibbidi Bobbidi Boutique":[28.42010,-81.58125,1],
+  "Princess Fairytale Hall":[28.41984,-81.58096,1],
+  "Prince Charming Regal Carrousel":X([28,25,13.15],[81,34,52.92]),
+  "The Magic Carpets of Aladdin":X([28,25,6.36],[81,35,0.54]),
+  "Mickey at Town Square Theater":[28.41665,-81.58090,1],
+  "Hub: Happily Ever After":X([28,25,7.56],[81,34,52.27]),
+  "Seven Dwarfs Mine Train":[28.42067,-81.58002,0],
+  "Enchanted Tales with Belle":X([28,25,16.04],[81,34,51.92]),
+  "Pete’s Silly Sideshow":[28.42010,-81.57850,1],
+  "Walt Disney World Railroad":[28.42035,-81.57830,1],       // boarding at the Storybook Circus station
+  "Festival of Fantasy Parade":[28.42020,-81.58380,1],
+  "Swiss Family Treehouse":[28.41775,-81.58405,1],
+  "Jungle Cruise":X([28,25,4.68],[81,35,0.61]),
+  "Enchanted Tiki Room":[28.41850,-81.58360,1]
+};
+const EXITS={"Walt Disney World Railroad":{lat:28.41640,lng:-81.58135,label:"Main Street station"}};   // where the train drops you
+const ENTRANCE={ak:{lat:dms(28,21,18.50),lng:-dms(81,35,24.25)},mk:{lat:28.41620,lng:-81.58130}};
+const SN={};
 function dayStops(day){
   const stops=[],missing=[];
-  day.blocks.forEach(b=>b.items.forEach(x=>{
-    if(x.f==="removed")return;
-    const spec=x.g||x.w;if(!spec)return;
-    const p=placeFor(day.pk,spec);
+  day.blocks.forEach((b,bi)=>b.items.forEach((x,ii)=>{
+    if(x.f==="removed"||x.k==="meal"||x.k==="tip")return;   // rest stops and tips stay off the map
+    const spec=x.w||x.g;if(!spec)return;
+    const p=PLACES[spec[0]];
     if(!p){if(!missing.includes(spec[0]))missing.push(spec[0]);return}
-    const last=stops[stops.length-1];
-    if(last&&last.name===p.name)return;
-    stops.push({name:p.name,lat:p.lat,lng:p.lng,time:b.s});
+    stops.push({name:spec[0],lat:p[0],lng:p[1],approx:!!p[2],exit:EXITS[spec[0]]||null,time:b.s,bi,ii});
   }));
   return {stops,missing};
 }
-function legsOf(stops){
-  const out=[];
-  for(let i=1;i<stops.length;i++){
-    const m=dist(stops[i-1],stops[i])*PATH_FACTOR;
-    out.push({m,min:Math.max(1,Math.round(m/WALK_MS/60))});
-  }
-  return out;
+function stopNums(day){   // item position in the plan -> pin number, the same numbers the map uses
+  if(!SN[day.id]){const m={};dayStops(day).stops.forEach((s,i)=>{m[s.bi+":"+s.ii]=i+1});SN[day.id]=m}
+  return SN[day.id];
+}
+function legsOf(day,stops){   // walking to each stop, starting at the park entrance
+  return stops.map((s,i)=>{
+    const from=i?(stops[i-1].exit||stops[i-1]):ENTRANCE[day.pk];
+    const m=dist(from,s)*PATH_FACTOR;
+    return {m,min:Math.max(1,Math.round(m/WALK_MS/60)),fromTrain:!!(i&&stops[i-1].exit)};
+  });
 }
 function paintWalk(){
   const el=$("#walkline");if(!el)return;
-  const {stops,missing}=dayStops(DAYS[state.day]);
-  if(stops.length<2){el.textContent=gerr[DAYS[state.day].pk]||"";return}
-  const lg=legsOf(stops),m=lg.reduce((a,l)=>a+l.m,0),min=lg.reduce((a,l)=>a+l.min,0);
-  el.textContent="Walking today: about "+min+" min ("+(m/1609.34).toFixed(1)+" mi), between "+stops.length+" mapped stops"+(missing.length?"; "+missing.length+" have no map position":"")+". Straight-line estimate at stroller pace.";
+  const day=DAYS[state.day],{stops}=dayStops(day);
+  if(!stops.length){el.textContent="";return}
+  const lg=legsOf(day,stops),m=lg.reduce((a,l)=>a+l.m,0),min=lg.reduce((a,l)=>a+l.min,0);
+  el.textContent="Walking today: about "+min+" min ("+(m/1609.34).toFixed(1)+" mi) from the gate through "+stops.length+" numbered stops. Straight-line estimate at stroller pace, so real paths run longer.";
 }
 function paintLegs(){
   const el=$("#legs");if(!el)return;
-  const day=DAYS[state.day],{stops,missing}=dayStops(day);
-  if(!stops.length){el.innerHTML='<p class="note">'+(gerr[day.pk]||"Stop positions are loading.")+' The map still shows the park.</p>';return}
-  const lg=legsOf(stops),total=lg.reduce((a,l)=>a+l.min,0);
-  el.innerHTML='<ol class="legs">'+stops.map((s,i)=>'<li><b>'+(i+1)+'. '+s.name+'</b><span class="meta">'+fmt(s.time)
-    +(i?". "+fmtDist(lg[i-1].m)+", about "+lg[i-1].min+" min from the last stop":"")+'</span></li>').join("")+'</ol>'
-    +'<p class="note">About '+total+' min of walking in total. Straight lines, so real paths run longer.</p>'
-    +(missing.length?'<p class="note">No map position for: '+missing.join(", ")+'.</p>':"");
+  const day=DAYS[state.day],{stops}=dayStops(day);
+  const lg=legsOf(day,stops),total=lg.reduce((a,l)=>a+l.min,0);
+  el.innerHTML='<ol class="legs">'+stops.map((s,i)=>'<li><b>'+(i+1)+'. '+s.name+(s.approx?' <span class="approx" title="Position estimated">≈</span>':"")+'</b><span class="meta">'+fmt(s.time)
+    +". "+fmtDist(lg[i].m)+", about "+lg[i].min+" min from "+(i?(lg[i].fromTrain?"the "+stops[i-1].exit.label:"the last stop"):"the park entrance")+'</span></li>').join("")+'</ol>'
+    +'<p class="note">About '+total+' min of walking in total. Meals and tips aren’t on the map. ≈ means the position is estimated from the park layout.</p>';
 }
 let mapObj=null,mapLayer=null,mapFitted=false;
 function loadLeaflet(){
@@ -885,7 +907,7 @@ function loadLeaflet(){
 }
 function mapHTML(){
   const day=DAYS[state.day];
-  return '<section class="sec"><h1>Map</h1><p>'+day.park+', with your stops in order. Pin numbers match the list below.</p>'
+  return '<section class="sec"><h1>Map</h1><p>'+day.park+', in the same order as the Plan tab. The pin numbers match the numbers on each stop in the plan. Meals and rest stops aren’t shown.</p>'
     +'<div id="map" class="map" role="region" aria-label="Map of '+day.park+'"><p class="note" style="padding:12px">Loading map...</p></div>'
     +'<div class="btns"><button type="button" class="btn" data-act="mlocate">Show me on the map</button>'
     +'<button type="button" class="btn" data-act="mfit">Fit all stops</button></div>'
@@ -895,7 +917,6 @@ function mapHTML(){
 async function initMap(){
   const day=DAYS[state.day],k=day.pk;
   paintLegs();
-  loadGeo(k).then(()=>{paintLegs();drawMap()});
   try{await loadLeaflet()}
   catch(e){const el=$("#map");if(el)el.innerHTML='<p class="err" style="margin:0">The map needs a connection. The walking list below still works.</p>';return}
   const el=$("#map");
@@ -912,12 +933,15 @@ function drawMap(){
   if(!mapObj||state.tab!=="map")return;
   if(mapLayer)mapLayer.remove();
   mapLayer=L.layerGroup().addTo(mapObj);
-  const day=DAYS[state.day],{stops}=dayStops(day);
+  const day=DAYS[state.day],{stops}=dayStops(day),gate=ENTRANCE[day.pk];
   const col=(getComputedStyle(document.body).getPropertyValue("--c")||"#1F7A4D").trim();
-  if(stops.length>1)L.polyline(stops.map(s=>[s.lat,s.lng]),{color:col,weight:3,opacity:.75,dashArray:"6 8"}).addTo(mapLayer);
+  const route=[[gate.lat,gate.lng]];
+  stops.forEach(s=>{route.push([s.lat,s.lng]);if(s.exit)route.push([s.exit.lat,s.exit.lng])});
+  if(route.length>1)L.polyline(route,{color:col,weight:3,opacity:.75,dashArray:"6 8"}).addTo(mapLayer);
+  L.circleMarker([gate.lat,gate.lng],{radius:6,color:"#fff",weight:2,fillColor:col,fillOpacity:1}).bindTooltip("Entrance",{permanent:true,direction:"bottom",offset:[0,6]}).addTo(mapLayer);
   stops.forEach((s,i)=>{
     L.marker([s.lat,s.lng],{icon:L.divIcon({className:"pin",html:"<span>"+(i+1)+"</span>",iconSize:[28,28],iconAnchor:[14,14]}),title:s.name})
-      .bindPopup("<b>"+(i+1)+". "+s.name+"</b><br>"+fmt(s.time)).addTo(mapLayer);
+      .bindPopup("<b>"+(i+1)+". "+s.name+"</b><br>"+fmt(s.time)+(s.approx?"<br>Position estimated":"")).addTo(mapLayer);
   });
   rows.forEach(r=>{
     L.circleMarker([r.lat,r.lng],{radius:8,color:"#fff",weight:2,fillColor:"#17202B",fillOpacity:1})
@@ -927,7 +951,7 @@ function drawMap(){
     L.circleMarker([lastPos.lat,lastPos.lng],{radius:8,color:"#fff",weight:2,fillColor:"#2563EB",fillOpacity:1})
       .bindTooltip("You",{permanent:true,direction:"top",offset:[0,-8]}).addTo(mapLayer);
   }
-  if(!mapFitted&&stops.length){mapFitted=true;mapObj.fitBounds(L.latLngBounds(stops.map(s=>[s.lat,s.lng])),{padding:[30,30],maxZoom:17})}
+  if(!mapFitted){mapFitted=true;mapObj.fitBounds(L.latLngBounds(route),{padding:[30,30],maxZoom:17})}
 }
 
 /* ---------- group location sharing (Supabase) ---------- */
@@ -1016,7 +1040,8 @@ function itemHTML(day,bi,ii,x){
   const badge=x.f?'<span class="badge b-'+x.f+'">'+BADGE[x.f]+'</span>':"";
   const ico=x.k?'<span class="ico" aria-hidden="true">'+ICON[x.k]+'</span>':"";
   const note=x.n?'<p class="note">'+x.n+'</p>':"";
-  const tx=extra=>'<span class="tx"><span class="ttl">'+ico+x.t+'</span>'+badge+(x.f==="removed"?"":wtSpan(day.pk,x.w&&x.w[1]))+note+(extra||"")+'</span>';
+  const nn=stopNums(day)[bi+":"+ii],num=nn?'<span class="snum" title="Map stop '+nn+'">'+nn+'</span>':"";
+  const tx=extra=>'<span class="tx"><span class="ttl">'+num+ico+x.t+'</span>'+badge+(x.f==="removed"?"":wtSpan(day.pk,x.w&&x.w[1]))+note+(extra||"")+'</span>';
   if(x.f==="removed")return '<li class="it rm"><span class="x" aria-hidden="true">✕</span>'+tx()+'</li>';
   const rk=rkOf(day.pk,x);
   if(rk)return '<li class="it ckit">'+tx(ckHTML(rk))+'</li>';
@@ -1299,16 +1324,15 @@ const MEALS=[
  {id:"mon",h:"Mon Nov 23, Magic Kingdom",rows:[
   {t:"7:15 AM",m:"Breakfast",w:"In the car, or on a Town Square bench once you’re in",f:"Overnight oats or yogurt, a hard-boiled egg, a banana and a granola bar.",p:1},
   {t:"10:30 AM",m:"Snack",w:"A bench in Fantasyland, between rides",f:"Applesauce pouch and a cheese stick, kept cold.",p:1},
-  {t:"12:15 PM",m:"Lunch",w:"Tomorrowland Terrace tables, or the Hub Lawn",f:"Sandwiches (nut-free if you prefer), grapes, bell pepper strips and a granola bar.",p:1},
+  {t:"1:00 PM",m:"Lunch",w:"The tables near Pete’s Silly Sideshow in Storybook Circus",f:"Sandwiches (nut-free if you prefer), grapes, bell pepper strips and a granola bar.",p:1},
   {t:"2:30 PM",m:"Snack before the dress-up",w:"Tomorrowland, before you cross the hub",f:"Fruit and crackers. Skip anything sticky or messy before the makeover.",p:1},
-  {t:"5:45 PM",m:"Dinner",w:"The Hub Lawn by the castle. Liberty Square’s outdoor seating is the fallback.",f:"Wraps with hummus, veggie sticks and a piece of fruit. Eat early, since the next stop is Storybook Circus.",p:1}
+  {t:"6:05 PM",m:"Dinner",w:"The tables by the Magic Carpets in Adventureland",f:"Wraps with hummus, veggie sticks and a piece of fruit. The hub fills up before the fireworks, so these tables are calmer.",p:1}
  ]},
  {id:"wed",h:"Wed Nov 25, Magic Kingdom",rows:[
   {t:"7:15 AM",m:"Breakfast",w:"In the car, or on a Town Square bench once you’re in",f:"Yogurt or overnight oats, a hard-boiled egg and a banana.",p:1},
   {t:"10:15 AM",m:"Snack",w:"Tables near Pete’s Silly Sideshow in Storybook Circus",f:"Clementine and a granola bar.",p:1},
   {t:"12:30 PM",m:"Lunch",w:"Liberty Square, in the outdoor seating by Columbia Harbour House or the picnic tables behind Ye Olde Christmas Shoppe",f:"Sandwiches or wraps, cucumber slices, grapes and crackers.",p:1},
-  {t:"3:30 PM",m:"Snack",w:"Tables by the Magic Carpets in Adventureland",f:"Pretzels and an apple.",p:1},
-  {t:"5:00 PM",m:"Dinner",w:"The same Adventureland tables, by the Magic Carpets and the Swiss Family Treehouse",f:"Pasta salad or wraps with veggie sticks and fruit. Day guests have to be out by 6:00 PM, so eat in the park.",p:1}
+  {t:"4:30 PM",m:"Dinner",w:"The tables by the Magic Carpets and the Swiss Family Treehouse in Adventureland",f:"Pasta salad or wraps with veggie sticks and fruit. Day guests have to be out by 6:00 PM, so eat in the park.",p:1}
  ]}
 ];
 const PACK_TIPS=[
@@ -1338,14 +1362,14 @@ const SEATING={
  ],
  mk:[
   {l:"Main Street, U.S.A.",n:"Town Square and Main Street benches",t:"Open air",d:"Good for breakfast. Main Street is reported to open about an hour before the park does."},
-  {l:"The hub",n:"The Hub Lawn",t:"Artificial grass, no shade",d:"Two patches beside Tomorrowland Terrace and Crystal Palace, with the castle view. It gets busy before the fireworks."},
+  {l:"The hub",n:"The Hub Lawn",t:"Artificial grass, no shade",d:"Two patches beside Tomorrowland Terrace and Crystal Palace, with the castle view. It gets busy before the fireworks, so it’s not in your plan, but it’s there if you need a seat."},
   {l:"Tomorrowland",n:"Tomorrowland Terrace tables",t:"Covered",d:"Lots of covered tables near the hub. When the counter is serving, buy a drink or use the lawn instead. Sections can be roped off in the evening for fireworks dessert parties."},
   {l:"Tomorrowland",n:"Cosmic Ray’s covered patio",t:"Covered",d:"On the side nearest the Tomorrowland Speedway. It’s restaurant seating, so buy a drink."},
   {l:"Tomorrowland",n:"The Lunching Pad seating",t:"Open air",d:"A snack stand with outdoor tables."},
   {l:"Storybook Circus",n:"Tables near Pete’s Silly Sideshow",t:"Open air",d:"Quieter, with picnic tables, a spot by the water and restrooms close by."},
   {l:"Fantasyland",n:"Storybook Treats seating",t:"Open air",d:"A small outdoor area. There are also plenty of benches and spots around Fantasyland."},
   {l:"Fantasyland",n:"Gaston’s Tavern seating",t:"Indoor and outdoor",d:"Seating inside and out. It’s restaurant seating, so buy a drink."},
-  {l:"Adventureland",n:"Tables by the Magic Carpets and Swiss Family Treehouse",t:"Open air",d:"Tables and bench walls. Your Nov 25 dinner spot."},
+  {l:"Adventureland",n:"Tables by the Magic Carpets and Swiss Family Treehouse",t:"Open air",d:"Tables and bench walls. Your dinner spot on Nov 23 and Nov 25."},
   {l:"Adventureland",n:"Tortuga Tavern seating",t:"Covered",d:"Covered seating, but it runs seasonally. Use it only when it isn’t serving."},
   {l:"Liberty Square",n:"Outdoor seating by Columbia Harbour House and Liberty Square Market",t:"Open air",d:"Open to guests, though there aren’t many tables."},
   {l:"Liberty Square",n:"Picnic tables behind Ye Olde Christmas Shoppe and the Portrait Gallery",t:"Open air",d:"A quiet spot out of the way. Disney has pointed guests to these before."},
@@ -1514,7 +1538,7 @@ document.addEventListener("click",e=>{
       gdSet("shopx",rand(8),JSON.stringify({t:t.slice(0,80),done:false,by:myName()}));render();
     }
     else if(act==="sxdel"){gdDel("shopx",a.dataset.id);render()}
-    else if(act==="mfit"){const {stops}=dayStops(DAYS[state.day]);if(mapObj&&stops.length)mapObj.fitBounds(L.latLngBounds(stops.map(s=>[s.lat,s.lng])),{padding:[30,30],maxZoom:17});else toast("No stop positions yet")}
+    else if(act==="mfit"){const {stops}=dayStops(DAYS[state.day]);if(mapObj&&stops.length)mapObj.fitBounds(L.latLngBounds(stops.map(s=>[s.lat,s.lng])),{padding:[30,30],maxZoom:17})}
     else if(act==="mlocate"){
       if(!navigator.geolocation)return toast("This browser can’t read location");
       navigator.geolocation.getCurrentPosition(p=>{lastPos={lat:p.coords.latitude,lng:p.coords.longitude,acc:Math.round(p.coords.accuracy)};drawMap();if(mapObj)mapObj.setView([lastPos.lat,lastPos.lng],Math.max(mapObj.getZoom(),17))},()=>toast("Location is blocked"),{enableHighAccuracy:true,timeout:15000});
@@ -1583,7 +1607,6 @@ render();
 const nowEl=$("#now");
 if(nowEl&&state.tab==="plan")nowEl.scrollIntoView({block:"center"});
 refreshWaits();
-refreshGeo();
 if(grouped()){syncPeople();gdSync()}
 if(G.share&&G.code&&G.me&&gU()&&gK())startShare();
 setInterval(()=>{
