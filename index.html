@@ -20,7 +20,7 @@
   --ink:#17202B; --muted:#56616E; --paper:#F2F5F4; --card:#FFFFFF; --line:#D5DCDA;
   --chg:#8F4300; --chgbg:#FDEFD9; --ver:#1B45B8; --verbg:#E6EDFD;
   --add:#0B6B45; --addbg:#DDF3E8; --rem:#9B1239; --rembg:#FCE4EA; --call:#5B2A9E; --callbg:#EFE6FB;
-  --onc:#fff;
+  --onc:#fff; --hist:#0B6BA8;
 }
 .t-ak{--c:#1F7A4D}
 .t-mk1{--c:#3347B8}
@@ -30,7 +30,7 @@
     --ink:#E9EFF1; --muted:#A5B0BA; --paper:#0F1518; --card:#182024; --line:#2B363B;
     --chg:#FFC27A; --chgbg:#3A2A12; --ver:#9DB7FF; --verbg:#1B2745;
     --add:#7BE0B1; --addbg:#12342A; --rem:#FF9DB5; --rembg:#3E1623; --call:#CDAEFF; --callbg:#2C1D47;
-    --onc:#0B1210;
+    --onc:#0B1210; --hist:#7CC4FF;
   }
   .t-ak{--c:#46C08A}
   .t-mk1{--c:#8C9DFF}
@@ -237,10 +237,53 @@ h3.land{font-size:15px;color:var(--muted);margin:14px 0 2px;font-weight:700}
 .snum{display:inline-grid;place-content:center;min-width:22px;height:22px;border-radius:50%;background:var(--c);color:var(--onc);font:800 12px/1 ui-rounded,system-ui,sans-serif;margin-right:6px;vertical-align:1px}
 .approx{color:var(--muted);font-weight:700}
 
+
+/* wait-time history */
+.hist{overflow-x:auto;margin:10px -16px 4px;padding:0 16px;-webkit-overflow-scrolling:touch}
+table.ht{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%}
+.ht th,.ht td{padding:7px 7px;text-align:center;white-space:nowrap;border-bottom:1px solid var(--line)}
+.ht thead th{font-size:13px;font-weight:800;vertical-align:bottom;color:var(--muted)}
+.ht thead th small{display:block;font-weight:600;font-size:11px;white-space:normal;line-height:1.15}
+.ht thead th.me{color:var(--c)}
+.ht th:first-child{position:sticky;left:0;z-index:1;background:var(--paper);text-align:left;font-weight:700;white-space:normal;min-width:128px;max-width:150px;line-height:1.2}
+.ht td.h{font-weight:800;border-radius:6px}
+.ht td.na{color:var(--muted);font-size:13px}
+.ht tr.dim td{opacity:.6}
+.ht tr.dim th:first-child{color:var(--muted);font-weight:600}
+.ht .chg{font-weight:800}
+.ht .chg.up{color:var(--rem)}
+.ht .chg.down{color:var(--add)}
+.tg{display:inline-block;width:1.2em;color:var(--c);font-weight:800}
+.spark{width:54px;height:18px;color:var(--c);vertical-align:middle}
+.bars{display:block;width:70px}
+.bars i{display:block;height:6px;border-radius:3px;background:var(--c);margin:2px 0}
+.bars i.b2{background:var(--muted)}
+.b-optional{background:var(--verbg);color:var(--ver)}
+
+
+/* planned and optional stops */
+.pin.opt span{background:var(--call);color:var(--onc);border-style:dashed}
+.snum.opt{background:var(--call);color:var(--onc)}
+.snum.again{padding:0 6px;border-radius:11px;background:transparent;color:var(--c);box-shadow:inset 0 0 0 1.5px var(--c)}
+.snum.opt.again{color:var(--call);box-shadow:inset 0 0 0 1.5px var(--call);background:transparent}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted);margin:10px 0 4px}
+.legend .lg{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-2px}
+.legend .lg.op{background:var(--call);margin-left:6px}
+.legs li.optrow{border-left:3px dashed var(--call);padding-left:10px;margin-left:-13px}
+.legs .skiphint{font-size:13px;font-style:italic}
+
+
+/* past average vs the live wait */
+.histline{display:block;margin-top:4px;font-size:13px;line-height:1.3;color:var(--hist)}
+.histline b{font-weight:800}
+.histline.none{font-style:italic}
+.wrow .wt.on{white-space:nowrap}
+.wrow .wt.on::before{content:"Now ";font-weight:600;opacity:.85}
+
 /* bottom tabs */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(6,1fr);
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(7,1fr);
   background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-.tab{border:0;background:transparent;padding:16px 1px;font-size:13px;font-weight:700;color:var(--muted);border-top:3px solid transparent}
+.tab{border:0;background:transparent;padding:16px 0;font-size:12.5px;font-weight:700;color:var(--muted);border-top:3px solid transparent}
 .tab[aria-current=page]{color:var(--ink);border-top-color:var(--c)}
 
 .toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%);
@@ -266,6 +309,7 @@ h3.land{font-size:15px;color:var(--muted);margin:14px 0 2px;font-weight:700}
   <button class="tab" data-tab="plan" type="button">Plan</button>
   <button class="tab" data-tab="map" type="button">Map</button>
   <button class="tab" data-tab="rides" type="button">Rides</button>
+  <button class="tab" data-tab="trends" type="button">Trends</button>
   <button class="tab" data-tab="meals" type="button">Meals</button>
   <button class="tab" data-tab="group" type="button">Group</button>
   <button class="tab" data-tab="notes" type="button">Notes</button>
@@ -294,20 +338,22 @@ const it=(t,k="",f="",n="",w=null,g=null,ck=1)=>({t,k,f,n,w,g,ck});
 const DAYS=[
 {
   id:"sat",pk:"ak",cls:"t-ak",date:"2026-11-21",dw:"Sat",dn:"21",short:"Animal Kingdom",
-  park:"Disney’s Animal Kingdom",sub:"Animals, shows and shade",
+  park:"Disney’s Animal Kingdom",sub:"Pandora first, then a sweep across the park",
   hours:"8:00 AM – 7:00 PM",hoursNote:"Early Entry at 7:30 AM is for Disney-hotel guests only, so a villa stay doesn’t get it.",
   heads:[
     "The park opens at 8:00 AM, not 8:30. Your plan had the right closing time (7:00 PM).",
     "DinoLand U.S.A. is permanently closed. TriceraTop Spin is gone and so is DINOSAUR.",
-    "Tree of Life Awakenings doesn’t run every night. Check the app for Nov 21 showtimes."
+    "Tree of Life Awakenings doesn’t run every night. Check the app for Nov 21 showtimes.",
+    "This is a full day now. Flight of Passage, Kali River Rapids and the Wildlife Express Train are in. The Safari, the train block and the Maharajah trail are marked Optional, so cut those first if you fall behind.",
+    "Kali River Rapids soaks you. Bring a poncho and a dry change of clothes for her. It’s scheduled for mid-afternoon, the warmest part of the day."
   ],
   why:[
     "One sweep: Pandora, then Africa, then Discovery Island, then Asia, then back to the middle for dusk. You never cross between Africa and Discovery Island twice.",
-    "The Safari and Gorilla Falls are side by side, so they run back to back.",
-    "Lunch at Harambe Market keeps you in Africa for the 2:00 Lion King show.",
-    "Adventurers Outpost (Mickey and Minnie) is on Discovery Island near the bridge to Asia, so it now comes on the walk from Africa to Asia instead of its own trip.",
-    "Nemo moved from 3:30 to 4:30. Shows run through the afternoon, and 4:30 lets Mickey and the Maharajah trail fit in without rushing. Confirm Nov 21’s times in the app.",
-    "Bluey’s Wild World left the day. Its train leaves from Harambe, the far end of the park from Nemo and the Tree of Life. It’s on the Rides tab."
+    "Flight of Passage is first even though riding Na’vi first is about 235 meters shorter. Flight of Passage is the line that grows, and it’s lowest in the first hour, so the extra 5 minutes of walking is worth it.",
+    "The Safari is optional. It and Gorilla Falls are side by side, so if you skip the Safari you simply walk the trail.",
+    "The Wildlife Express Train leaves from Harambe, next to lunch and the Lion King, so the whole Africa side stays together. It’s the only way to Bluey’s Wild World, so the two are one optional block and the first thing to cut.",
+    "From the Lion King to Nemo you have about 100 minutes for Mickey, Maharajah and Kali. That’s tight, so skip the Outpost line if it’s over about 30 minutes. Kali is the last stop before Nemo, about a 4-minute walk away.",
+    "Nemo is at 4:30. Shows run through the afternoon, so confirm Nov 21’s times in the app and shift if needed."
   ],
   blocks:[
     {s:"06:45",e:"08:00",h:"Drive and park",items:[
@@ -315,26 +361,32 @@ const DAYS=[
       it("Eat your packed breakfast in the car on the drive","meal","added","Packed in Davenport the night before."),
       it("Be at the gates by 7:45 AM","","changed","Was 8:15 AM for an 8:30 opening.")
     ]},
-    {s:"08:00",e:"09:30",h:"Pandora at rope drop",items:[
-      it("Ride Na’vi River Journey first","ride","","",["Na’vi River Journey","navi river journey"])
+    {s:"08:00",e:"10:05",h:"Pandora at rope drop",items:[
+      it("Ride Avatar Flight of Passage first","ride","added","On your list now. She’s over the 44-inch minimum. It’s an intense flight simulator with strong motion. Waits are lowest in the first hour. It averaged 57 minutes across the day on Sat Nov 22, 2025 (Trends tab). A Lightning Lane Single Pass is the alternative.",["Avatar Flight of Passage","flight of passage"]),
+      it("Ride Na’vi River Journey second","ride","moved","Was first. It’s a short walk from Flight of Passage, and a calm boat ride after the simulator.",["Na’vi River Journey","navi river journey"])
     ]},
-    {s:"09:30",e:"12:30",h:"Africa, side by side",items:[
-      it("Ride Kilimanjaro Safaris","ride","call","Its waits are usually lowest at opening and the animals are most active early. You could ride it first and Pandora second, and the sweep still works.",["Kilimanjaro Safaris","kilimanjaro safaris"]),
+    {s:"10:05",e:"11:30",h:"Africa, side by side",items:[
+      it("Ride Kilimanjaro Safaris","ride","optional","Skip it if the posted wait is over about 40 minutes, or if you’re behind. The rest of the day works either way. Waits averaged 22 minutes across the Saturday before Thanksgiving week in 2025, and 60 minutes the next week in 2024. See the Trends tab.",["Kilimanjaro Safaris","kilimanjaro safaris"]),
       it("Walk the Gorilla Falls Exploration Trail","walk","moved","Was after Mickey. It’s the walkway next to the Safari, so it now follows it directly.",null,["Gorilla Falls Exploration Trail","gorilla falls"])
     ]},
-    {s:"12:30",e:"13:30",h:"Packed lunch",items:[
-      it("Eat at the shaded seating pavilion near Harambe Market","meal","","The Harambe Fruit Market tables next door are a second option.",null,["Harambe Market","harambe market"])
+    {s:"11:30",e:"12:00",h:"Packed lunch",items:[
+      it("Eat at the shaded seating pavilion near Harambe Market","meal","moved","Earlier than before so the train block fits before the 2:00 show. The Harambe Fruit Market tables next door are a second option.",null,["Harambe Market","harambe market"])
     ]},
-    {s:"13:30",e:"14:45",h:"Lion King, without leaving Africa",items:[
-      it("2:00 PM Festival of the Lion King (air-conditioned)","show","verify","Shows run hourly, 10 AM–4 PM, on nearby dates. Confirm Nov 21 in the app. It’s in Africa, so you don’t move after lunch.",null,["Festival of the Lion King","festival of the lion king"])
+    {s:"12:00",e:"13:45",h:"Wildlife Express Train and Bluey’s Wild World (optional)",items:[
+      it("Ride the Wildlife Express Train from Harambe Station","ride","optional","It’s the only train at Animal Kingdom and the only way to Conservation Station, where Bluey’s Wild World is. It reopened May 26, 2026 with new narration by Robert Irwin. The ride is about 7 minutes each way and there’s no height limit. Lightning Lane isn’t accepted, and since June 2 it’s a standby line, so expect a queue for the train.",["Wildlife Express Train","wildlife express train"]),
+      it("Visit Bluey’s Wild World at Conservation Station","exp","optional","Indoor play and dance with Bluey and Bingo, for young children. It has its own queue, and you need the train both ways. Allow about 90 minutes in total, and skip it if the combined waits pass about 45 minutes or she doesn’t know Bluey. Confirm Conservation Station’s hours in the app.",["Bluey’s Wild World","blueys wild world"])
+    ]},
+    {s:"13:45",e:"14:45",h:"Lion King, without leaving Africa",items:[
+      it("2:00 PM Festival of the Lion King (air-conditioned)","show","verify","Shows run hourly, 10 AM–4 PM, on nearby dates. Confirm Nov 21 in the app. It’s in Africa, so you don’t move after the train. If you skip the train block, take the 1:00 PM show instead and gain an hour in the afternoon.",null,["Festival of the Lion King","festival of the lion king"])
     ]},
     {s:"14:45",e:"15:30",h:"Mickey and Minnie on the way east",items:[
-      it("Meet Mickey and Minnie at Adventurers Outpost","meet","moved","Was after the Safari. It’s on Discovery Island near the bridge to Asia, so you pass it on the way. Midday waits can pass 45 minutes. If the line is long, skip it or come back at the end of the day. Outfits may be holiday-themed from Nov 13, so confirm.",["Mickey and Minnie at Adventurers Outpost","adventurers outpost"])
+      it("Meet Mickey and Minnie at Adventurers Outpost","meet","moved","Was after the Safari. It’s on Discovery Island near the bridge to Asia, so you pass it on the way. Midday waits can pass 45 minutes. If the line is over about 30 minutes, skip it or come back at the end of the day. Outfits may be holiday-themed from Nov 13, so confirm.",[ "Mickey and Minnie at Adventurers Outpost","adventurers outpost"])
     ]},
-    {s:"15:30",e:"16:15",h:"Asia",items:[
-      it("Walk the Maharajah Jungle Trek (tigers)","walk","","Asia is just across the bridge from the Outpost.",["Maharajah Jungle Trek","maharajah jungle trek"])
+    {s:"15:30",e:"16:30",h:"Asia",items:[
+      it("Walk the Maharajah Jungle Trek (tigers)","walk","optional","Asia is just across the bridge from the Outpost. Skip it if you’re running late for Nemo.",["Maharajah Jungle Trek","maharajah jungle trek"]),
+      it("Ride Kali River Rapids","ride","added","On your list now. Minimum 38 inches. It soaks you, so bring a poncho and a dry change of clothes for her. It was one of the shortest waits in the park the week before Thanksgiving week in 2024, at about 7 minutes on average. It’s about a 4-minute walk from the Nemo theater, so it comes last. It has closed for winter maintenance before, so confirm it’s open.",["Kali River Rapids","kali river rapids"])
     ]},
-    {s:"16:15",e:"17:15",h:"Nemo, and the gap TriceraTop Spin left",items:[
+    {s:"16:30",e:"17:15",h:"Nemo, and the gap TriceraTop Spin left",items:[
       it("4:30 PM Finding Nemo: The Big Blue... and Beyond!","show","moved","Was 3:30 PM. Shows have run until 4:30 PM on nearby dates, so confirm Nov 21. The theater is on the former DinoLand side, so allow about 10 minutes from Asia.",null,["Finding Nemo show","finding nemo"]),
       it("Ride TriceraTop Spin in Storybook Circus","ride","removed","Closed in January 2025 and demolished. It was in DinoLand U.S.A., not Storybook Circus.")
     ]},
@@ -343,7 +395,7 @@ const DAYS=[
     ]},
     {s:"17:45",e:"18:30",h:"Pandora after dark",items:[
       it("Walk Pandora as it lights up","walk","added","Sunset is around 5:30 PM. It’s a short walk from the Tree of Life.",null,["Pandora","flight of passage|navi river journey"],0),
-      it("Ride Na’vi River Journey again if the line is short","ride","added","",["Na’vi River Journey","navi river journey"])
+      it("Ride Flight of Passage or Na’vi River Journey again if the line is short","ride","optional","Both lines often drop after dark.",["Na’vi River Journey","navi river journey"])
     ]},
     {s:"18:30",e:"19:00",h:"Tree of Life finale",items:[
       it("Watch Tree of Life Awakenings: Holiday Edition from in front of the Tree of Life","show","verify","Runs about every 10 minutes from dusk to close, so you can walk over from Pandora and catch one.",null,["Tree of Life Awakenings","tree of life awakenings|tree of life|its tough to be a bug"])
@@ -356,19 +408,21 @@ const DAYS=[
 },
 {
   id:"mon",pk:"mk",cls:"t-mk1",date:"2026-11-23",dw:"Mon",dn:"23",short:"Magic Kingdom",
-  park:"Magic Kingdom",sub:"Fantasyland, Tomorrowland, then dress-up",
+  park:"Magic Kingdom",sub:"Fantasyland, Tomorrowland, dress-up, then the castle",
   hours:"9:00 AM – 10:00 PM",hoursNote:"Early Entry is for Disney-hotel guests only, so you queue with everyone else.",
   heads:[
     "Not a Christmas party night. The park stays open to everyone until 10:00 PM, as you noted.",
     "One crowd calendar lists Nov 23 as a day to avoid. It’s the Monday of Thanksgiving week, so rope drop matters.",
-    "The dress-up at about 3:00 PM needs a Bibbidi Bobbidi Boutique reservation. If you can’t get one, skip that block and use the time for rides."
+    "The dress-up at about 3:00 PM needs a Bibbidi Bobbidi Boutique reservation. If you can’t get one, skip that block and use the time for rides.",
+    "Frozen Holiday Surprise is at 6:15 PM at the castle, and Nov 23 is the only day it works. Nov 25 is a party night, so day guests leave at 6:00 PM."
   ],
   why:[
     "Fantasyland runs west to east. Peter Pan’s Flight and it’s a small world are neighbors on the west edge, and Under the Sea is at the east end. Doubling back inside Fantasyland was the biggest waste in the old order.",
     "Storybook Circus (the Barnstormer and Dumbo) is the next stop east, then Tomorrowland, so you never double back. Lunch is at the Storybook Circus tables.",
     "You stay on the east side while the 2:00 parade passes through the hub, then cross once, at about 2:45, to the boutique behind the castle.",
-    "After the dress-up everything is near the castle and hub: the princess hall and the Carrousel next to the boutique, then the Magic Carpets and dinner in Adventureland, Mickey on Main Street, and the hub for the fireworks. Ending at Mickey, then the hub, is the shortest finish.",
-    "Dumbo lit up at night is now an optional repeat after the fireworks. Buzz Lightyear moved here from Nov 25 so it sits next to the PeopleMover."
+    "After the dress-up everything is near the castle and hub. The princess hall and the Carrousel are next to the boutique, then Pirates and the Magic Carpets in Adventureland, then back to the castle for the 6:15 PM show.",
+    "Mickey on Main Street comes after the show, and dinner is on the hub lawn so you keep your spot for the 8:00 PM fireworks.",
+    "Astro Orbiter is optional and costs about 70 meters of walking. Pirates is planned, but skip it if its line is over about 25 minutes so you reach the castle by 6:15."
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
@@ -391,26 +445,31 @@ const DAYS=[
     {s:"13:30",e:"14:45",h:"Tomorrowland while the parade passes",items:[
       it("Stay on this side of the park while the 2:00 PM parade passes through the hub","tip","added","Crossing the hub is slow or blocked from about 2:00 PM until the parade clears."),
       it("Ride Buzz Lightyear’s Space Ranger Spin","ride","moved","Was on Nov 25. It’s in Tomorrowland, next to the PeopleMover. Leave the vehicle joystick untouched so it doesn’t spin. It was refurbished in 2025–26, so confirm it’s running.",["Buzz Lightyear’s Space Ranger Spin","buzz lightyears space ranger spin"]),
+      it("Ride Astro Orbiter","ride","optional","Was not in your plan. It’s between Buzz and the PeopleMover, so it adds about 70 meters. Skip it if you’re running late for the 3:00 PM boutique.",["Astro Orbiter","astro orbiter"]),
       it("Ride the Tomorrowland Transit Authority PeopleMover","ride","","",["PeopleMover","peoplemover"])
     ]},
     {s:"14:45",e:"16:15",h:"Character dress-up",items:[
       it("Cross the hub back to Fantasyland once the parade clears, at about 2:45 PM","tip","added","This is your one crossing of the afternoon."),
       it("Bibbidi Bobbidi Boutique makeover, booked for about 3:00 PM","exp","added","Behind Cinderella Castle, near the Carrousel. For ages 3–12, with a reservation in My Disney Experience. Packages run from about $60 (knight outfit) to $230 or more (gown). Allow 30–60 minutes and check in no earlier than 5 minutes before. Prefer to save the money? Bring a costume from home and skip this block.",null,["Bibbidi Bobbidi Boutique","bibbidi bobbidi boutique"])
     ]},
-    {s:"16:15",e:"17:30",h:"Meet the characters in costume",items:[
+    {s:"16:15",e:"17:15",h:"Meet the characters in costume",items:[
       it("Line up at Princess Fairytale Hall","meet","moved","Was 9:30 AM. It’s a short walk from the boutique, so she arrives dressed up. Your notes say Cinderella and Tiana meet together, with rotating Visiting Princesses next door. Confirm who is there.",["Princess Fairytale Hall","princess fairytale hall"]),
       it("Ride the Prince Charming Regal Carrousel in costume","ride","added","Not in your original plan. It’s a few steps from the boutique, so it costs no extra walking.",["Prince Charming Regal Carrousel","prince charming regal carrousel"])
     ]},
-    {s:"17:30",e:"18:45",h:"Adventureland and dinner",items:[
-      it("Ride The Magic Carpets of Aladdin","ride","added","Not in your original plan. It’s right by the dinner tables, so it costs no extra walking.",["The Magic Carpets of Aladdin","magic carpets of aladdin"]),
-      it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse","meal","moved","Was on the hub grass. These tables are quieter than the hub before the fireworks. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"])
+    {s:"17:15",e:"18:15",h:"Adventureland",items:[
+      it("Ride Pirates of the Caribbean","ride","added","On your list. It’s a short walk from the Magic Carpets. If the line is over about 25 minutes, skip it so you reach the castle by 6:15 PM. It’s a dark ride with a short drop early on.",["Pirates of the Caribbean","pirates of the caribbean"]),
+      it("Ride The Magic Carpets of Aladdin","ride","added","Not in your original plan. It’s the Adventureland ride closest to the hub, so it comes last on your way back.",["The Magic Carpets of Aladdin","magic carpets of aladdin"])
     ]},
-    {s:"18:45",e:"19:40",h:"Mickey on Main Street",items:[
-      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. Ending on Main Street puts you a short walk from the hub for the fireworks.",["Mickey at Town Square Theater","town square theater"])
+    {s:"18:15",e:"18:40",h:"Frozen Holiday Surprise at the castle",items:[
+      it("Watch Frozen Holiday Surprise at 6:15 PM from the hub, facing the castle","show","added","Anna, Elsa, Kristoff and Olaf decorate Cinderella Castle with lights and projections. It starts nightly at 6:15 PM from Nov 8, so no ticket is needed. Get there a few minutes early for a spot.",["Frozen Holiday Surprise","frozen holiday surprise"])
     ]},
-    {s:"19:40",e:"22:00",h:"Fireworks",items:[
-      it("Claim a central hub spot for the 8:00 PM Happily Ever After fireworks","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app. It’s a short walk from Main Street.",null,["Hub: Happily Ever After","cinderella castle",[28.41877,-81.58119]]),
-      it("Use the last hour for repeat rides if lines are short","tip","added","Waits often drop after the fireworks. The park is open until 10:00 PM. Dumbo lit up at night is a good repeat."),
+    {s:"18:40",e:"19:20",h:"Mickey on Main Street",items:[
+      it("Meet Mickey Mouse at Town Square Theater","meet","moved","Was in the evening. It’s a short walk from the castle, and then you walk back to the hub for dinner.",["Mickey at Town Square Theater","town square theater"])
+    ]},
+    {s:"19:20",e:"22:00",h:"Dinner and fireworks",items:[
+      it("Eat your packed dinner on the Hub Lawn and keep your spot","meal","moved","Back on the hub lawn, as in your first plan. It fills up before the fireworks, so claim it early. Packed in Davenport.",null,["Castle hub","cinderella castle",[28.41877,-81.58119]]),
+      it("Watch the 8:00 PM Happily Ever After fireworks from the hub","show","verify","8:00 PM matches nearby dates. Confirm Nov 23 in the app.",null,["Hub: Happily Ever After","cinderella castle",[28.41877,-81.58119]]),
+      it("Use the last hour for repeat rides if lines are short","tip","added","Waits often drop after the fireworks. The park is open until 10:00 PM. Dumbo lit up at night is a good repeat.")
     ]}
   ],
   skips:[
@@ -428,15 +487,17 @@ const DAYS=[
   heads:[
     "Christmas party tonight, so day guests must be out by 6:00 PM. Your note is right.",
     "Party ticket holders can enter from 4:00 PM, so Fantasyland is busier than usual late in the day.",
-    "It’s the Wednesday before Thanksgiving. Don’t count on Seven Dwarfs staying under 60 minutes, even at opening."
+    "It’s the Wednesday before Thanksgiving. Don’t count on Seven Dwarfs staying under 60 minutes, even at opening.",
+    "Frozen Holiday Surprise starts at 6:15 PM, after day guests have to leave. It’s on your Nov 23 plan instead."
   ],
   why:[
     "East to west in one pass. Seven Dwarfs and Belle are neighbors at the back of Fantasyland, and Pete’s Silly Sideshow is the last stop on the east side.",
     "The railroad is your ride west, from Storybook Circus to Main Street. It saves the long walk back toward the castle and counts as a ride.",
+    "Mickey’s Magical Friendship Faire is at the castle stage, which is right on your way from Main Street to Liberty Square, so it adds almost no walking. Check the app for the showtime closest to 12:30.",
     "You cross the park once, before the 2:00 parade. After that the afternoon stays in Liberty Square and Adventureland.",
     "You enter Adventureland from the Frontierland side, so you work through it in one direction: Swiss Family Treehouse, Jungle Cruise, Tiki Room, then the Magic Carpets and dinner at the tables beside them.",
-    "Peter Pan’s Flight is the last ride. It’s the Fantasyland ride closest to Adventureland, and it’s on the way to the exit. Your old plan finished with Fantasyland re-rides, which meant walking back east against party-ticket crowds.",
-    "Buzz Lightyear moved to Nov 23, where it sits next to the PeopleMover. The parade is the longest stretch with no lines. Skipping it is the easiest way to add ride time. Your call."
+    "Peter Pan’s Flight is the last ride. It’s the Fantasyland ride closest to Adventureland, and it’s on the way to the exit. The Hall of Presidents is optional and sits next to your Liberty Square lunch.",
+    "The parade is the longest stretch with no lines. Skipping it is the easiest way to add ride time, and Country Bear Musical Jamboree is the first thing to add in that time."
   ],
   blocks:[
     {s:"07:15",e:"08:30",h:"Drive and transfer",items:[
@@ -445,17 +506,19 @@ const DAYS=[
     ]},
     {s:"08:30",e:"10:45",h:"The back of Fantasyland",items:[
       it("Go straight to Seven Dwarfs Mine Train when the park opens at 9:00 AM","ride","call","Thanksgiving-week lines can pass 60 minutes fast. Lightning Lane Multi Pass is the alternative. It has a 38-inch minimum height.",["Seven Dwarfs Mine Train","seven dwarfs mine train"]),
-      it("Enchanted Tales with Belle","meet","moved","Was after Pete’s Sideshow. It’s in the same area as Seven Dwarfs, so it comes right after.",["Enchanted Tales with Belle","enchanted tales with belle"])
+      it("Enchanted Tales with Belle","meet","moved","Was after Pete’s Sideshow. It’s in the same area as Seven Dwarfs, so it comes right after. It’s a live, interactive story meet, not a ride.",["Enchanted Tales with Belle","enchanted tales with belle"])
     ]},
     {s:"10:45",e:"12:15",h:"Storybook Circus, then the train west",items:[
       it("Visit Pete’s Silly Sideshow (Minnie, Daisy, Donald and Goofy in circus outfits)","meet","verify","Reopened June 27 after its refurbishment, per one tracker. Confirm the lineup. It’s the last stop on the east side.",["Pete’s Silly Sideshow","petes silly sideshow"]),
       it("Ride the Walt Disney World Railroad from Storybook Circus to Main Street","ride","moved","Was a separate ride on Nov 23. Here it’s your transport west, about 5 minutes. Shuttle only, and the Frontierland station is closed for construction.",["Walt Disney World Railroad","walt disney world railroad"])
     ]},
-    {s:"12:15",e:"13:30",h:"Walk to Liberty Square for lunch",items:[
-      it("Walk from Main Street to Liberty Square before the 2:00 PM parade closes the hub","tip","added","This is your one big walk of the day. Do it now, not after 2:00."),
-      it("Eat in the outdoor seating by Columbia Harbour House, or at the picnic tables behind Ye Olde Christmas Shoppe","meal","","Both are in Liberty Square. Packed in Davenport.",null,["Liberty Square","liberty tree tavern|columbia harbour house"])
+    {s:"12:15",e:"13:45",h:"Castle show, then lunch in Liberty Square",items:[
+      it("Walk from Main Street to the castle and Liberty Square before the 2:00 PM parade closes the hub","tip","added","This is your one big walk of the day. Do it now, not after 2:00."),
+      it("Watch Mickey’s Magical Friendship Faire at the castle stage","show","added","On your list. It’s a daytime show, usually five times a day, with times that change. Pick the one nearest 12:30 in the app, and shift lunch around it.",["Mickey’s Magical Friendship Faire","mickeys magical friendship faire"]),
+      it("Eat in the outdoor seating by Columbia Harbour House, or at the picnic tables behind Ye Olde Christmas Shoppe","meal","","Both are in Liberty Square. Packed in Davenport.",null,["Liberty Square","liberty tree tavern|columbia harbour house"]),
+      it("Watch The Hall of Presidents","show","optional","Was not in your plan. It’s next to your lunch tables, about 25 minutes, indoors and air-conditioned. Skip it if you’re behind for the parade.",["The Hall of Presidents","hall of presidents"])
     ]},
-    {s:"13:30",e:"14:45",h:"Parade",items:[
+    {s:"13:45",e:"14:45",h:"Parade",items:[
       it("Watch the 2:00 PM Festival of Fantasy Parade from the Frontierland walkway","show","call","2:00 PM matches nearby dates. Frontierland is a construction zone, so check your viewing spot. It’s the longest stretch with no lines, so skipping it is the easiest way to add ride time.",null,["Festival of Fantasy Parade","festival of fantasy parade"],0)
     ]},
     {s:"14:45",e:"16:15",h:"Adventureland, west to east",items:[
@@ -465,7 +528,7 @@ const DAYS=[
     ]},
     {s:"16:15",e:"17:00",h:"Dinner and the carpets",items:[
       it("Eat your packed dinner at the tables by the Magic Carpets and Swiss Family Treehouse, at about 4:30 PM","meal","added","Day guests have to be out by 6:00 PM, so dinner is in the park today. Packed in Davenport.",null,["Magic Carpets","magic carpets of aladdin"]),
-      it("Ride The Magic Carpets of Aladdin if the line is short","ride","added","Not in your original plan. It’s right by the dinner tables.",["The Magic Carpets of Aladdin","magic carpets of aladdin"])
+      it("Ride The Magic Carpets of Aladdin if the line is short","ride","optional","Was not in your plan. It’s right by the dinner tables.",["The Magic Carpets of Aladdin","magic carpets of aladdin"])
     ]},
     {s:"17:00",e:"18:00",h:"Last ride on the way out",items:[
       it("Ride Peter Pan’s Flight again","ride","moved","Replaces the Fantasyland re-rides. It’s the Fantasyland ride closest to Adventureland and on the way to the exit. Be out by 6:00 PM.",["Peter Pan’s Flight","peter pans flight"])
@@ -487,6 +550,8 @@ const DAYS=[
 // Character lineups rotate. Confirm in My Disney Experience on the day.
 const CATALOG={
 mk:[
+ {l:"The hub",n:"Frozen Holiday Surprise",t:"show",h:"Any height",q:"frozen holiday surprise",d:"Castle-lighting show with Anna, Elsa, Kristoff and Olaf at the Cinderella Castle forecourt. Nightly at 6:15 PM from Nov 8, 2026, plus 8:15 PM on party nights. Watch from the hub, facing the castle."},
+ {l:"The hub",n:"Mickey’s Magical Friendship Faire",t:"show",h:"Any height",q:"mickeys magical friendship faire",d:"Daytime stage show at the Cinderella Castle forecourt, usually five times a day. Showtimes change by date, so check the app."},
  {l:"Main Street, U.S.A.",n:"Walt Disney World Railroad",t:"ride",h:"Any height",q:"walt disney world railroad",d:"Shuttle only between Main Street and Storybook Circus. The Frontierland station is closed for construction."},
  {l:"Main Street, U.S.A.",n:"Mickey Mouse at Town Square Theater",t:"meet",q:"town square theater",d:"Mickey in his magician outfit."},
  {l:"Main Street, U.S.A.",n:"Snow White, Mulan or Elena on the Town Square Theater porch",t:"meet",d:"Which princess is out rotates by day."},
@@ -547,7 +612,7 @@ ak:[
  {l:"Discovery Island",n:"Tree of Life Awakenings: Holiday Edition",t:"show",h:"Any height",q:"tree of life awakenings",d:"Projection show from dusk to close. It doesn’t run every night."},
  {l:"Discovery Island",n:"Wilderness Explorers",t:"exp",h:"Any height",d:"Free badge activities around the park for kids."},
  {l:"Discovery Island",n:"Russell and Dug, Kevin, Judy Hopps and Nick Wilde",t:"meet",d:"Intermittent and roaming. Ask a cast member or check the app."},
- {l:"Pandora – The World of Avatar",n:"Avatar Flight of Passage",t:"ride",h:"44 in",q:"flight of passage",d:"Intense flight simulator. Not in your plan. Its wait is often the longest in the park."},
+ {l:"Pandora – The World of Avatar",n:"Avatar Flight of Passage",t:"ride",h:"44 in",q:"flight of passage",d:"Intense flight simulator. She’s over the 44-inch minimum. Its wait is often the longest in the park."},
  {l:"Pandora – The World of Avatar",n:"Na’vi River Journey",t:"ride",h:"Any height",q:"navi river journey",d:"Calm boat ride through a glowing rainforest."},
  {l:"Africa",n:"Kilimanjaro Safaris",t:"ride",h:"Any height",q:"kilimanjaro safaris",d:"Each trip is different. It runs until sundown."},
  {l:"Africa",n:"Gorilla Falls Exploration Trail",t:"walk",h:"Any height",q:"gorilla falls",d:"Walkway next to the Safari."},
@@ -557,12 +622,12 @@ ak:[
  {l:"Africa",n:"Tusker House character meal",t:"meal",d:"Mickey, Donald, Daisy and Goofy in safari outfits. Needs a dining reservation and replaces a packed meal."},
  {l:"Asia",n:"Maharajah Jungle Trek",t:"walk",h:"Any height",q:"maharajah jungle trek",d:"Tigers, bats and an aviary."},
  {l:"Asia",n:"Feathered Friends in Flight!",t:"show",h:"Any height",q:"feathered friends",d:"Bird show. It shows up on nearby dates’ schedules."},
- {l:"Asia",n:"Kali River Rapids",t:"ride",h:"38 in",q:"kali river rapids",d:"Raft ride that soaks you. In November you’d want a change of clothes. It has closed for winter refurbishments before."},
+ {l:"Asia",n:"Kali River Rapids",t:"ride",h:"38 in",q:"kali river rapids",d:"Raft ride that soaks you. Bring a poncho and a change of clothes. It has closed for winter refurbishments before."},
  {l:"Asia",n:"Expedition Everest",t:"ride",h:"44 in",q:"expedition everest",s:"High speed, backward motion.",d:""},
  {l:"Asia",n:"Goofy and Pluto in Asia",t:"meet",d:"Some 2026 lists put them just inside Asia, on the right. Confirm in the app."},
  {l:"Asia",n:"Viva Gaia Street Band",t:"show",h:"Any height",d:"Street act, short and free."},
- {l:"Conservation Station",n:"Wildlife Express Train",t:"ride",h:"Any height",q:"wildlife express train",d:"Leaves from Harambe Station and takes you to Bluey’s Wild World."},
- {l:"Conservation Station",n:"Bluey’s Wild World",t:"exp",h:"Any height",q:"blueys wild world",d:"Play-based, for young children. It opened May 26, 2026 with an app virtual queue, so check whether it still needs one."},
+ {l:"Conservation Station",n:"Wildlife Express Train",t:"ride",h:"Any height",q:"wildlife express train",d:"Leaves from Harambe Station. The only way to Conservation Station and Bluey’s Wild World. About 7 minutes each way. Reopened May 26, 2026 with Robert Irwin narrating."},
+ {l:"Conservation Station",n:"Bluey’s Wild World",t:"exp",h:"Any height",q:"blueys wild world",d:"Indoor play and dance with Bluey and Bingo, for young children. It opened May 26, 2026. The virtual queue ended June 2, so it’s a standby line now, after the train."},
  {l:"Conservation Station",n:"Bluey and Bingo",t:"meet",d:"Part of Bluey’s Wild World."},
  {l:"Back of the park (former DinoLand)",n:"Finding Nemo: The Big Blue... and Beyond!",t:"show",h:"Any height",q:"finding nemo",d:"Indoor stage show at the Theater in the Wild. Shows ran from 11 AM to 4:30 PM on nearby dates."},
  {l:"Closed for good",n:"DinoLand U.S.A. (DINOSAUR, TriceraTop Spin and more)",t:"ride",c:"Closed Feb 1, 2026.",d:""}
@@ -587,10 +652,13 @@ const CHANGED=[
   ["TriceraTop Spin is gone","It closed in January 2025 and was demolished. It was in DinoLand U.S.A., not Storybook Circus. The 4:30–5:30 PM block now has two options."],
   ["DINOSAUR is closed for good","DinoLand U.S.A. shut on Feb 1, 2026, so it’s off your skip list. Tropical Americas is due in 2027."],
   ["Mickey and Minnie at Adventurers Outpost","Holiday outfits are reported from Nov 13, not safari ones."],
-  ["Nov 21 now runs as one sweep","Pandora, then Africa (Safari and Gorilla Falls back to back), Lion King, then east: Mickey and Minnie, Maharajah and Nemo, then dusk at the Tree of Life. Adventurers Outpost is near the bridge to Asia, so Mickey moved onto that walk. Nemo moved from 3:30 to 4:30 to make it fit. Bluey’s Wild World is now an extra."],
-  ["Nov 23 now runs without backtracking","Fantasyland west to east (small world moved next to Peter Pan’s Flight), then Storybook Circus (Barnstormer and Dumbo moved in), Tomorrowland (Buzz moved in from Nov 25), the dress-up, then the Carrousel, Magic Carpets, Mickey and the hub. Measured straight-line walking dropped by about 640 meters."],
+  ["Nov 21 now runs as one sweep","Flight of Passage and Na’vi first, then Africa (Safari and Gorilla Falls back to back), the optional train to Bluey’s Wild World, Lion King, then east: Mickey and Minnie, Maharajah, Kali River Rapids and Nemo, then dusk at the Tree of Life. Adventurers Outpost is near the bridge to Asia, so Mickey moved onto that walk. Nemo moved from 3:30 to 4:30 to make it fit."],
+  ["Flight of Passage, Kali River Rapids and the Wildlife Express Train added","She’s over 44 inches, so Flight of Passage and Kali are in. The train is in as an optional block with Bluey’s Wild World, because the ride is short and the train is the only way to Bluey."],
+  ["Nov 23 now runs without backtracking","Fantasyland west to east (small world moved next to Peter Pan’s Flight), then Storybook Circus (Barnstormer and Dumbo moved in), Tomorrowland (Buzz moved in from Nov 25, Astro Orbiter added as optional), the dress-up, then the Carrousel, Pirates, the Magic Carpets, Frozen Holiday Surprise at 6:15 PM, Mickey, and dinner on the hub lawn for the fireworks."],
+  ["Safari is now optional","Kilimanjaro Safaris stays in the plan, marked Optional, with a simple rule: skip it if the posted wait is over about 40 minutes. The rest of the Animal Kingdom day works either way."],
   ["Character dress-up added on Nov 23","Bibbidi Bobbidi Boutique at about 3:00 PM, inside your 1:30–4:30 window. Princess Fairytale Hall and Mickey moved to right after, so she meets them in costume."],
-  ["Nov 25 now goes east to west","Seven Dwarfs and Belle, then Pete’s Sideshow, then the railroad west, one walk to Liberty Square before the parade, then Adventureland entered from the Frontierland side. Dinner by the Magic Carpets, then Peter Pan’s Flight on the way out."],
+  ["Nov 25 now goes east to west","Seven Dwarfs and Belle, then Pete’s Sideshow, then the railroad west. Mickey’s Magical Friendship Faire at the castle on your way to Liberty Square, with the Hall of Presidents as an optional add. One walk across the park before the parade, then Adventureland entered from the Frontierland side. Dinner by the Magic Carpets, then Peter Pan’s Flight on the way out."],
+  ["The four rides you said I missed","Belle was already on Nov 25, right after Seven Dwarfs. Pirates of the Caribbean is now on Nov 23 in Adventureland. Frozen Holiday Surprise is on Nov 23 at 6:15 PM, because Nov 25 is a party night and day guests leave at 6:00 PM. Mickey’s Magical Friendship Faire is on Nov 25 at the castle."],
 ];
 const CONFIRMED=[
   "Nov 23: Magic Kingdom is 9:00 AM – 10:00 PM and not a party night.",
@@ -602,6 +670,7 @@ const CONFIRMED=[
   "Animal Kingdom closes at 7:00 PM on Nov 21."
 ];
 const CHALLENGES=[
+  ["Your dates are Thanksgiving week, not the week before","Thanksgiving 2026 is Thursday, Nov 26. In past years the headline rides ran roughly 20 to 50 percent longer in Thanksgiving week than the week before, so the week-before numbers understate your days. The Trends tab shows both."],
   ["No midday break or nap on any day","Leaving at 7:15 AM, then fireworks on Nov 23, with nothing scheduled back at the villa. How old is she? A 1–3 PM pool or villa break would change how the evenings go."],
   ["Nov 21 has no dinner","The park closes at 7:00 PM and you’d eat at the villa around 8:30. Option B in the plan covers an early dinner or snack."],
   ["Standby only in Thanksgiving week","Waiting in line is the point of the plan, but Lightning Lane Multi Pass is the only way to get more rides into the same hours. Check prices in the app for Seven Dwarfs, Peter Pan’s Flight and Na’vi River Journey."],
@@ -717,7 +786,7 @@ const store={
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
 const ICON={ride:"🎢",show:"🎭",meet:"⭐",meal:"🥪",walk:"🚶",tip:"💡",exp:"👑"};
-const BADGE={moved:"Moved",changed:"Changed",verify:"Verify",added:"Added",removed:"Removed",call:"Your call"};
+const BADGE={optional:"Optional",moved:"Moved",changed:"Changed",verify:"Verify",added:"Added",removed:"Removed",call:"Your call"};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s).toLowerCase().replace(/[’'`]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim();
 const clock=ts=>new Date(ts||Date.now()).toLocaleTimeString([],{hour:"numeric",minute:"2-digit",timeZone:"America/New_York"});
@@ -736,7 +805,7 @@ function range(s,e){
 const dayNum=d=>{const [y,m,dd]=d.split("-").map(Number);return Date.UTC(y,m-1,dd)/864e5};
 
 let done=store.get("done2",{});
-const state={whyOpen:false,pplOpen:false,mv:"plan",cf:"all",editRem:null,tab:({rules:"notes",waits:"rides"})[store.get("tab","plan")]||store.get("tab","plan"),day:0,wp:null};
+const state={whyOpen:false,pplOpen:false,mv:"plan",cf:"all",editRem:null,tab:({rules:"notes",waits:"rides"})[store.get("tab","plan")]||store.get("tab","plan"),day:0,wp:null,hp:null,trendsHelp:true};
 
 function pickDay(){
   const today=nowET().date;
@@ -821,6 +890,9 @@ const X=(a,b)=>[dms(...a),-dms(...b),0];
 const PLACES={
   // Animal Kingdom
   "Na’vi River Journey":[28.35810,-81.59320,1],
+  "Avatar Flight of Passage":[28.35905,-81.59400,1],
+  "Kali River Rapids":X([28,21,33.83],[81,35,17.94]),
+  "Wildlife Express Train":[28.35990,-81.59250,1],
   "Kilimanjaro Safaris":[28.36083,-81.59361,0],
   "Gorilla Falls Exploration Trail":X([28,21,36.59],[81,35,31.48]),
   "Festival of the Lion King":[28.35905,-81.59235,1],
@@ -850,6 +922,11 @@ const PLACES={
   "Pete’s Silly Sideshow":[28.42010,-81.57850,1],
   "Walt Disney World Railroad":[28.42035,-81.57830,1],       // boarding at the Storybook Circus station
   "Festival of Fantasy Parade":[28.42020,-81.58380,1],
+  "Pirates of the Caribbean":X([28,25,5.08],[81,35,3.55]),
+  "Astro Orbiter":[28.41860,-81.57940,1],
+  "The Hall of Presidents":[28.42010,-81.58290,1],
+  "Frozen Holiday Surprise":[28.41915,-81.58122,1],
+  "Mickey’s Magical Friendship Faire":[28.41915,-81.58122,1],
   "Swiss Family Treehouse":[28.41775,-81.58405,1],
   "Jungle Cruise":X([28,25,4.68],[81,35,0.61]),
   "Enchanted Tiki Room":[28.41850,-81.58360,1]
@@ -858,20 +935,28 @@ const EXITS={"Walt Disney World Railroad":{lat:28.41640,lng:-81.58135,label:"Mai
 const ENTRANCE={ak:{lat:dms(28,21,18.50),lng:-dms(81,35,24.25)},mk:{lat:28.41620,lng:-81.58130}};
 const SN={};
 function dayStops(day){
-  const stops=[],missing=[];
+  const stops=[],missing=[],byName={},keyNum={},again={};
   day.blocks.forEach((b,bi)=>b.items.forEach((x,ii)=>{
     if(x.f==="removed"||x.k==="meal"||x.k==="tip")return;   // rest stops and tips stay off the map
     const spec=x.w||x.g;if(!spec)return;
     const p=PLACES[spec[0]];
     if(!p){if(!missing.includes(spec[0]))missing.push(spec[0]);return}
-    stops.push({name:spec[0],lat:p[0],lng:p[1],approx:!!p[2],exit:EXITS[spec[0]]||null,time:b.s,bi,ii});
+    const opt=x.f==="optional",key=bi+":"+ii,prev=byName[spec[0]];
+    if(prev){   // a return visit to the same place shares its pin instead of adding a second one
+      prev.again.push({time:b.s,opt});
+      if(!opt)prev.opt=false;
+      keyNum[key]=prev.n;again[key]=1;return;
+    }
+    const st={name:spec[0],lat:p[0],lng:p[1],approx:!!p[2],exit:EXITS[spec[0]]||null,time:b.s,bi,ii,opt,again:[]};
+    stops.push(st);st.n=stops.length;byName[spec[0]]=st;keyNum[key]=st.n;
   }));
-  return {stops,missing};
+  return {stops,missing,keyNum,again};
 }
 function stopNums(day){   // item position in the plan -> pin number, the same numbers the map uses
-  if(!SN[day.id]){const m={};dayStops(day).stops.forEach((s,i)=>{m[s.bi+":"+s.ii]=i+1});SN[day.id]=m}
-  return SN[day.id];
+  if(!SN[day.id]){const d=dayStops(day);SN[day.id]={num:d.keyNum,again:d.again}}
+  return SN[day.id].num;
 }
+const stopAgain=day=>{stopNums(day);return SN[day.id].again};   // plan items that return to an earlier pin
 function legsOf(day,stops){   // walking to each stop, starting at the park entrance
   return stops.map((s,i)=>{
     const from=i?(stops[i-1].exit||stops[i-1]):ENTRANCE[day.pk];
@@ -883,16 +968,32 @@ function paintWalk(){
   const el=$("#walkline");if(!el)return;
   const day=DAYS[state.day],{stops}=dayStops(day);
   if(!stops.length){el.textContent="";return}
-  const lg=legsOf(day,stops),m=lg.reduce((a,l)=>a+l.m,0),min=lg.reduce((a,l)=>a+l.min,0);
-  el.textContent="Walking today: about "+min+" min ("+(m/1609.34).toFixed(1)+" mi) from the gate through "+stops.length+" numbered stops. Straight-line estimate at stroller pace, so real paths run longer.";
+  const sum=l=>[l.reduce((a,x)=>a+x.m,0),l.reduce((a,x)=>a+x.min,0)];
+  const [m,min]=sum(legsOf(day,stops)),req=stops.filter(x=>!x.opt),nOpt=stops.length-req.length;
+  let t="Walking today: about "+min+" min ("+(m/1609.34).toFixed(1)+" mi) from the gate through "+stops.length+" numbered stops";
+  if(nOpt){const [m2,min2]=sum(legsOf(day,req));t+=", or about "+min2+" min ("+(m2/1609.34).toFixed(1)+" mi) if you skip the "+nOpt+" optional "+(nOpt===1?"one":"ones")}
+  el.textContent=t+". Straight-line estimate at stroller pace, so real paths run longer.";
 }
+
 function paintLegs(){
   const el=$("#legs");if(!el)return;
   const day=DAYS[state.day],{stops}=dayStops(day);
-  const lg=legsOf(day,stops),total=lg.reduce((a,l)=>a+l.min,0);
-  el.innerHTML='<ol class="legs">'+stops.map((s,i)=>'<li><b>'+(i+1)+'. '+s.name+(s.approx?' <span class="approx" title="Position estimated">≈</span>':"")+'</b><span class="meta">'+fmt(s.time)
-    +". "+fmtDist(lg[i].m)+", about "+lg[i].min+" min from "+(i?(lg[i].fromTrain?"the "+stops[i-1].exit.label:"the last stop"):"the park entrance")+'</span></li>').join("")+'</ol>'
-    +'<p class="note">About '+total+' min of walking in total. Meals and tips aren’t on the map. ≈ means the position is estimated from the park layout.</p>';
+  const lg=legsOf(day,stops),total=lg.reduce((a,l)=>a+l.min,0),req=stops.filter(x=>!x.opt),totalReq=legsOf(day,req).reduce((a,l)=>a+l.min,0);
+  let lastReq=-1;
+  el.innerHTML='<ol class="legs">'+stops.map((s,i)=>{
+    let skipHint="";
+    if(!s.opt){   // if the stops before this one were optional, show the walk without them
+      if(lastReq!==i-1){
+        const from=lastReq>=0?(stops[lastReq].exit||stops[lastReq]):ENTRANCE[day.pk],m=dist(from,s)*PATH_FACTOR;
+        skipHint='<span class="meta skiphint">Skipping the optional stops: '+fmtDist(m)+', about '+Math.max(1,Math.round(m/WALK_MS/60))+' min from '+(lastReq>=0?"stop "+stops[lastReq].n:"the park entrance")+'.</span>';
+      }
+      lastReq=i;
+    }
+    const back=s.again.map(a=>'<span class="meta">Also here at '+fmt(a.time)+(a.opt?" (optional re-ride)":"")+'. No extra walking.</span>').join("");
+    return '<li class="'+(s.opt?"optrow":"")+'"><b>'+s.n+'. '+s.name+(s.approx?' <span class="approx" title="Position estimated">≈</span>':"")+(s.opt?' <span class="badge b-optional">Optional</span>':"")+'</b><span class="meta">'+fmt(s.time)
+      +". "+fmtDist(lg[i].m)+", about "+lg[i].min+" min from "+(i?(lg[i].fromTrain?"the "+stops[i-1].exit.label:"the last stop"):"the park entrance")+'</span>'+skipHint+back+'</li>';
+  }).join("")+'</ol>'
+    +'<p class="note">About '+total+' min of walking in total'+(req.length<stops.length?', or about '+totalReq+' min without the optional stops':"")+'. Meals and tips aren’t on the map. ≈ means the position is estimated from the park layout.</p>';
 }
 let mapObj=null,mapLayer=null,mapFitted=false;
 function loadLeaflet(){
@@ -907,8 +1008,9 @@ function loadLeaflet(){
 }
 function mapHTML(){
   const day=DAYS[state.day];
-  return '<section class="sec"><h1>Map</h1><p>'+day.park+', in the same order as the Plan tab. The pin numbers match the numbers on each stop in the plan. Meals and rest stops aren’t shown.</p>'
+  return '<section class="sec"><h1>Map</h1><p>'+day.park+', in the same order as the Plan tab. The pin numbers match the numbers on each stop in the plan. A return to the same place shares its pin. Meals and rest stops aren’t shown.</p>'
     +'<div id="map" class="map" role="region" aria-label="Map of '+day.park+'"><p class="note" style="padding:12px">Loading map...</p></div>'
+    +'<p class="legend"><span class="lg"></span>Planned stop<span class="lg op"></span>Optional stop, with a dotted route</p>'
     +'<div class="btns"><button type="button" class="btn" data-act="mlocate">Show me on the map</button>'
     +'<button type="button" class="btn" data-act="mfit">Fit all stops</button></div>'
     +'<p class="fine" id="mapnote">Map: OpenStreetMap contributors. For Disney’s official illustrated map, use the My Disney Experience app.</p></section>'
@@ -934,14 +1036,19 @@ function drawMap(){
   if(mapLayer)mapLayer.remove();
   mapLayer=L.layerGroup().addTo(mapObj);
   const day=DAYS[state.day],{stops}=dayStops(day),gate=ENTRANCE[day.pk];
-  const col=(getComputedStyle(document.body).getPropertyValue("--c")||"#1F7A4D").trim();
-  const route=[[gate.lat,gate.lng]];
-  stops.forEach(s=>{route.push([s.lat,s.lng]);if(s.exit)route.push([s.exit.lat,s.exit.lng])});
-  if(route.length>1)L.polyline(route,{color:col,weight:3,opacity:.75,dashArray:"6 8"}).addTo(mapLayer);
+  const cs=getComputedStyle(document.body);
+  const col=(cs.getPropertyValue("--c")||"#1F7A4D").trim(),optCol=(cs.getPropertyValue("--call")||"#6B3FD6").trim();
+  const nodes=[{lat:gate.lat,lng:gate.lng,opt:false}];
+  stops.forEach(s=>{nodes.push({lat:s.lat,lng:s.lng,opt:s.opt});if(s.exit)nodes.push({lat:s.exit.lat,lng:s.exit.lng,opt:s.opt})});
+  for(let i=1;i<nodes.length;i++){   // solid-dashed between planned stops, dotted when an optional stop is involved
+    const a=nodes[i-1],b=nodes[i],o=a.opt||b.opt;
+    L.polyline([[a.lat,a.lng],[b.lat,b.lng]],o?{color:optCol,weight:3,opacity:.85,dashArray:"2 7"}:{color:col,weight:3,opacity:.75,dashArray:"6 8"}).addTo(mapLayer);
+  }
   L.circleMarker([gate.lat,gate.lng],{radius:6,color:"#fff",weight:2,fillColor:col,fillOpacity:1}).bindTooltip("Entrance",{permanent:true,direction:"bottom",offset:[0,6]}).addTo(mapLayer);
-  stops.forEach((s,i)=>{
-    L.marker([s.lat,s.lng],{icon:L.divIcon({className:"pin",html:"<span>"+(i+1)+"</span>",iconSize:[28,28],iconAnchor:[14,14]}),title:s.name})
-      .bindPopup("<b>"+(i+1)+". "+s.name+"</b><br>"+fmt(s.time)+(s.approx?"<br>Position estimated":"")).addTo(mapLayer);
+  stops.forEach(s=>{
+    const again=s.again.map(a=>"<br>Also here at "+fmt(a.time)+(a.opt?" (optional re-ride)":"")).join("");
+    L.marker([s.lat,s.lng],{icon:L.divIcon({className:"pin"+(s.opt?" opt":""),html:"<span>"+s.n+"</span>",iconSize:[28,28],iconAnchor:[14,14]}),title:s.name})
+      .bindPopup("<b>"+s.n+". "+s.name+"</b>"+(s.opt?" (Optional)":"")+"<br>"+fmt(s.time)+again+(s.approx?"<br>Position estimated":"")).addTo(mapLayer);
   });
   rows.forEach(r=>{
     L.circleMarker([r.lat,r.lng],{radius:8,color:"#fff",weight:2,fillColor:"#17202B",fillOpacity:1})
@@ -951,7 +1058,7 @@ function drawMap(){
     L.circleMarker([lastPos.lat,lastPos.lng],{radius:8,color:"#fff",weight:2,fillColor:"#2563EB",fillOpacity:1})
       .bindTooltip("You",{permanent:true,direction:"top",offset:[0,-8]}).addTo(mapLayer);
   }
-  if(!mapFitted){mapFitted=true;mapObj.fitBounds(L.latLngBounds(route),{padding:[30,30],maxZoom:17})}
+  if(!mapFitted){mapFitted=true;mapObj.fitBounds(L.latLngBounds(nodes.map(n=>[n.lat,n.lng])),{padding:[30,30],maxZoom:17})}
 }
 
 /* ---------- group location sharing (Supabase) ---------- */
@@ -1040,7 +1147,7 @@ function itemHTML(day,bi,ii,x){
   const badge=x.f?'<span class="badge b-'+x.f+'">'+BADGE[x.f]+'</span>':"";
   const ico=x.k?'<span class="ico" aria-hidden="true">'+ICON[x.k]+'</span>':"";
   const note=x.n?'<p class="note">'+x.n+'</p>':"";
-  const nn=stopNums(day)[bi+":"+ii],num=nn?'<span class="snum" title="Map stop '+nn+'">'+nn+'</span>':"";
+  const key2=bi+":"+ii,nn=stopNums(day)[key2],rep=stopAgain(day)[key2],num=nn?'<span class="snum'+(x.f==="optional"?" opt":"")+(rep?" again":"")+'" title="'+(rep?"Back to map stop ":"Map stop ")+nn+'">'+(rep?"↺":"")+nn+'</span>':"";
   const tx=extra=>'<span class="tx"><span class="ttl">'+num+ico+x.t+'</span>'+badge+(x.f==="removed"?"":wtSpan(day.pk,x.w&&x.w[1]))+note+(extra||"")+'</span>';
   if(x.f==="removed")return '<li class="it rm"><span class="x" aria-hidden="true">✕</span>'+tx()+'</li>';
   const rk=rkOf(day.pk,x);
@@ -1072,10 +1179,13 @@ function planHTML(){
     +day.skips.map(s=>'<li'+(s[2]?' class="gone"':"")+'><b>'+s[0]+'</b>. '+s[1]+'</li>').join("")+'</ul></div>';
   return h;
 }
-function planParts(k){
+function planParts(k,mode){   // mode "plan" = planned items, "opt" = optional items
   const P=[];
   DAYS.filter(d=>d.pk===k).forEach(d=>d.blocks.forEach(b=>b.items.forEach(x=>{
-    if(x.f==="removed")return;
+    if(x.f==="removed"||x.ck===0)return;   // ck 0 = informational wait chip only, not a scheduled stop
+    const isOpt=x.f==="optional";
+    if(mode==="plan"&&isOpt)return;
+    if(mode==="opt"&&!isOpt)return;
     [x.w,x.g].forEach(sp=>{if(sp){P.push(norm(sp[0]));String(sp[1]).split("|").forEach(p=>P.push(p))}});
   })));
   return P;
@@ -1084,35 +1194,44 @@ function inPlan(P,e){
   if(e.q)return e.q.split("|").some(a=>P.some(b=>a===b||b.includes(a)||a.includes(b)));
   const n=norm(e.n);return P.some(b=>b===n);
 }
+function coverage(k){
+  const PP=planParts(k,"plan"),OO=planParts(k,"opt"),c={plan:0,opt:0,skip:0,closed:0,none:0};
+  CATALOG[k].forEach(e=>{if(e.c)c.closed++;else if(e.s)c.skip++;else if(inPlan(PP,e))c.plan++;else if(inPlan(OO,e))c.opt++;else c.none++});
+  return c;
+}
 const TYPE_LABEL={ride:"Ride",show:"Show",walk:"Walk",meet:"Meet",exp:"Experience",meal:"Character meal"};
 const FILTERS={all:["All",null],ride:["Rides",["ride"]],meet:["Meets",["meet","exp","meal"]],show:["Shows and walks",["show","walk"]]};
-function catRow(k,P,e){
+function catRow(k,P,e,O){
   const c=e.c?null:chip(entryFor(k,e.q));
-  const plan=!e.c&&!e.s&&inPlan(P,e);
+  const planned=!e.c&&!e.s&&inPlan(P,e),opt=!planned&&!e.c&&!e.s&&inPlan(O,e),ns=!planned&&!opt&&!e.c&&!e.s&&e.ns;
   const badges=(e.h?'<span class="badge b-h">'+e.h+'</span>':"")
-    +(plan?'<span class="badge b-added">On your plan</span>':"")
+    +(planned?'<span class="badge b-added">On your plan</span>':"")
+    +(opt?'<span class="badge b-optional">Optional</span>':"")
+    +(ns?'<span class="badge b-h">Not scheduled</span>':"")
     +(e.s?'<span class="badge b-removed">On your skip list</span>':"")
     +(e.c?'<span class="badge b-removed">Closed</span>':"");
-  const note=(e.c||e.s||"")+(e.c||e.s?" ":"")+(e.d||"");
-  return '<li class="wrow"><span><b>'+e.n+'</b>'+badges+'<small>'+TYPE_LABEL[e.t]+(note?". "+note.trim():"")+'</small>'+(e.c||e.t==="meal"?"":ckHTML(e.id))+'</span>'
+  const note=[e.c||e.s||(ns?e.ns:""),ns&&/^Not scheduled/.test(e.ns)?"":e.d].filter(Boolean).join(" ");
+  const pa=pastAvg(k,e),past=pa?'<span class="histline'+(pa.none?" none":"")+'"><b>Past avg:</b> '+pa.t+'</span>':"";
+  return '<li class="wrow"><span><b>'+e.n+'</b>'+badges+'<small>'+TYPE_LABEL[e.t]+(note?". "+note.trim():"")+'</small>'+past+(e.c||e.t==="meal"?"":ckHTML(e.id))+'</span>'
     +(c?'<span class="wt on '+c.c+'">'+c.t+'</span>':"")+'</li>';
 }
 function ridesHTML(){
   const k=state.wp||DAYS[state.day].pk,P=PARKS[k],w=waits[k],cf=state.cf||"all",want=FILTERS[cf][1];
-  let h='<section class="sec"><h1>Rides and meets</h1>'+gdNotice()+'<p>Everything at the park, with live standby waits from ThemeParks.wiki. Tap a name under a ride when that person has done it. Waits are estimates and they move fast. Character lineups rotate, so confirm in My Disney Experience.</p>'
+  let h='<section class="sec"><h1>Rides and meets</h1>'+gdNotice()+'<p>Everything at the park, with live standby waits from ThemeParks.wiki. Tap a name under a ride when that person has done it. Waits are estimates and they move fast. The colored “Now” pill is the live wait. The blue “Past avg” line is history from 2025 on the same weekdays as yours, so you can tell a short line from a normal one. Character lineups rotate, so confirm in My Disney Experience.</p>'
     +'<div class="seg">'+Object.keys(PARKS).map(x=>'<button type="button" class="btn" data-act="wpark" data-p="'+x+'" aria-pressed="'+(x===k)+'">'+PARKS[x].label+'</button>').join("")+'</div>'
     +'<div class="chips">'+Object.keys(FILTERS).map(f=>'<button type="button" class="chipbtn" data-act="cfilter" data-f="'+f+'" aria-pressed="'+(f===cf)+'">'+FILTERS[f][0]+'</button>').join("")+'</div>'
     +'<div class="btns"><button type="button" class="btn" data-act="wrefresh">Refresh waits</button></div>';
   if(werr[k])h+='<p class="err">'+werr[k]+(w?" Showing the last numbers from "+clock(w.ts)+".":"")+'</p>';
   else if(!w)h+='<p class="note">Loading waits...</p>';
   if(w){const old=Date.now()-w.ts>15*60e3;h+='<p class="stat">'+(old?"These numbers are old. Last updated ":"Waits updated ")+clock(w.ts)+', Orlando time.</p>'}
+  const cv=coverage(k);h+='<p class="stat">Everything at '+P.label+' is accounted for: '+cv.plan+' planned, '+cv.opt+' optional, '+cv.skip+' on your skip list, '+cv.closed+' closed, and '+cv.none+' not scheduled. Each one says why.</p>';
   const sum=checkinSummary();if(sum)h+='<p class="stat">Check-ins so far: '+sum+'.</p>';
   h+='</section>'+peopleHTML();
-  const PP=planParts(k),list=CATALOG[k].filter(e=>!want||want.includes(e.t));
+  const PP=planParts(k,"plan"),OO=planParts(k,"opt"),list=CATALOG[k].filter(e=>!want||want.includes(e.t));
   const open=list.filter(e=>!e.c),closed=list.filter(e=>e.c),lands=[];
   open.forEach(e=>{let g=lands.find(x=>x.l===e.l);if(!g){g={l:e.l,items:[]};lands.push(g)}g.items.push(e)});
-  lands.forEach(g=>{h+='<section class="sec"><h2>'+g.l+'</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+g.items.map(e=>catRow(k,PP,e)).join("")+'</ul></section>'});
-  if(closed.length)h+='<section class="sec"><h2>Not available on your dates</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+closed.map(e=>catRow(k,PP,e)).join("")+'</ul></section>';
+  lands.forEach(g=>{h+='<section class="sec"><h2>'+g.l+'</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+g.items.map(e=>catRow(k,PP,e,OO)).join("")+'</ul></section>'});
+  if(closed.length)h+='<section class="sec"><h2>Not available on your dates</h2><ul class="catlist" style="list-style:none;padding:0;margin:0">'+closed.map(e=>catRow(k,PP,e,OO)).join("")+'</ul></section>';
   if(!list.length)h+='<p class="note">Nothing in this filter.</p>';
   if(w&&cf==="all"){
     const used=new Set();CATALOG[k].forEach(e=>{const m=entryFor(k,e.q);if(m)used.add(m)});
@@ -1159,6 +1278,43 @@ function groupHTML(){
 // Everything below saves on this phone first. When you're in a group, it also syncs through Supabase.
 const slug=s=>norm(s).replace(/ /g,"-");
 Object.keys(CATALOG).forEach(k=>CATALOG[k].forEach(e=>{e.id=slug(e.n)}));
+
+// Why a ride, show or meet isn't scheduled. Everything open and not on your skip list is either planned, optional, or listed here.
+const NS={
+ "Snow White, Mulan or Elena on the Town Square Theater porch":"Not scheduled. Which princess is out changes daily, so ask at the porch when you meet Mickey.",
+ "Crystal Palace character meal":"A character meal. It needs a reservation and replaces a packed meal.",
+ "A Pirate’s Adventure ~ Treasures of the Seven Seas":"Not scheduled. It’s a 25-minute walk-through in Adventureland. Add it if you reach the Swiss Family Treehouse with time to spare.",
+ "Aladdin and Jasmine at Agrabah Bazaar":"Not scheduled. Appearances are at set times, so check the app while you’re at the Magic Carpets.",
+ "Country Bear Musical Jamboree":"Not scheduled. There’s no room for another 25-minute show on Nov 25. It’s in Frontierland next to your parade spot, so it’s the first thing to add if you skip the parade.",
+ "The Country Bears (Big Al, Romeo McGrowl, Shaker, Wendell)":"Not scheduled. They roam Frontierland with no fixed line.",
+ "Ariel at Ariel’s Grotto":"Not scheduled. It’s a 30-minute character line next to Under the Sea. Swap it for Pooh or small world if she wants Ariel.",
+ "Mirabel at Fairytale Garden":"Not scheduled. It’s near the boutique, so it’s an easy add while she’s in costume.",
+ "Anastasia and Drizella at Cinderella Fountain":"Not scheduled. They’re by the castle, near the boutique, so it’s an easy add.",
+ "Peter Pan at the Never Land map":"Not scheduled. He’s next to Peter Pan’s Flight, so you pass him at rope drop.",
+ "Winnie the Pooh and Tigger at the Thotful Spot":"Not scheduled. They’re right outside the Pooh ride, so you pass them on Nov 23.",
+ "Cinderella’s Royal Table character meal":"A character meal. It needs a reservation and replaces a packed meal.",
+ "Tomorrowland Speedway":"Not scheduled. It’s loud, and under 54 inches she needs a grown-up beside her. Add it by the PeopleMover if lines are short.",
+ "Monsters, Inc. Laugh Floor":"Not scheduled. There’s no room for another 25-minute show in Tomorrowland. Swap it for the PeopleMover if she prefers.",
+ "Stitch near the Buzz Lightyear exit":"Not scheduled. He appears at set times, so check the app while you’re at Buzz.",
+ "Donald and Daisy":"Not scheduled. They’re near the entrance, so you pass them at 8:00 AM.",
+ "Chip ’n’ Dale":"Not scheduled. They’re outside the park entrance in the Oasis Palm Courtyard.",
+ "Rafiki, Timon and Pocahontas":"Not scheduled. They rotate by the entrance.",
+ "The Oasis Exhibits":"Not scheduled. It’s a free walk-through with no line, and you pass it on the way in.",
+ "Moana at Character Landing":"Not scheduled. She’s on Discovery Island, on your way to Pandora and the Tree of Life at dusk.",
+ "Winged Encounters ~ The Kingdom Takes Flight":"Not scheduled. It has morning showtimes that clash with rope drop.",
+ "Discovery Island Trails":"Not scheduled. It’s a free walk by the Tree of Life that fits while you wait for the evening show.",
+ "Wilderness Explorers":"Not scheduled. It’s a free kids’ activity you can do as you walk the park.",
+ "Russell and Dug, Kevin, Judy Hopps and Nick Wilde":"Not scheduled. They’re intermittent and roaming.",
+ "Goofy at Harambe Station":"Not scheduled. His location has moved around in 2026, so check the app.",
+ "Tam Tam Drummers of Harambe":"Not scheduled. It’s a short street act, and you’ll hear it at lunch.",
+ "Tusker House character meal":"A character meal. It needs a reservation and replaces a packed meal.",
+ "Feathered Friends in Flight!":"Not scheduled. It’s a 25-minute bird show with changing showtimes, a few steps from the Maharajah trail. Check the time when you’re in Asia.",
+ "Goofy and Pluto in Asia":"Not scheduled. Check the app for where they are.",
+ "Viva Gaia Street Band":"Not scheduled. It’s a short street act.",
+ "Bluey and Bingo":"Not scheduled. They’re part of Bluey’s Wild World."
+};
+Object.keys(CATALOG).forEach(k=>CATALOG[k].forEach(e=>{if(NS[e.n])e.ns=NS[e.n]}));
+const missingNS=Object.keys(NS).filter(n=>!Object.values(CATALOG).some(a=>a.some(e=>e.n===n)));
 
 const GD={rows:store.get("gd",{}),pend:{},dirty:store.get("gddirty",[]),avail:null,busy:false};   // rows: "kind|key" -> text
 const gk=(kind,key)=>kind+"|"+key;
@@ -1317,8 +1473,8 @@ function remindersHTML(){
 const MEALS=[
  {id:"sat",h:"Sat Nov 21, Animal Kingdom",rows:[
   {t:"6:45 AM",m:"Breakfast",w:"In the car on the drive from Davenport",f:"Overnight oats in a jar or a yogurt cup, a hard-boiled egg, a banana and a granola bar.",p:1},
-  {t:"10:30 AM",m:"Snack",w:"A shaded bench by the trail between the Safari and Gorilla Falls",f:"Apple slices or grapes and pretzels. Refill water bottles at any quick-service counter.",p:1},
-  {t:"12:30 PM",m:"Lunch",w:"Harambe Market seating, or the Harambe Fruit Market tables next door",f:"Turkey and cheese wraps, carrot sticks, a clementine and crackers.",p:1},
+  {t:"9:30 AM",m:"Snack",w:"A shaded bench in Pandora, after the two rides",f:"Apple slices or grapes and pretzels. Refill water bottles at any quick-service counter.",p:1},
+  {t:"11:30 AM",m:"Lunch",w:"Harambe Market seating, or the Harambe Fruit Market tables next door",f:"Turkey and cheese wraps, carrot sticks, a clementine and crackers.",p:1},
   {t:"5:15 PM",m:"Dinner",w:"Flame Tree Barbecue’s pavilions, or the seating across from Adventurers Outpost",f:"Pasta salad with Italian dressing, cucumber and cherry tomatoes. Add a fruit pouch and a cookie.",p:1}
  ]},
  {id:"mon",h:"Mon Nov 23, Magic Kingdom",rows:[
@@ -1326,12 +1482,13 @@ const MEALS=[
   {t:"10:30 AM",m:"Snack",w:"A bench in Fantasyland, between rides",f:"Applesauce pouch and a cheese stick, kept cold.",p:1},
   {t:"1:00 PM",m:"Lunch",w:"The tables near Pete’s Silly Sideshow in Storybook Circus",f:"Sandwiches (nut-free if you prefer), grapes, bell pepper strips and a granola bar.",p:1},
   {t:"2:30 PM",m:"Snack before the dress-up",w:"Tomorrowland, before you cross the hub",f:"Fruit and crackers. Skip anything sticky or messy before the makeover.",p:1},
-  {t:"6:05 PM",m:"Dinner",w:"The tables by the Magic Carpets in Adventureland",f:"Wraps with hummus, veggie sticks and a piece of fruit. The hub fills up before the fireworks, so these tables are calmer.",p:1}
+  {t:"5:00 PM",m:"Snack",w:"A bench near the Carrousel, while she’s in costume",f:"A cheese stick and crackers. Skip anything messy in costume.",p:1},
+  {t:"7:20 PM",m:"Dinner",w:"The Hub Lawn by the castle. Claim it early, since it fills up before the fireworks.",f:"Wraps with hummus, veggie sticks and a piece of fruit.",p:1}
  ]},
  {id:"wed",h:"Wed Nov 25, Magic Kingdom",rows:[
   {t:"7:15 AM",m:"Breakfast",w:"In the car, or on a Town Square bench once you’re in",f:"Yogurt or overnight oats, a hard-boiled egg and a banana.",p:1},
   {t:"10:15 AM",m:"Snack",w:"Tables near Pete’s Silly Sideshow in Storybook Circus",f:"Clementine and a granola bar.",p:1},
-  {t:"12:30 PM",m:"Lunch",w:"Liberty Square, in the outdoor seating by Columbia Harbour House or the picnic tables behind Ye Olde Christmas Shoppe",f:"Sandwiches or wraps, cucumber slices, grapes and crackers.",p:1},
+  {t:"12:50 PM",m:"Lunch",w:"Liberty Square, in the outdoor seating by Columbia Harbour House or the picnic tables behind Ye Olde Christmas Shoppe",f:"Sandwiches or wraps, cucumber slices, grapes and crackers.",p:1},
   {t:"4:30 PM",m:"Dinner",w:"The tables by the Magic Carpets and the Swiss Family Treehouse in Adventureland",f:"Pasta salad or wraps with veggie sticks and fruit. Day guests have to be out by 6:00 PM, so eat in the park.",p:1}
  ]}
 ];
@@ -1362,14 +1519,14 @@ const SEATING={
  ],
  mk:[
   {l:"Main Street, U.S.A.",n:"Town Square and Main Street benches",t:"Open air",d:"Good for breakfast. Main Street is reported to open about an hour before the park does."},
-  {l:"The hub",n:"The Hub Lawn",t:"Artificial grass, no shade",d:"Two patches beside Tomorrowland Terrace and Crystal Palace, with the castle view. It gets busy before the fireworks, so it’s not in your plan, but it’s there if you need a seat."},
+  {l:"The hub",n:"The Hub Lawn",t:"Artificial grass, no shade",d:"Two patches beside Tomorrowland Terrace and Crystal Palace, with the castle view. It gets busy before the fireworks, so claim it early. It’s your Nov 23 dinner spot."},
   {l:"Tomorrowland",n:"Tomorrowland Terrace tables",t:"Covered",d:"Lots of covered tables near the hub. When the counter is serving, buy a drink or use the lawn instead. Sections can be roped off in the evening for fireworks dessert parties."},
   {l:"Tomorrowland",n:"Cosmic Ray’s covered patio",t:"Covered",d:"On the side nearest the Tomorrowland Speedway. It’s restaurant seating, so buy a drink."},
   {l:"Tomorrowland",n:"The Lunching Pad seating",t:"Open air",d:"A snack stand with outdoor tables."},
   {l:"Storybook Circus",n:"Tables near Pete’s Silly Sideshow",t:"Open air",d:"Quieter, with picnic tables, a spot by the water and restrooms close by."},
   {l:"Fantasyland",n:"Storybook Treats seating",t:"Open air",d:"A small outdoor area. There are also plenty of benches and spots around Fantasyland."},
   {l:"Fantasyland",n:"Gaston’s Tavern seating",t:"Indoor and outdoor",d:"Seating inside and out. It’s restaurant seating, so buy a drink."},
-  {l:"Adventureland",n:"Tables by the Magic Carpets and Swiss Family Treehouse",t:"Open air",d:"Tables and bench walls. Your dinner spot on Nov 23 and Nov 25."},
+  {l:"Adventureland",n:"Tables by the Magic Carpets and Swiss Family Treehouse",t:"Open air",d:"Tables and bench walls. Your dinner spot on Nov 25."},
   {l:"Adventureland",n:"Tortuga Tavern seating",t:"Covered",d:"Covered seating, but it runs seasonally. Use it only when it isn’t serving."},
   {l:"Liberty Square",n:"Outdoor seating by Columbia Harbour House and Liberty Square Market",t:"Open air",d:"Open to guests, though there aren’t many tables."},
   {l:"Liberty Square",n:"Picnic tables behind Ye Olde Christmas Shoppe and the Portrait Gallery",t:"Open air",d:"A quiet spot out of the way. Disney has pointed guests to these before."},
@@ -1455,6 +1612,115 @@ function mealsHTML(){
     +'<div class="seg3">'+seg("plan","Meal plan")+seg("seat","Seating")+seg("shop","Shopping")+'</div></section>'
     +(v==="plan"?mealPlanHTML():v==="seat"?seatHTML():shopHTML());
 }
+const HIST={"mk":{"dates":["2025-11-22","2025-11-23","2025-11-24","2025-11-25","2025-11-26"],"labels":["Sat 22","Sun 23","Mon 24","Tue 25","Wed 26"],"rows":[["Seven Dwarfs Mine Train",52,64,71,52,50],["Ariel at Ariel’s Grotto",32,31,41,24,22],["Astro Orbiter",24,25,34,14,18],["Barnstormer",19,27,39,17,13],["Dumbo",12,23,40,12,7],["Enchanted Tales with Belle",17,20,31,16,16],["Haunted Mansion",29,38,51,29,20],["it’s a small world",20,22,32,12,11],["Jungle Cruise",48,56,61,40,41],["Mad Tea Party",16,17,28,9,8],["Magic Carpets",16,20,31,9,9],["PeopleMover",8,14,21,8,5],["Pete’s Silly Sideshow, line 1 (Goofy/Donald)",29,23,33,18,14],["Pete’s Silly Sideshow, line 2 (Daisy)",34,30,41,26,22],["Peter Pan’s Flight",47,54,61,43,44],["Pirates of the Caribbean",17,30,39,14,11],["Princess Fairytale Hall: Cinderella line",37,34,43,25,20],["Princess Fairytale Hall: Tiana line",26,32,32,20,26],["Prince Charming Regal Carrousel",8,9,16,7,5],["Space Mountain",40,43,54,34,41],["Tiana’s Bayou Adventure",42,48,67,44,41],["Tomorrowland Speedway",12,17,25,11,8],["Mickey at Town Square Theater",30,25,33,14,14],["TRON Lightcycle / Run",54,61,79,57,53],["Under the Sea",23,28,40,13,8],["Many Adventures of Winnie the Pooh",32,41,47,33,34]],"tag":{"Seven Dwarfs Mine Train":"plan","Enchanted Tales with Belle":"plan","Pete’s Silly Sideshow, line 1 (Goofy/Donald)":"plan","Pete’s Silly Sideshow, line 2 (Daisy)":"plan","Peter Pan’s Flight":"plan","it’s a small world":"plan","Many Adventures of Winnie the Pooh":"plan","Under the Sea":"plan","Barnstormer":"plan","Dumbo":"plan","PeopleMover":"plan","Princess Fairytale Hall: Cinderella line":"plan","Princess Fairytale Hall: Tiana line":"plan","Prince Charming Regal Carrousel":"plan","Pirates of the Caribbean":"plan","Magic Carpets":"plan","Mickey at Town Square Theater":"plan","Jungle Cruise":"plan","Astro Orbiter":"opt","Ariel at Ariel’s Grotto":"none","Tomorrowland Speedway":"none","Space Mountain":"skip","TRON Lightcycle / Run":"skip","Haunted Mansion":"skip","Mad Tea Party":"skip","Tiana’s Bayou Adventure":"closed"},"hours":["8:00am-11:00pm","9:00am-11:00pm","8:00am-11:00pm","8:00am-6:00pm, Mickey's Very Merry Christmas Party 7pm-12am","8:00am-6:00pm, Mickey's Very Merry Christmas Party 7pm-12am"]},"ak":{"rows":[["Mickey and Minnie at Adventurers Outpost",29,41],["DINOSAUR",24,23],["Expedition Everest",31,26],["Flight of Passage",57,100],["Kilimanjaro Safaris",22,37],["Na'vi River Journey",42,69],["Wildlife Express Train, Africa station",5,20],["Wildlife Express Train, Conservation Station",20,20]],"tag":{"Mickey and Minnie at Adventurers Outpost":"plan","Na’vi River Journey":"plan","Kilimanjaro Safaris":"opt","Expedition Everest":"skip","DINOSAUR":"closed","Wildlife Express Train, Africa station":"opt","Wildlife Express Train, Conservation Station":"opt","Flight of Passage":"plan"},"hours":"8:00am-7:00pm"},"yoy":{"mk":[["TRON Lightcycle / Run",52,47,"skip"],["Seven Dwarfs Mine Train",42,41,"plan"],["Jungle Cruise / Jingle Cruise",36,40,"plan"],["Peter Pan’s Flight",39,36,"plan"],["Space Mountain",25,24,"skip"],["Haunted Mansion",24,24,"skip"],["Many Adventures of Winnie the Pooh",22,28,"plan"],["Tiana’s Bayou Adventure",null,24,"closed"],["Enchanted Tales with Belle",23,19,"plan"],["Under the Sea",null,15,"plan"],["Pirates of the Caribbean",14,11,"plan"],["Big Thunder Mountain Railroad",22,"closed","skip"],["Buzz Lightyear’s Space Ranger Spin",18,"closed","plan"],["Mickey’s PhilharMagic",14,10,"plan"],["Astro Orbiter",17,null,"opt"],["it’s a small world",12,11,"plan"],["Magic Carpets of Aladdin",11,11,"plan"],["Barnstormer",10,11,"plan"],["Dumbo the Flying Elephant",10,10,"plan"],["Tomorrowland Speedway",11,10,"none"],["Country Bear Jamboree",11,10,"none"],["PeopleMover",10,8,"plan"],["Mad Tea Party",8,9,"skip"],["Enchanted Tiki Room",11,7,"plan"],["Prince Charming Regal Carrousel",8,7,"plan"],["Hall of Presidents",2,null,"plan"],["Swiss Family Treehouse",4,null,"plan"],["Carousel of Progress",5,4,"closed"]],"ak":[["Avatar Flight of Passage",61,47,"plan"],["Na’vi River Journey",37,34,"plan"],["Kilimanjaro Safaris",33,24,"opt"],["Expedition Everest",19,18,"skip"],["Kali River Rapids",7,null,"plan"],["DINOSAUR",13,13,"closed"],["TriceraTop Spin",7,null,"closed"],["It’s Tough to Be a Bug!",10,null,"closed"]]},"jump":[{"h":"Magic Kingdom, 2024","rows":[["TRON Lightcycle / Run",91,115],["Seven Dwarfs Mine Train",51,70],["Peter Pan’s Flight",46,55],["Space Mountain",31,53],["Jungle Cruise / Jingle Cruise",42,51],["Big Thunder Mountain Railroad",34,44],["Haunted Mansion",32,41],["Many Adventures of Winnie the Pooh",29,39],["it’s a small world",19,27],["Magic Carpets of Aladdin",17,24]]},{"h":"Animal Kingdom, 2024","rows":[["Avatar Flight of Passage",59,91],["Kilimanjaro Safaris",39,60],["Na’vi River Journey",50,58],["Expedition Everest",20,41],["Adventurers Outpost",32,34]]},{"h":"Animal Kingdom, 2023","rows":[["Avatar Flight of Passage",82,115],["Na’vi River Journey",70,82],["Adventurers Outpost",51,56]]},{"h":"Magic Kingdom, 2023","rows":[["Seven Dwarfs Mine Train",91,97]]}]};
+
+/* ---------- wait-time history ---------- */
+const TGLBL={plan:"In your plan",opt:"Optional in your plan",skip:"On your skip list",closed:"Closed on your dates"};
+const TGSYM={plan:"★",opt:"☆",skip:"–",closed:"✕"};
+function heat(v){const pct=Math.round(6+Math.min(1,v/75)*52);return "background:color-mix(in srgb,var(--c) "+pct+"%,var(--card));color:var(--ink);"}
+function tmark(t){return TGLBL[t]?'<span class="tg" title="'+TGLBL[t]+'" aria-label="'+TGLBL[t]+'">'+TGSYM[t]+'</span>':""}
+function spark(vals){
+  const w=54,h=18,mx=Math.max.apply(null,vals.concat([1])),n=vals.length;
+  const pts=vals.map((v,i)=>(n>1?2+i*(w-4)/(n-1):w/2).toFixed(1)+","+(h-2-(v/mx)*(h-4)).toFixed(1)).join(" ");
+  return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Trend, minutes: '+vals.join(", ")+'"><polyline points="'+pts+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+}
+const valCell=v=>v===null?'<td class="na">–</td>':typeof v==="string"?'<td class="na">'+esc(v)+'</td>':'<td class="h" style="'+heat(v)+'">'+v+'</td>';
+function mkDailyTable(){
+  const m=HIST.mk,rows=m.rows.slice().sort((a,b)=>b[3]-a[3]),sub=["","","your Mon","party night","your Wed, party night"];
+  let h='<div class="hist"><table class="ht"><thead><tr><th>Ride</th>'+m.labels.map((l,i)=>'<th class="'+(i===2||i===4?"me":"")+'">'+l+(sub[i]?'<small>'+sub[i]+'</small>':"")+'</th>').join("")+'<th>Trend</th></tr></thead><tbody>';
+  rows.forEach(r=>{const tag=m.tag[r[0]]||"";h+='<tr class="'+(tag==="closed"||tag==="skip"?"dim":"")+'"><th scope="row">'+tmark(tag)+esc(r[0])+'</th>'+r.slice(1).map(valCell).join("")+'<td>'+spark(r.slice(1))+'</td></tr>'});
+  const lower=rows.filter(r=>r[4]<r[3]&&r[5]<r[3]).length,sd=rows.find(r=>r[0]==="Seven Dwarfs Mine Train");
+  return h+'</tbody></table></div><p class="stat">On both party nights (Tue 25 and Wed 26), '+lower+' of '+rows.length+' rides ran shorter than on Monday'+(sd?'. Seven Dwarfs, for example, went from '+sd[3]+' minutes on Monday to '+sd[5]+' on Wednesday':"")+'. The park closed at 6:00 PM those days.</p>';
+}
+function akDailyTable(){
+  const a=HIST.ak,rows=a.rows.slice().sort((x,y)=>y[1]-x[1]);
+  let h='<div class="hist"><table class="ht"><thead><tr><th>Ride</th><th class="me">Sat 22<small>your Sat</small></th><th>Predicted<small>forecast</small></th></tr></thead><tbody>';
+  rows.forEach(r=>{const tag=a.tag[r[0]]||"";h+='<tr class="'+(tag==="closed"||tag==="skip"?"dim":"")+'"><th scope="row">'+tmark(tag)+esc(r[0])+'</th>'+valCell(r[1])+'<td class="na">'+r[2]+'</td></tr>'});
+  return h+'</tbody></table></div><p class="stat">TouringPlans’ own forecast ran well above what actually happened that Saturday. Flight of Passage was forecast at 100 and averaged 57. Treat forecasts as a ceiling, not history.</p>';
+}
+function yoyTable(k){
+  const rows=HIST.yoy[k];
+  let h='<div class="hist"><table class="ht"><thead><tr><th>Ride</th><th>2024</th><th>2025</th><th>Change</th><th></th></tr></thead><tbody>';
+  rows.forEach(r=>{
+    const a=r[1],b=r[2];let ch='<td class="na">–</td>',bars='<td></td>';
+    if(typeof a==="number"&&typeof b==="number"){
+      const d=b-a;ch='<td class="chg '+(d>=3?"up":d<=-3?"down":"")+'">'+(d>=3?"↑ ":d<=-3?"↓ ":"≈ ")+(d>0?"+":"")+d+'</td>';
+      bars='<td><span class="bars" aria-hidden="true"><i style="width:'+Math.round(a/70*100)+'%"></i><i class="b2" style="width:'+Math.round(b/70*100)+'%"></i></span></td>';
+    }
+    h+='<tr class="'+(r[3]==="closed"?"dim":"")+'"><th scope="row">'+tmark(r[3])+esc(r[0])+'</th>'+valCell(a)+valCell(b)+ch+bars+'</tr>';
+  });
+  return h+'</tbody></table></div>';
+}
+function jumpTables(k){
+  const pre=k==="mk"?"Magic Kingdom":"Animal Kingdom";
+  return HIST.jump.filter(g=>g.h.indexOf(pre)===0).map(g=>'<h3 class="land">'+g.h+'</h3><div class="hist"><table class="ht"><thead><tr><th>Ride</th><th>Week before</th><th>Thanksgiving week</th><th>Jump</th></tr></thead><tbody>'
+    +g.rows.map(r=>{const p=Math.round((r[2]/r[1]-1)*100);return '<tr><th scope="row">'+esc(r[0])+'</th>'+valCell(r[1])+valCell(r[2])+'<td class="chg '+(p>=25?"up":"")+'">'+(p>=0?"+":"")+p+'%</td></tr>'}).join("")+'</tbody></table></div>').join("");
+}
+function trendsHTML(){
+  const k=PARKS[state.hp]?state.hp:(DAYS[state.day]&&DAYS[state.day].pk)||"mk",P=PARKS[k];
+  let h='<section class="sec"><h1>Trends</h1><p>How long lines have run at your two parks, to help you decide what to do first. Your dates are Thanksgiving week itself: Thanksgiving 2026 is Thursday, Nov 26. Minutes below are the average posted wait over the whole day, so they include the quiet first and last hours.</p>'
+    +'<div class="seg">'+Object.keys(PARKS).map(x=>'<button type="button" class="btn" data-act="hpark" data-p="'+x+'" aria-pressed="'+(x===k)+'">'+PARKS[x].label+'</button>').join("")+'</div></section>';
+  h+='<details class="more" data-s="trendsHelp"'+(state.trendsHelp?" open":"")+'><summary>How to read these numbers</summary><ul class="whylist">'
+    +'<li><b>Every number is minutes of posted wait,</b> the time on the sign, which isn’t always your exact time in line.</li>'
+    +'<li><b>Day-by-day tables</b> (TouringPlans, 2025): the average posted wait across the whole day the park was open. It’s an all-day average, so expect lower at opening and higher at midday. A darker cell means a longer wait. The small line is the shape from Saturday to Wednesday.</li>'
+    +'<li><b>Predicted</b> is TouringPlans’ own forecast for that day, not history.</li>'
+    +'<li><b>Year over year</b> (AllEars): the average posted wait over the whole week before Thanksgiving week. Change is 2025 minus 2024. ↑ means 3 or more minutes longer, ↓ 3 or more shorter, and ≈ about the same. In the bars, 2024 is on top and 2025 below.</li>'
+    +'<li><b>How much Thanksgiving week adds</b> (MickeyBlog): the same ride in the week before against Thanksgiving week itself. +54% means the average wait was 54% longer. Their method gives higher minutes than the other tables, so compare the percentages, not the minutes.</li>'
+    +'<li><b>Symbols:</b> ★ in your plan, ☆ optional, – on your skip list, ✕ closed on your dates. A dash in a cell means no number was reported.</li></ul></details>';
+
+  if(k==="mk")h+='<section class="sec"><h2>Magic Kingdom, day by day in 2025</h2><p>Nov 22–26, 2025, lined up by weekday. Mon 24 matches your Mon Nov 23. Wed 26 matches your Wed Nov 25, since both were Christmas party nights that closed at 6:00 PM. ★ in your plan, ☆ optional, – on your skip list, ✕ closed on your dates. The railroad is left out because its posted wait is a flat 20 every day. Swipe the table sideways to see Wed 26 and the trend line.</p>'+mkDailyTable()+'</section>';
+  else h+='<section class="sec"><h2>Animal Kingdom, Saturday Nov 22, 2025</h2><p>The Saturday before Thanksgiving week, which matches your Sat Nov 21. Only that day was collected for this park.</p>'+akDailyTable()+'</section>';
+  h+='<section class="sec"><h2>Year over year</h2><p>Weekly averages for the week before Thanksgiving week, from AllEars: Nov 17–23, 2024 against the same week in 2025. Bars show 2024 on top and 2025 below. Buzz Lightyear and Big Thunder were closed in 2025. Dashes mean the ride wasn’t reported or didn’t exist yet.</p>'+yoyTable(k)+'</section>';
+  h+='<section class="sec"><h2>How much Thanksgiving week adds</h2><p>MickeyBlog’s weekly reports for the headline rides, which run higher than the tables above, so compare the percent change and not the minutes. The jump is the reason your days will feel busier than the week-before numbers suggest.</p>'+jumpTables(k)+'</section>';
+  h+='<section class="sec"><h2>What this covers</h2><ul class="whylist"><li>2025 day by day for Magic Kingdom (Nov 22–26) and for the Saturday at Animal Kingdom.</li><li>2024 and 2025 weekly averages for every ride at both parks.</li><li>2023 and 2024 headline rides, for the Thanksgiving jump.</li><li>Not found: day-by-day numbers for 2022 to 2024, because the free pages weren’t reachable here and the full archives are behind subscriptions. The exact dates Nov 21, 23 and 25 aren’t comparable in earlier years either. In 2023, Nov 23 was Thanksgiving Day.</li></ul>'
+    +'<p class="fine">Sources: TouringPlans (daily observed averages), AllEars (weekly averages, posted Nov 24, 2024 and Nov 23, 2025) and MickeyBlog (weekly reports for 2023 and 2024). Collected Nov 10, 2026. These are figures published by those sites, not by Disney.</p></section>';
+  return h;
+}
+
+/* ---------- past average for the Rides tab ---------- */
+// catalog key (the ride's q) -> its row in the day-by-day table (d) and in the weekly table (w)
+const HMAP={
+ mk:{"seven dwarfs mine train":{d:["Seven Dwarfs Mine Train"],w:"Seven Dwarfs Mine Train"},"peter pans flight":{d:["Peter Pan’s Flight"],w:"Peter Pan’s Flight"},
+  "many adventures of winnie the pooh":{d:["Many Adventures of Winnie the Pooh"],w:"Many Adventures of Winnie the Pooh"},"journey of the little mermaid":{d:["Under the Sea"],w:"Under the Sea"},
+  "its a small world":{d:["it’s a small world"],w:"it’s a small world"},"prince charming regal carrousel":{d:["Prince Charming Regal Carrousel"],w:"Prince Charming Regal Carrousel"},
+  "philharmagic":{w:"Mickey’s PhilharMagic"},"mad tea party":{d:["Mad Tea Party"],w:"Mad Tea Party"},"enchanted tales with belle":{d:["Enchanted Tales with Belle"],w:"Enchanted Tales with Belle"},
+  "princess fairytale hall":{d:["Princess Fairytale Hall: Cinderella line","Princess Fairytale Hall: Tiana line"]},"ariels grotto":{d:["Ariel at Ariel’s Grotto"]},
+  "dumbo":{d:["Dumbo"],w:"Dumbo the Flying Elephant"},"barnstormer":{d:["Barnstormer"],w:"Barnstormer"},
+  "petes silly sideshow":{d:["Pete’s Silly Sideshow, line 1 (Goofy/Donald)","Pete’s Silly Sideshow, line 2 (Daisy)"]},
+  "buzz lightyears space ranger spin":{w:"Buzz Lightyear’s Space Ranger Spin"},"peoplemover":{d:["PeopleMover"],w:"PeopleMover"},"astro orbiter":{d:["Astro Orbiter"],w:"Astro Orbiter"},
+  "tomorrowland speedway":{d:["Tomorrowland Speedway"],w:"Tomorrowland Speedway"},"space mountain":{d:["Space Mountain"],w:"Space Mountain"},"tron lightcycle":{d:["TRON Lightcycle / Run"],w:"TRON Lightcycle / Run"},
+  "town square theater":{d:["Mickey at Town Square Theater"]},"jungle cruise":{d:["Jungle Cruise"],w:"Jungle Cruise / Jingle Cruise"},"pirates of the caribbean":{d:["Pirates of the Caribbean"],w:"Pirates of the Caribbean"},
+  "magic carpets of aladdin":{d:["Magic Carpets"],w:"Magic Carpets of Aladdin"},"enchanted tiki room":{w:"Enchanted Tiki Room"},"swiss family treehouse":{w:"Swiss Family Treehouse"},
+  "big thunder mountain":{w:"Big Thunder Mountain Railroad"},"country bear":{w:"Country Bear Jamboree"},"haunted mansion":{d:["Haunted Mansion"],w:"Haunted Mansion"},"hall of presidents":{w:"Hall of Presidents"}},
+ ak:{"adventurers outpost":{d:["Mickey and Minnie at Adventurers Outpost"]},"flight of passage":{d:["Flight of Passage"],w:"Avatar Flight of Passage"},
+  "navi river journey":{d:["Na'vi River Journey"],w:"Na’vi River Journey"},"kilimanjaro safaris":{d:["Kilimanjaro Safaris"],w:"Kilimanjaro Safaris"},
+  "expedition everest":{d:["Expedition Everest"],w:"Expedition Everest"},"kali river rapids":{w:"Kali River Rapids"}}
+};
+// What the past says about a ride: your weekdays in 2025 first, then the weekly average, and nothing if there's no honest match.
+function pastAvg(k,e){
+  if(e.c||e.t==="meal")return null;
+  if(k==="ak"&&(e.q==="wildlife express train"||e.q==="blueys wild world"))
+    return {t:"no history yet. Conservation Station reopened in May 2026 around Bluey’s Wild World, so older numbers don’t apply.",none:1};
+  const m=(HMAP[k]||{})[e.q];if(!m)return null;
+  if(m.d){
+    const rows=m.d.map(n=>HIST[k].rows.find(r=>r[0]===n)).filter(Boolean);
+    if(rows.length===m.d.length){
+      if(k==="mk"){
+        const mon=Math.round(rows.reduce((a,r)=>a+r[3],0)/rows.length),wed=Math.round(rows.reduce((a,r)=>a+r[5],0)/rows.length);
+        return {t:Math.round((mon+wed)/2)+" min on your weekdays in 2025 (Mon "+mon+", Wed "+wed+")"};
+      }
+      const sat=Math.round(rows.reduce((a,r)=>a+r[1],0)/rows.length);
+      return {t:sat+" min on the same Saturday in 2025"};
+    }
+  }
+  if(m.w){
+    const r=HIST.yoy[k].find(x=>x[0]===m.w);
+    if(r&&typeof r[2]==="number")return {t:r[2]+" min, weekly average the week before Thanksgiving week, 2025"};
+    if(r&&typeof r[1]==="number")return {t:r[1]+" min, weekly average the week before Thanksgiving week, 2024"+(r[2]==="closed"?" (closed in 2025)":"")};
+  }
+  return null;
+}
+
 function rulesHTML(){
   return '<section class="sec"><h2>Park rules</h2><p>From your notes. Check Disney’s site before you pack.</p>'
     +'<ul class="rows">'+RULES.map(r=>'<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>').join("")+'</ul></section>'
@@ -1483,7 +1749,7 @@ function render(){
   document.querySelectorAll(".tab").forEach(b=>{if(b.dataset.tab===state.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   $("#days").style.display=state.tab==="plan"||state.tab==="map"?"":"none";
   if(state.tab!=="map"&&mapObj){mapObj.remove();mapObj=null;mapLayer=null}
-  const view={plan:planHTML,map:mapHTML,rides:ridesHTML,meals:mealsHTML,group:groupHTML,notes:notesHTML}[state.tab]||planHTML;
+  const view={plan:planHTML,map:mapHTML,rides:ridesHTML,trends:trendsHTML,meals:mealsHTML,group:groupHTML,notes:notesHTML}[state.tab]||planHTML;
   $("#view").innerHTML=view();
   $("#view").insertAdjacentHTML("beforeend",'<p class="sig">Created by Avinash</p>');
   $("#count").textContent=countdown();
@@ -1507,6 +1773,7 @@ document.addEventListener("click",e=>{
   if(a){
     const act=a.dataset.act;
     if(act==="wpark"){state.wp=a.dataset.p;render()}
+    else if(act==="hpark"){state.hp=a.dataset.p;render()}
     else if(act==="wrefresh"){toast("Refreshing");refreshWaits()}
     else if(act==="cfilter"){state.cf=a.dataset.f;render()}
     else if(act==="gorides"){state.wp=DAYS[state.day].pk;state.cf="all";state.tab="rides";store.set("tab","rides");render();window.scrollTo(0,0)}
